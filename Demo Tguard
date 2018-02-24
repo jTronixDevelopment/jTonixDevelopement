@@ -1,0 +1,344 @@
+<scxml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:dt="http://touchcommerce.com/schema/scxml/actions-1.0.xsd"
+xmlns="http://www.w3.org/2005/07/scxml"
+xmlns:fn="http://www.w3.org/2005/xpath-functions"
+xmlns:f="http://touchcommerce.com/schema/scxml/functions"
+version="1.0" profile="ecmascript" initial="initial">
+  <datamodel>
+    <data id="decisionTree">
+      <decisionTree xmlns="">
+        <tGuard-validate-token-url>https://loginc.stage.att.net/Token/nxsATS/TokenVal</tGuard-validate-token-url>
+		<jsonDataMap/>
+		<sharedDataMap/>
+      </decisionTree>
+    </data>
+  </datamodel>
+
+  <state id="initial">
+    <onentry>
+	  <dt:assign tag="_automatonDataMap/tGuardToken" xpath="string(_automatonDataMap/tGuardToken)"/> <!-- create empty node if absent -->
+
+      <dt:view mode="agent">
+        <![CDATA[
+                <xhtml:html xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xf="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:dt="http://touchcommerce.com/schema/scxml/actions-1.0.xsd" xmlns:xxforms="http://orbeon.org/oxf/xml/xforms">
+                    <xhtml:head>
+                        <xhtml:title>SalesForce Lookup</xhtml:title>
+                        <xf:model id="main-model" xxforms:external-events="onAutomatonDataMap">
+                            <xf:instance id="decisionTree">
+                                <decisionTree xmlns=""/>
+                            </xf:instance>
+
+							<xf:action ev:event="onAutomatonDataMap" dt:event="onGetDatapassWithAutomatonDataMap"/>
+                        </xf:model>
+
+                        <xhtml:link rel="stylesheet" href="https://mediaeastv3.inq.com/media/sites/10004119/flash/ATT-Assets/bootstrap.min.custom.css"/>
+                        <xhtml:link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700" rel="stylesheet" type="text/css"/>
+
+                        <xhtml:style type="text/css">
+                            body {
+                                margin-top: 30px;
+                            }
+                        </xhtml:style>
+                    </xhtml:head>
+
+                    <xhtml:body>
+
+                        <xhtml:div class="container">
+                            <xhtml:div class="panel panel-primary">
+                                <xhtml:div class="panel-heading">
+                                    <xhtml:h1 class="panel-title">tGuard - Enter Token</xhtml:h1>
+                                </xhtml:div>
+                                <xhtml:div class="panel-body">
+                                    <xhtml:div class="form-group">
+                                        <xf:textarea ref="instance('decisionTree')/_automatonDataMap/tGuardToken" xxforms:maxlength="512" class="form-control" xxforms:rows="4">
+                                            <xf:label>Please enter token:</xf:label>
+                                        </xf:textarea>
+                                        <xhtml:br/>
+                                        <xf:trigger dt:event="submit" class="btn btn-primary" style="float: right;">
+                                          <xf:label>Submit</xf:label>
+                                        </xf:trigger>
+                                    </xhtml:div>
+                                </xhtml:div>
+                            </xhtml:div>
+                        </xhtml:div>
+
+                    </xhtml:body>
+                </xhtml:html>
+                ]]>
+      </dt:view>
+    </onentry>
+    <transition event="submit" target="sendRequest" />
+
+	<transition cond="Data(decisionTree, '//tGuardToken') != ''" target="sendRequest" />
+
+	<transition event="onGetDatapassWithAutomatonDataMap" target="sendRequest">
+		<dt:assign tag="jsonDataMap" xpath="f:eventParam('dataMap')"/>
+		<dt:assign tag="_automatonDataMap" xpath="f:fromJson(jsonDataMap)"/>
+	</transition>
+
+  </state>
+
+  <state id="sendRequest">
+    <onentry>
+      <dt:assign tag="token" xpath="concat('TATS-TokenID=', encode-for-uri(//tGuardToken))" />
+
+      <dt:http-post tag="response" url="tGuard-validate-token-url" body="token/text()" log="info">
+        <dt:headers>
+          <dt:header name="Content-Type" ref="'application/x-www-form-urlencoded'"/>
+        </dt:headers>
+      </dt:http-post>
+
+      <dt:assign tag="tGuard-data" xpath="replace(replace(encode-for-uri(response), '%3D', ','), '%26', ';')" />
+      <dt:log-event domain="chat" type="visitorAttributeAdded">
+        <dt:field name="visitorAttributes" value="/tGuard-data"/>
+      </dt:log-event>
+
+      <!-- FAIL -->
+      <dt:view mode="agent" condition="contains(response, 'errorCode')">
+        <![CDATA[
+                <xhtml:html xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xf="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:dt="http://touchcommerce.com/schema/scxml/actions-1.0.xsd" xmlns:xxforms="http://orbeon.org/oxf/xml/xforms">
+                    <xhtml:head>
+                        <xhtml:title>SalesForce Lookup</xhtml:title>
+                        <xf:model id="main-model" xxforms:external-events="onAutomatonDataMap">
+                            <xf:instance id="decisionTree">
+                                <decisionTree xmlns=""/>
+                            </xf:instance>
+
+                            <xf:instance id="vars">
+                                <vars xmlns="">
+                                    <customerInfo/>
+                                    <iterator/>
+                                </vars>
+                            </xf:instance>
+
+                            <!-- Parse tGuard info passed in response -->
+                            <xf:action ev:event="xforms-ready">
+                                <xxforms:variable name="keyVals" select="tokenize(instance('decisionTree')/response, '&amp;')"/>
+
+                                <xf:setvalue ref="instance('vars')/iterator" value="1"/>
+                                <xf:action while="instance('vars')/iterator &lt;= count($keyVals)">
+                                    <xxforms:variable name="keyValPairs" select="tokenize($keyVals[number(instance('vars')/iterator)], '=')"/>
+
+                                    <xf:insert context="instance('vars')/customerInfo" nodeset="item" origin="xxforms:element('item', (xxforms:attribute('key', $keyValPairs[1]), $keyValPairs[2]))" position="after"/>
+
+                                    <xf:setvalue ref="instance('vars')/iterator" value=". + 1"/>
+                                </xf:action>
+                            </xf:action>
+
+							<xf:action ev:event="onAutomatonDataMap" dt:event="onGetDatapassWithAutomatonDataMap"/>
+                        </xf:model>
+
+                        <xhtml:link rel="stylesheet" href="https://mediaeastv3.inq.com/media/sites/10004119/flash/ATT-Assets/bootstrap.min.custom.css"/>
+                        <xhtml:link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700" rel="stylesheet" type="text/css"/>
+
+                        <xhtml:style type="text/css">
+                            body {
+                                margin-top: 30px;
+                            }
+                        </xhtml:style>
+                    </xhtml:head>
+
+                    <xhtml:body>
+
+                        <xhtml:div class="container">
+                            <xhtml:div class="panel panel-primary">
+                                <xhtml:div class="panel-heading">
+                                    <xhtml:h1 class="panel-title">tGuard - Error Information</xhtml:h1>
+                                </xhtml:div>
+                                <xhtml:div class="panel-body">
+                                    <xhtml:div class="row">
+                                        <xhtml:label class="col-xs-4 col-sm-4 col-md-3 control-label">Error Code</xhtml:label>
+                                        <xhtml:div class="col-xs-8 col-sm-8 col-md-9"><xf:output value="instance('vars')/customerInfo/item[@key = 'errorCode']"/></xhtml:div>
+                                    </xhtml:div>
+                                    <xhtml:div class="row">
+                                        <xhtml:label class="col-xs-4 col-sm-4 col-md-3 control-label">Error Message</xhtml:label>
+                                        <xhtml:div class="col-xs-8 col-sm-8 col-md-9"><xf:output value="replace(instance('vars')/customerInfo/item[@key = 'errorMessage'], '\+', ' ')"/></xhtml:div>
+                                    </xhtml:div>
+                                </xhtml:div>
+                            </xhtml:div>
+                        </xhtml:div>
+
+                        <xhtml:div class="container">
+                            <xhtml:div class="panel panel-primary">
+                                <xhtml:div class="panel-heading">
+                                    <xhtml:h1 class="panel-title">tGuard - Enter Token</xhtml:h1>
+                                </xhtml:div>
+                                <xhtml:div class="panel-body">
+                                    <xhtml:div class="form-group">
+                                        <xf:textarea ref="instance('decisionTree')/_automatonDataMap/tGuardToken" xxforms:maxlength="512" class="form-control" xxforms:rows="4">
+                                            <xf:label>Please enter token:</xf:label>
+                                        </xf:textarea>
+                                        <xhtml:br/>
+                                        <xf:trigger dt:event="submit" class="btn btn-primary" style="float: right;">
+                                          <xf:label>Submit</xf:label>
+                                        </xf:trigger>
+                                    </xhtml:div>
+                                </xhtml:div>
+                            </xhtml:div>
+                        </xhtml:div>
+
+                    </xhtml:body>
+                </xhtml:html>
+                ]]>
+      </dt:view>
+
+      <!-- SUCCESS -->
+      <dt:view mode="agent" condition="not(contains(response, 'errorCode'))">
+        <![CDATA[
+                <xhtml:html xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xf="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:dt="http://touchcommerce.com/schema/scxml/actions-1.0.xsd" xmlns:xxforms="http://orbeon.org/oxf/xml/xforms">
+                    <xhtml:head>
+                        <xhtml:title>SalesForce Lookup</xhtml:title>
+                        <xf:model id="main-model" xxforms:external-events="onAutomatonDataMap">
+                            <xf:instance id="decisionTree">
+                                <decisionTree xmlns=""/>
+                            </xf:instance>
+
+                            <xf:instance id="vars">
+                                <vars xmlns="">
+                                    <customerInfo/>
+                                    <iterator/>
+                                </vars>
+                            </xf:instance>
+
+                            <!-- Parse tGuard info passed in response -->
+                            <xf:action ev:event="xforms-ready">
+                                <xxforms:variable name="keyVals" select="tokenize(instance('decisionTree')/response, '&amp;')"/>
+                                <xf:setvalue ref="instance('vars')/iterator" value="1"/>
+                                <xf:action while="instance('vars')/iterator &lt;= count($keyVals)">
+                                    <xxforms:variable name="keyValPairs" select="tokenize($keyVals[number(instance('vars')/iterator)], '=')"/>
+
+                                    <xf:insert context="instance('vars')/customerInfo" nodeset="item" origin="xxforms:element('item', (xxforms:attribute('key', $keyValPairs[1]), $keyValPairs[2]))" position="after"/>
+
+                                    <xf:setvalue ref="instance('vars')/iterator" value=". + 1"/>
+                                </xf:action>
+                            </xf:action>
+
+							<xf:action ev:event="onAutomatonDataMap" dt:event="onGetDatapassWithAutomatonDataMap"/>
+                        </xf:model>
+
+                        <xhtml:link rel="stylesheet" href="https://mediaeastv3.inq.com/media/sites/10004119/flash/ATT-Assets/bootstrap.min.custom.css"/>
+                        <xhtml:link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700" rel="stylesheet" type="text/css"/>
+
+                        <xhtml:style type="text/css">
+                            body {
+                                margin-top: 30px;
+                            }
+                        </xhtml:style>
+                    </xhtml:head>
+
+                    <xhtml:body>
+
+                        <xhtml:div class="container">
+                            <xhtml:div class="panel panel-primary">
+                                <xhtml:div class="panel-heading">
+                                    <xhtml:h1 class="panel-title">tGuard Data</xhtml:h1>
+                                </xhtml:div>
+                                <xhtml:div class="panel-body">
+                                    <xhtml:div class="row">
+                                        <xhtml:label class="col-xs-4 col-sm-4 col-md-3 control-label">UserID:</xhtml:label>
+                                        <xhtml:div class="col-xs-8 col-sm-8 col-md-9"><xf:output value="instance('vars')/customerInfo/item[@key = 'iv-user']"/></xhtml:div>
+                                    </xhtml:div>
+                                    <xhtml:div class="row">
+                                        <xhtml:label class="col-xs-4 col-sm-4 col-md-3 control-label">UserID GUID:</xhtml:label>
+                                        <xhtml:div class="col-xs-8 col-sm-8 col-md-9"><xf:output value="instance('vars')/customerInfo/item[@key = 'iv-guid']"/></xhtml:div>
+                                    </xhtml:div>
+                                    <xhtml:div class="row">
+                                        <xhtml:label class="col-xs-4 col-sm-4 col-md-3 control-label">User Services:</xhtml:label>
+                                        <xhtml:div class="col-xs-8 col-sm-8 col-md-9"><xf:output value="instance('vars')/customerInfo/item[@key = 'iv-groups']"/></xhtml:div>
+                                    </xhtml:div>
+                                    <xhtml:div class="row">
+                                        <xhtml:label class="col-xs-4 col-sm-4 col-md-3 control-label">User AccessID:</xhtml:label>
+                                        <xhtml:div class="col-xs-8 col-sm-8 col-md-9"><xf:output value="instance('vars')/customerInfo/item[@key = 'sl_id']"/></xhtml:div>
+                                    </xhtml:div>
+                                    <xhtml:div class="row">
+                                        <xhtml:label class="col-xs-4 col-sm-4 col-md-3 control-label">AccessID GUID:</xhtml:label>
+                                        <xhtml:div class="col-xs-8 col-sm-8 col-md-9"><xf:output value="instance('vars')/customerInfo/item[@key = 'sl_guid']"/></xhtml:div>
+                                    </xhtml:div>
+                                    <xhtml:div class="row">
+                                        <xhtml:label class="col-xs-4 col-sm-4 col-md-3 control-label">User AccessID Services:</xhtml:label>
+                                        <xhtml:div class="col-xs-8 col-sm-8 col-md-9"><xf:output value="instance('vars')/customerInfo/item[@key = 'sl_groups']"/></xhtml:div>
+                                    </xhtml:div>
+                                    <xhtml:div class="row">
+                                        <xhtml:label class="col-xs-4 col-sm-4 col-md-3 control-label">Wireless Number:</xhtml:label>
+                                        <xhtml:div class="col-xs-8 col-sm-8 col-md-9"><xf:output value="instance('vars')/customerInfo/item[@key = 'ctn_id']"/></xhtml:div>
+                                    </xhtml:div>
+                                    <xhtml:div class="row">
+                                        <xhtml:label class="col-xs-4 col-sm-4 col-md-3 control-label">Wireless Sub ID:</xhtml:label>
+                                        <xhtml:div class="col-xs-8 col-sm-8 col-md-9"><xf:output value="instance('vars')/customerInfo/item[@key = 'sub_id']"/></xhtml:div>
+                                    </xhtml:div>
+                                    <xhtml:div class="row">
+                                        <xhtml:label class="col-xs-4 col-sm-4 col-md-3 control-label">Wireless BAN:</xhtml:label>
+                                        <xhtml:div class="col-xs-8 col-sm-8 col-md-9"><xf:output value="instance('vars')/customerInfo/item[@key = 'wireless_ban']"/></xhtml:div>
+                                    </xhtml:div>
+                                    <xhtml:div class="row">
+                                        <xhtml:label class="col-xs-4 col-sm-4 col-md-3 control-label">Dlife BAN:</xhtml:label>
+                                        <xhtml:div class="col-xs-8 col-sm-8 col-md-9"><xf:output value="instance('vars')/customerInfo/item[@key = 'dlife_ban']"/></xhtml:div>
+                                    </xhtml:div>
+                                    <xhtml:div class="row">
+                                        <xhtml:label class="col-xs-4 col-sm-4 col-md-3 control-label">Uverse BAN:</xhtml:label>
+                                        <xhtml:div class="col-xs-8 col-sm-8 col-md-9"><xf:output value="instance('vars')/customerInfo/item[@key = 'uverse_ban']"/></xhtml:div>
+                                    </xhtml:div>
+                                    <xhtml:div class="row">
+                                        <xhtml:label class="col-xs-4 col-sm-4 col-md-3 control-label">DTV BAN:</xhtml:label>
+                                        <xhtml:div class="col-xs-8 col-sm-8 col-md-9"><xf:output value="instance('vars')/customerInfo/item[@key = 'dtv_ban']"/></xhtml:div>
+                                    </xhtml:div>
+                                    <xhtml:div class="row">
+                                        <xhtml:label class="col-xs-4 col-sm-4 col-md-3 control-label">DTVNOW BAN:</xhtml:label>
+                                        <xhtml:div class="col-xs-8 col-sm-8 col-md-9"><xf:output value="instance('vars')/customerInfo/item[@key = 'dtvnow_ban']"/></xhtml:div>
+                                    </xhtml:div>
+                                    <xhtml:div class="row">
+                                        <xhtml:label class="col-xs-4 col-sm-4 col-md-3 control-label">WATCHTV BAN:</xhtml:label>
+                                        <xhtml:div class="col-xs-8 col-sm-8 col-md-9"><xf:output value="instance('vars')/customerInfo/item[@key = 'watchtv_ban']"/></xhtml:div>
+                                    </xhtml:div>
+                                    <xhtml:div class="row">
+                                        <xhtml:label class="col-xs-4 col-sm-4 col-md-3 control-label">Last Login Date &amp; Time:</xhtml:label>
+                                        <xhtml:div class="col-xs-8 col-sm-8 col-md-9"><xf:output value="instance('vars')/customerInfo/item[@key = 'last_login_timestamp']"/></xhtml:div>
+                                    </xhtml:div>
+                                </xhtml:div>
+                            </xhtml:div>
+                        </xhtml:div>
+
+                        <xhtml:div class="container">
+                            <xhtml:div class="panel panel-primary">
+                                <xhtml:div class="panel-heading">
+                                    <xhtml:h1 class="panel-title">tGuard - Token</xhtml:h1>
+                                </xhtml:div>
+                                <xhtml:div class="panel-body">
+                                    <xhtml:div class="form-group">
+                                        <xf:textarea ref="instance('decisionTree')/_automatonDataMap/tGuardToken" xxforms:maxlength="512" class="form-control" xxforms:rows="4">
+                                            <xf:label>Please enter token:</xf:label>
+                                        </xf:textarea>
+                                        <xhtml:br/>
+                                        <xf:trigger dt:event="submit" class="btn btn-primary" style="float: right;">
+                                          <xf:label>Submit</xf:label>
+                                        </xf:trigger>
+                                    </xhtml:div>
+                                </xhtml:div>
+                            </xhtml:div>
+                        </xhtml:div>
+
+                        <xhtml:br/>
+                    </xhtml:body>
+                </xhtml:html>
+                ]]>
+      </dt:view>
+      <dt:send-message to="AGENT" command="SHOW_MESSAGE"
+          data="concat('tGuard Information >> ','Wireless Number: ', tokenize(tokenize(response, '&amp;')[7], '=')[2], ' *** ',
+                             'Wireless BAN: ', tokenize(tokenize(response, '&amp;')[13], '=')[2], ' *** ',
+                             'Dlife BAN: ',tokenize(tokenize(response, '&amp;')[15], '=')[2], ' *** ',
+                             'Uverse BAN: ',tokenize(tokenize(response, '&amp;')[14], '=')[2], ' *** ',
+                             'DTV BAN: ',tokenize(tokenize(response, '&amp;')[16], '=')[2], ' *** ',
+                             'DTVNOW BAN: ',tokenize(tokenize(response, '&amp;')[18], '=')[2], ' *** ',
+                             'WATCHTV BAN: ',tokenize(tokenize(response, '&amp;')[19], '=')[2], ' *** ',
+                             'Last Login Date &amp; Time: ', tokenize(tokenize(response, '&amp;')[12], '=')[2])"/>
+    </onentry>
+    <transition event="back" target="initial" />
+
+    <transition event="submit" target="sendRequest" />
+
+	<transition event="onGetDatapassWithAutomatonDataMap" target="sendRequest">
+		<dt:assign tag="jsonDataMap" xpath="f:eventParam('dataMap')"/>
+		<dt:assign tag="_automatonDataMap" xpath="f:fromJson(jsonDataMap)"/>
+	</transition>
+  </state>
+</scxml>
