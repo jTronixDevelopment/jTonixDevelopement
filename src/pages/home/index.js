@@ -7,6 +7,7 @@ import JumboTron from './../../components/jumbotron/index';
 
 import { Button } from 'reactstrap';
 
+
 import './style.css';
 
 export default class NotFound extends Component {
@@ -20,8 +21,6 @@ export default class NotFound extends Component {
       <div>
         <NavBar/>
         <JumboTron/>
-        <Footer/>
-        <i className="devicon-backbonejs-plain"></i>
       </div>
     );
   }

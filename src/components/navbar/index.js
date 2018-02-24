@@ -1,5 +1,6 @@
 import React from 'react';
 import {Collapse,Navbar,NavbarToggler,NavbarBrand,Nav,NavItem,NavLink,UncontrolledDropdown,DropdownToggle,DropdownMenu,DropdownItem } from 'reactstrap';
+import './style.css'
 
 export default class Example extends React.Component {
   constructor(props) {
@@ -15,9 +16,11 @@ export default class Example extends React.Component {
       isOpen: !this.state.isOpen
     });
   }
+
+
   render() {
     return (
-      <Navbar color="primary" light expand="md">
+      <Navbar color="primary" light expand="md" id='nav'>
         <NavbarBrand href="/">JDev</NavbarBrand>
         <NavbarToggler onClick={ this.toggle } />
         <Collapse isOpen={ this.state.isOpen } navbar>
@@ -37,7 +40,7 @@ export default class Example extends React.Component {
                   Projects
                 </DropdownItem>
                 <DropdownItem>
-                  What We Do 
+                  What We Do
                 </DropdownItem>
                 <DropdownItem>
                   Pricing
