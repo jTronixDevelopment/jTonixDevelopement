@@ -21,6 +21,7 @@ export default class NotFound extends Component {
         <NavBar/>
         <JumboTron/>
         <Footer/>
+        <i className="devicon-backbonejs-plain"></i>
       </div>
     );
   }

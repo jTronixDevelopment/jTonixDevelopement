@@ -5,9 +5,6 @@ import './style.css';
 import { Jumbotron, Container } from 'reactstrap';
 import { Row, Col } from 'reactstrap';
 
-import TiSocialGithub from 'react-icons/lib/ti/social-github';
-
-
 export default class NotFound extends Component {
   static propTypes = {}
   static defaultProps = {}
@@ -19,7 +16,7 @@ export default class NotFound extends Component {
         <Container fluid>
           <Row className='text-center'>
             <Col xs='6' sm="3" md='3'>
-              <h5><TiSocialGithub/>Github</h5>
+              <h5>f</h5>
             </Col>
             <Col xs='6' sm="3" md='3'>
             </Col>
