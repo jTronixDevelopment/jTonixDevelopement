@@ -1,6 +1,3 @@
-#nav{
-  position: absolute;
-  top:100%;
-  z-index: 10;
-  width: 100%;
+.navbar{
+  margin-bottom: 33.5px;
 }

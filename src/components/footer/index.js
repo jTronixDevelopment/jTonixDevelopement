@@ -2,8 +2,7 @@
 import React, { Component } from 'react';
 
 import './style.css';
-import { Jumbotron, Container } from 'reactstrap';
-import { Row, Col } from 'reactstrap';
+import { Jumbotron, Container , Row, Col } from 'reactstrap';
 
 export default class NotFound extends Component {
   static propTypes = {}
@@ -12,7 +11,7 @@ export default class NotFound extends Component {
 
   render() {
     return (
-      <Jumbotron fluid className='bg-primary'>
+      <Jumbotron fluid className='bg-primary footer'>
         <Container fluid>
           <Row className='text-center'>
             <Col xs='6' sm="3" md='3'>
