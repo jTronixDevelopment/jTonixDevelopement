@@ -1,7 +1,5 @@
 // src/components/NotFound/index.js
 import React, { Component } from 'react';
-import NavBar from './../../components/navbar/index';
-import Footer from './../../components/footer/index';
 
 import './style.css';
 
@@ -13,7 +11,7 @@ export default class NotFound extends Component {
   render() {
     return (
       <div>
-        
+
       </div>
     );
   }

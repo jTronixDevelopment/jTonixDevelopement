@@ -1,8 +1,8 @@
 // src/components/NotFound/index.js
-import React, { Component } from 'react';
+import React from 'react';
 
 import './style.css';
-import { Jumbotron, Container , Row, Col } from 'reactstrap';
+import { Container , Row, Col } from 'reactstrap';
 
 const links = [
   {
@@ -32,8 +32,8 @@ const Footer = ()=>{
           <h5>Links</h5>
           <ul>
           {
-            links.map(({url , label })=>
-              <li><a href={ url }>{ label }</a></li>
+            links.map(({url , label },ind)=>
+              <li key={ ind + "li" }><a key={ ind } href={ url }>{ label }</a></li>
             )
           }
           </ul>

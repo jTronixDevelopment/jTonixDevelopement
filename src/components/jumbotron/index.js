@@ -1,18 +1,20 @@
 // src/components/NotFound/index.js
-import React, { Component } from 'react';
+import React from 'react';
 
 import './style.css';
 
 import { Button, Jumbotron } from 'reactstrap';
-
-const Jumbo = ()=>{
+const Jumbo = ({color,img,info})=>{
+  console.log(img)
+  var img = img?`url(${img})`:"none";
+  console.log(img);
   return(
-    <Jumbotron className='bg-alert'>
-      <h1 className="display-3">Hello, world!</h1>
-      <p className="lead">This is a simple hero unit, a simple Jumbotron-style component
-        for calling extra attention to featured content or information.
+    <Jumbotron style={{backgroundImage: img}} className={`bg-${(color)?color:"primary"}`} >
+      <h1 className="display-3">Test</h1>
+      <p className="lead">
+        { info }
       </p>
-      <p>It uses utility classes for typgraphy and spacing to space content out within the larger container.</p>
+      <p>It uses utility classes for tyopgraphy and spacing to space content out within the larger container.</p>
       <p className="lead">
         <Button color="primary">Learn More</Button>
       </p>
