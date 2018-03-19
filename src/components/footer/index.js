@@ -4,26 +4,44 @@ import React, { Component } from 'react';
 import './style.css';
 import { Jumbotron, Container , Row, Col } from 'reactstrap';
 
-export default class NotFound extends Component {
-  static propTypes = {}
-  static defaultProps = {}
-  state = {}
+const links = [
+  {
+    label: "Github",
+    url: "url"
+  },
+  {
+    label: "Github",
+    url: "url"
+  },
+  {
+    label: "Github",
+    url: "url"
+  },
+  {
+    label: "Github",
+    url: "url"
+  },
 
-  render() {
-    return (
-      <Jumbotron fluid className='bg-primary footer'>
-        <Container fluid>
-          <Row className='text-center'>
-            <Col xs='6' sm="3" md='3'>
-              <h5>f</h5>
-            </Col>
-            <Col xs='6' sm="3" md='3'>
-            </Col>
-            <Col xs='6' sm="3" md='3'>.col</Col>
-            <Col xs='6' sm="3" md='3'>.col</Col>
-          </Row>
-        </Container>
-      </Jumbotron>
-    );
-  }
-}
+]
+
+const Footer = ()=>{
+  return(
+    <Container fluid className='bg-primary footer'>
+      <Row className='text-center'>
+        <Col xs='12' sm="6" md='6'>
+          <h5>Links</h5>
+          <ul>
+          {
+            links.map(({url , label })=>
+              <li><a href={ url }>{ label }</a></li>
+            )
+          }
+          </ul>
+        </Col>
+        <Col xs='12' sm="6" md='6'>
+        </Col>
+      </Row>
+    </Container>
+  )}
+
+export default Footer;

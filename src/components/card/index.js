@@ -7,7 +7,6 @@ import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } fr
 
 const CardComponent = (x)=>{
   var { title , content, subTitle, click, thumbNail } = x.info
-  console.log(thumbNail)
   return(
     <Card>
       <CardImg top width="100%" src={thumbNail } alt="Card image cap" />

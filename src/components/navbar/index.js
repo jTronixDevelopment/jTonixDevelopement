@@ -20,12 +20,12 @@ export default class NavBar extends React.Component {
     return (
       <div>
         <Navbar color="primary" light expand="md">
-          <NavbarBrand href="/">reactstrap</NavbarBrand>
+          <NavbarBrand href="/">Home</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="mr-auto" navbar>
               <NavItem>
-                <NavLink href="/projects">Components</NavLink>
+                <NavLink href="/projects">Projects</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/team">Team</NavLink>

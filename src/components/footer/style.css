@@ -1,3 +1,11 @@
 .footer{
   margin-top: 33.5px;
+  color: white;
+}
+
+li{
+  list-style: none;
+}
+a{
+  color: white;
 }
