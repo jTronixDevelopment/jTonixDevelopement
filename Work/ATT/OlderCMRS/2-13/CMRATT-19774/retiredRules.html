@@ -1,0 +1,1029 @@
+<!--<business-rule id="10106" name="ATT-BCS-Premier-O-R-G-Marketing-C2C">
+       <business-unit-id>19000680</business-unit-id>
+       <agent-profile>
+         <agent-group-id>10004199</agent-group-id>
+       </agent-profile>
+       <rule-attributes>
+         <attribute>
+           <name>Unrecognized_Page_URL</name>
+           <value>
+             <string-variable-ref var-id="unrecPageURL"/>
+           </value>
+         </attribute>
+       </rule-attributes>
+       <condition>
+         <when>
+           <event event-type="onPageLanding"/>
+         </when>
+         <and>
+           <where>
+             <content-group-check cg-id="BCS-Premier-All"/>
+           </where>
+           <not>
+             <content-group-check cg-id="BCS-Premier-C2C-Suppress"/>
+           </not>
+           <not>
+             <is-device-type type="Phone"/>
+           </not>
+           <not>
+             <as-boolean>
+               <js-function-result>
+                 <js-function-by-name name="fanC2CSuppression"/>
+               </js-function-result>
+             </as-boolean>
+           </not>
+         </and>
+       </condition>
+       <actions>
+         <show-c2chat>
+           <c2c-spec>
+             <c2c-spec-id>
+               <number-variable-ref var-id="c2cspec"/>
+             </c2c-spec-id>
+             <c2c-theme>
+               <c2c-theme-name>
+                 <string-variable-ref var-id="btnVerticalOrgC2CTheme"/>
+               </c2c-theme-name>
+             </c2c-theme>
+             <chat-spec>
+               <chat-spec-id>
+                 <number-variable-ref var-id="chatSpec29001323"/>
+               </chat-spec-id>
+               <automaton-spec>
+                 <automaton-data-map>
+                   <item name="acif_id">
+                     <number>164</number>
+                   </item>
+                   <item name="name">
+                     <string>BCS - Filtering Guide</string>
+                   </item>
+                   <item name="type">
+                     <string>guide</string>
+                   </item>
+                   <item name="sub_type">
+                     <string>pre-chat</string>
+                   </item>
+                   <item name="acif_version">
+                     <string-constant-ref name="DEFAULT_ACIF_VERSION"/>
+                   </item>
+                   <item name="tGuardToken">
+                     <as-string><object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/></as-string>
+                   </item>
+                   <item name="BAN">
+                     <string-variable-ref var-id="lpBAN"/>
+                   </item>
+                   <item name="BTN">
+                     <string-variable-ref var-id="lpBTN"/>
+                   </item>
+                 </automaton-data-map>
+               </automaton-spec>
+               <opener-id>
+                 <number>-1</number>
+               </opener-id>
+               <script-tree-id>
+                 <number>12200550</number>
+               </script-tree-id>
+               <chat-theme>
+                 <chat-theme-name>
+                   <string-variable-ref var-id="ATT_v3-agentAlias-Automaton-EWT"/>
+                 </chat-theme-name>
+               </chat-theme>
+             </chat-spec>
+             <check-agent-availability-interval>PT90S</check-agent-availability-interval>
+           </c2c-spec>
+         </show-c2chat>
+       </actions>
+     </business-rule>-->
+
+     <business-rule id="10107" name="ATT-BCS-Premier-O-R-G-Marketing-C2C">
+  <business-unit-id>19000680</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004199</agent-group-id>
+  </agent-profile>
+  <rule-attributes>
+    <attribute>
+      <name>Unrecognized_Page_URL</name>
+      <value>
+        <string-variable-ref var-id="unrecPageURL"/>
+      </value>
+    </attribute>
+  </rule-attributes>
+  <condition>
+    <when>
+      <event event-type="onPageLanding"/>
+    </when>
+    <and>
+      <where>
+        <content-group-check cg-id="BCS-Premier-All"/>
+      </where>
+      <not>
+        <content-group-check cg-id="BCS-Premier-C2C-Suppress"/>
+      </not>
+      <not>
+        <is-device-type type="Phone"/>
+      </not>
+      <not>
+        <boolean-variable-ref var-id="BCS-FAN-LDS-Check"/>
+      </not>
+      <not>
+        <boolean-variable-ref var-id="isTypeCSR"/>
+      </not>
+      <not>
+        <as-boolean>
+          <js-function-result>
+            <js-function-by-name name="fanC2CSuppression"/>
+          </js-function-result>
+        </as-boolean>
+      </not>
+    </and>
+  </condition>
+  <actions>
+    <show-c2chat>
+      <c2c-spec>
+        <c2c-spec-id>
+          <number-variable-ref var-id="c2cspec"/>
+        </c2c-spec-id>
+        <c2c-theme>
+          <c2c-theme-name>
+            <string-variable-ref var-id="btnVerticalOrgC2CTheme"/>
+          </c2c-theme-name>
+        </c2c-theme>
+        <chat-spec>
+          <chat-spec-id>
+            <number-variable-ref var-id="chatSpec29001323"/>
+          </chat-spec-id>
+          <automaton-spec>
+            <automaton-data-map>
+              <item name="acif_id">
+                <number>164</number>
+              </item>
+              <item name="name">
+                <string>BCS - Filtering Guide</string>
+              </item>
+              <item name="type">
+                <string>guide</string>
+              </item>
+              <item name="sub_type">
+                <string>pre-chat</string>
+              </item>
+              <item name="acif_version">
+                <string-constant-ref name="DEFAULT_ACIF_VERSION"/>
+              </item>
+              <item name="tGuardToken">
+                <as-string><object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/></as-string>
+              </item>
+              <item name="BAN">
+                <string-variable-ref var-id="lpBAN"/>
+              </item>
+              <item name="BTN">
+                <string-variable-ref var-id="lpBTN"/>
+              </item>
+            </automaton-data-map>
+          </automaton-spec>
+          <opener-id>
+            <number>-1</number>
+          </opener-id>
+          <script-tree-id>
+            <number>12200550</number>
+          </script-tree-id>
+          <chat-theme>
+            <chat-theme-name>
+              <string-variable-ref var-id="ATT_v3-agentAlias-Automaton-EWT"/>
+            </chat-theme-name>
+          </chat-theme>
+        </chat-spec>
+        <check-agent-availability-interval>PT90S</check-agent-availability-interval>
+      </c2c-spec>
+    </show-c2chat>
+  </actions>
+</business-rule>
+
+<business-rule id="101062" name="ATT-DTM-BCS-Premier-O-R-G-Marketing-C2C">
+  <business-unit-id>19000680</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004199</agent-group-id>
+  </agent-profile>
+  <rule-attributes>
+    <attribute>
+      <name>Unrecognized_Page_URL</name>
+      <value>
+        <string-variable-ref var-id="unrecPageURL"/>
+      </value>
+    </attribute>
+  </rule-attributes>
+  <condition>
+    <when>
+      <event event-type="onPageLanding"/>
+    </when>
+    <and>
+      <where>
+        <content-group-check cg-id="BCS-Premier-All"/>
+      </where>
+      <not>
+        <content-group-check cg-id="BCS-Premier-C2C-Suppress"/>
+      </not>
+      <not>
+        <boolean-variable-ref var-id="isTypeCSR"/>
+      </not>
+      <is-device-type type="Phone"/>
+      <not>
+        <boolean-variable-ref var-id="BCS-FAN-LDS-Check"/>
+      </not>
+      <not>
+        <as-boolean>
+          <js-function-result>
+            <js-function-by-name name="fanC2CSuppression"/>
+          </js-function-result>
+        </as-boolean>
+      </not>
+    </and>
+  </condition>
+  <actions>
+    <show-c2chat>
+      <c2c-spec>
+        <c2c-spec-name>
+          <string>ATT-MOB</string>
+        </c2c-spec-name>
+        <c2c-theme>
+          <c2c-theme-name>
+            <string>ATT-Mobile_C2C</string>
+          </c2c-theme-name>
+        </c2c-theme>
+        <chat-spec>
+          <chat-spec-id>
+            <number-variable-ref var-id="chatSpec29001323"/>
+          </chat-spec-id>
+          <automaton-spec>
+            <automaton-data-map>
+              <item name="tGuardToken">
+                <as-string><object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/></as-string>
+              </item>
+              <item name="BAN">
+                <string-variable-ref var-id="lpBAN"/>
+              </item>
+              <item name="BTN">
+                <string-variable-ref var-id="lpBTN"/>
+              </item>
+            </automaton-data-map>
+          </automaton-spec>
+          <opener-id>
+            <number>17254638</number>
+          </opener-id>
+          <script-tree-id>
+            <number>12200572</number>
+          </script-tree-id>
+          <chat-theme>
+            <chat-theme-name>
+              <string>ATT-Mobile</string>
+            </chat-theme-name>
+          </chat-theme>
+        </chat-spec>
+        <check-agent-availability-interval>PT90S</check-agent-availability-interval>
+      </c2c-spec>
+    </show-c2chat>
+  </actions>
+</business-rule>
+
+<business-rule id="10121" name="ATT-BCS-Premier-O-P-1-Cart-Conflicts-T90" funnel-level="4">
+  <business-unit-id>19000680</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004199</agent-group-id>
+  </agent-profile>
+  <condition>
+    <when>
+      <event event-type="onPageLanding">
+        <delay>
+          <duration>PT90S</duration>
+        </delay>
+      </event>
+    </when>
+    <and>
+      <or>
+        <where>
+          <!-- ATT-BCS-Premier-O-Cart_ConflictsSummary -->
+          <page-id-check>36218002</page-id-check>
+        </where>
+        <where>
+          <!-- ATT-BCS-Premier-O-Plans -->
+          <page-id-check>36215865</page-id-check>
+        </where>
+      </or>
+      <not>
+        <is-device-type type="Phone"/>
+      </not>
+      <not>
+        <boolean-variable-ref var-id="BCS-FAN-LDS-Check"/>
+      </not>
+      <not>
+        <boolean-variable-ref var-id="isTypeCSR"/>
+      </not>
+      <not>
+        <as-boolean>
+          <js-function-result>
+            <js-function-by-name name="fanProSuppression"/>
+          </js-function-result>
+        </as-boolean>
+      </not>
+      <date-compare op="after">
+        <now/>
+        <date-variable-ref var-id="SuppressProactiveRules-Timer">
+          <offset>PT300S</offset>
+        </date-variable-ref>
+      </date-compare>
+    </and>
+  </condition>
+  <actions>
+    <show-proactive>
+      <chat-spec>
+        <chat-spec-id>
+          <number-variable-ref var-id="chatSpec29001323"/>
+        </chat-spec-id>
+        <automaton-spec>
+          <automaton-data-map>
+            <item name="tGuardToken">
+              <as-string><object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/></as-string>
+            </item>
+            <item name="BAN">
+              <string-variable-ref var-id="lpBAN"/>
+            </item>
+            <item name="BTN">
+              <string-variable-ref var-id="lpBTN"/>
+            </item>
+          </automaton-data-map>
+        </automaton-spec>
+        <opener-id>
+          <number>17226371</number>
+        </opener-id>
+        <script-tree-id>
+          <number>12200550</number>
+        </script-tree-id>
+        <chat-theme>
+          <chat-theme-name>
+            <string-variable-ref var-id="ATT_v3-agentAlias-EWT"/>
+          </chat-theme-name>
+        </chat-theme>
+      </chat-spec>
+    </show-proactive>
+  </actions>
+</business-rule>
+
+<business-rule id="10123" name="ATT-BCS-Premier-O-P-1-Cart-T120" funnel-level="4">
+  <business-unit-id>19000680</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004199</agent-group-id>
+  </agent-profile>
+  <condition>
+    <when>
+      <event event-type="onPageLanding">
+        <delay>
+          <duration>PT120S</duration>
+        </delay>
+      </event>
+    </when>
+    <and>
+      <where>
+        <!-- ATT-BCS-Premier-O-Cart -->
+        <page-id-check>36215882</page-id-check>
+      </where>
+      <not>
+        <is-device-type type="Phone"/>
+      </not>
+      <not>
+        <boolean-variable-ref var-id="BCS-FAN-LDS-Check"/>
+      </not>
+      <not>
+        <boolean-variable-ref var-id="isTypeCSR"/>
+      </not>
+      <not>
+        <as-boolean>
+          <js-function-result>
+            <js-function-by-name name="fanProSuppression"/>
+          </js-function-result>
+        </as-boolean>
+      </not>
+      <date-compare op="after">
+        <now/>
+        <date-variable-ref var-id="SuppressProactiveRules-Timer">
+          <offset>PT300S</offset>
+        </date-variable-ref>
+      </date-compare>
+    </and>
+  </condition>
+  <actions>
+    <show-proactive>
+      <chat-spec>
+        <chat-spec-id>
+          <number-variable-ref var-id="chatSpec29001323"/>
+        </chat-spec-id>
+        <automaton-spec>
+          <automaton-data-map>
+            <item name="tGuardToken">
+              <as-string><object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/></as-string>
+            </item>
+            <item name="BAN">
+              <string-variable-ref var-id="lpBAN"/>
+            </item>
+            <item name="BTN">
+              <string-variable-ref var-id="lpBTN"/>
+            </item>
+          </automaton-data-map>
+        </automaton-spec>
+        <opener-id>
+          <number>17226371</number>
+        </opener-id>
+        <script-tree-id>
+          <number>12200550</number>
+        </script-tree-id>
+        <chat-theme>
+          <chat-theme-name>
+            <string-variable-ref var-id="ATT_v3-agentAlias-EWT"/>
+          </chat-theme-name>
+        </chat-theme>
+      </chat-spec>
+    </show-proactive>
+  </actions>
+</business-rule>
+
+<business-rule id="10126" name="ATT-BCS-Premier-O-P-1-Shop-T90" funnel-level="4">
+  <business-unit-id>19000680</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004199</agent-group-id>
+  </agent-profile>
+  <condition>
+    <when>
+      <event event-type="onPageLanding">
+        <delay>
+          <duration>PT90S</duration>
+        </delay>
+      </event>
+    </when>
+    <and>
+      <or>
+        <where>
+          <!-- ATT-BCS-Premier-O-Phones_Compare -->
+          <page-id-check>36215863</page-id-check>
+        </where>
+        <where>
+          <!-- ATT-BCS-Premier-O-Shop_Deals -->
+          <page-id-check>36218003</page-id-check>
+        </where>
+        <where>
+          <!-- ATT-BCS-Premier-O-Features -->
+          <page-id-check>36215866</page-id-check>
+        </where>
+      </or>
+      <not>
+        <is-device-type type="Phone"/>
+      </not>
+      <not>
+        <boolean-variable-ref var-id="BCS-FAN-LDS-Check"/>
+      </not>
+      <not>
+        <boolean-variable-ref var-id="isTypeCSR"/>
+      </not>
+      <not>
+        <as-boolean>
+          <js-function-result>
+            <js-function-by-name name="fanProSuppression"/>
+          </js-function-result>
+        </as-boolean>
+      </not>
+      <date-compare op="after">
+        <now/>
+        <date-variable-ref var-id="SuppressProactiveRules-Timer">
+          <offset>PT300S</offset>
+        </date-variable-ref>
+      </date-compare>
+    </and>
+  </condition>
+  <actions>
+    <show-proactive>
+      <chat-spec>
+        <chat-spec-id>
+          <number-variable-ref var-id="chatSpec29001323"/>
+        </chat-spec-id>
+        <automaton-spec>
+          <automaton-data-map>
+            <item name="tGuardToken">
+              <as-string><object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/></as-string>
+            </item>
+            <item name="BAN">
+              <string-variable-ref var-id="lpBAN"/>
+            </item>
+            <item name="BTN">
+              <string-variable-ref var-id="lpBTN"/>
+            </item>
+          </automaton-data-map>
+        </automaton-spec>
+        <opener-id>
+          <number>17226371</number>
+        </opener-id>
+        <script-tree-id>
+          <number>12200550</number>
+        </script-tree-id>
+        <chat-theme>
+          <chat-theme-name>
+            <string-variable-ref var-id="ATT_v3-agentAlias-EWT"/>
+          </chat-theme-name>
+        </chat-theme>
+      </chat-spec>
+    </show-proactive>
+  </actions>
+</business-rule>
+
+<business-rule id="1013" name="ATT-BCS-Premier-O-P-1-WirelessAccess-T120" funnel-level="4">
+  <business-unit-id>19000680</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004199</agent-group-id>
+  </agent-profile>
+  <condition>
+    <when>
+      <event event-type="onPageLanding">
+        <delay>
+          <duration>PT120S</duration>
+        </delay>
+      </event>
+    </when>
+    <and>
+      <or>
+        <where>
+          <!-- ATT-BCS-Premier-O-Wireless_Access -->
+          <page-id-check>36218004</page-id-check>
+        </where>
+        <where>
+          <!-- ATT-BCS-Premier-O-Phones -->
+          <page-id-check>36215862</page-id-check>
+        </where>
+      </or>
+      <not>
+        <is-device-type type="Phone"/>
+      </not>
+      <not>
+        <boolean-variable-ref var-id="BCS-FAN-LDS-Check"/>
+      </not>
+      <not>
+        <boolean-variable-ref var-id="isTypeCSR"/>
+      </not>
+      <not>
+        <as-boolean>
+          <js-function-result>
+            <js-function-by-name name="fanProSuppression"/>
+          </js-function-result>
+        </as-boolean>
+      </not>
+      <date-compare op="after">
+        <now/>
+        <date-variable-ref var-id="SuppressProactiveRules-Timer">
+          <offset>PT300S</offset>
+        </date-variable-ref>
+      </date-compare>
+    </and>
+  </condition>
+  <actions>
+    <show-proactive>
+      <chat-spec>
+        <chat-spec-id>
+          <number-variable-ref var-id="chatSpec29001323"/>
+        </chat-spec-id>
+        <automaton-spec>
+          <automaton-data-map>
+            <item name="tGuardToken">
+              <as-string><object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/></as-string>
+            </item>
+            <item name="BAN">
+              <string-variable-ref var-id="lpBAN"/>
+            </item>
+            <item name="BTN">
+              <string-variable-ref var-id="lpBTN"/>
+            </item>
+          </automaton-data-map>
+        </automaton-spec>
+        <opener-id>
+          <number>17226371</number>
+        </opener-id>
+        <script-tree-id>
+          <number>12200550</number>
+        </script-tree-id>
+        <chat-theme>
+          <chat-theme-name>
+            <string-variable-ref var-id="ATT_v3-agentAlias-EWT"/>
+          </chat-theme-name>
+        </chat-theme>
+      </chat-spec>
+    </show-proactive>
+  </actions>
+</business-rule>
+
+<business-rule id="10136" name="ATT-BCS-Premier-O-P-1-Packages-T150" funnel-level="4">
+  <business-unit-id>19000680</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004199</agent-group-id>
+  </agent-profile>
+  <condition>
+    <when>
+      <event event-type="onPageLanding">
+        <delay>
+          <duration>PT150S</duration>
+        </delay>
+      </event>
+    </when>
+    <and>
+      <or>
+        <where>
+          <!-- ATT-BCS-Premier-O-Packages -->
+          <page-id-check>36215867</page-id-check>
+        </where>
+        <where>
+          <!-- ATT-BCS-Premier-O-Packages_and_Offers -->
+          <page-id-check>36215868</page-id-check>
+        </where>
+      </or>
+      <not>
+        <is-device-type type="Phone"/>
+      </not>
+      <not>
+        <boolean-variable-ref var-id="BCS-FAN-LDS-Check"/>
+      </not>
+      <not>
+        <boolean-variable-ref var-id="isTypeCSR"/>
+      </not>
+      <not>
+        <as-boolean>
+          <js-function-result>
+            <js-function-by-name name="fanProSuppression"/>
+          </js-function-result>
+        </as-boolean>
+      </not>
+      <date-compare op="after">
+        <now/>
+        <date-variable-ref var-id="SuppressProactiveRules-Timer">
+          <offset>PT300S</offset>
+        </date-variable-ref>
+      </date-compare>
+    </and>
+  </condition>
+  <actions>
+    <show-proactive>
+      <chat-spec>
+        <chat-spec-id>
+          <number-variable-ref var-id="chatSpec29001323"/>
+        </chat-spec-id>
+        <automaton-spec>
+          <automaton-data-map>
+            <item name="tGuardToken">
+              <as-string><object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/></as-string>
+            </item>
+            <item name="BAN">
+              <string-variable-ref var-id="lpBAN"/>
+            </item>
+            <item name="BTN">
+              <string-variable-ref var-id="lpBTN"/>
+            </item>
+          </automaton-data-map>
+        </automaton-spec>
+        <opener-id>
+          <number>17226371</number>
+        </opener-id>
+        <script-tree-id>
+          <number>12200550</number>
+        </script-tree-id>
+        <chat-theme>
+          <chat-theme-name>
+            <string-variable-ref var-id="ATT_v3-agentAlias-EWT"/>
+          </chat-theme-name>
+        </chat-theme>
+      </chat-spec>
+    </show-proactive>
+  </actions>
+</business-rule>
+
+<business-rule id="10141" name="ATT-BCS-Premier-O-P-1-Accessories-T210" funnel-level="4">
+  <business-unit-id>19000680</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004199</agent-group-id>
+  </agent-profile>
+  <condition>
+    <when>
+      <event event-type="onPageLanding">
+        <delay>
+          <duration>PT210S</duration>
+        </delay>
+      </event>
+    </when>
+    <and>
+      <where>
+        <!-- ATT-BCS-Premier-O-Accessories -->
+        <page-id-check>36215869</page-id-check>
+      </where>
+      <not>
+        <is-device-type type="Phone"/>
+      </not>
+      <not>
+        <boolean-variable-ref var-id="BCS-FAN-LDS-Check"/>
+      </not>
+      <not>
+        <boolean-variable-ref var-id="isTypeCSR"/>
+      </not>
+      <not>
+        <as-boolean>
+          <js-function-result>
+            <js-function-by-name name="fanProSuppression"/>
+          </js-function-result>
+        </as-boolean>
+      </not>
+      <date-compare op="after">
+        <now/>
+        <date-variable-ref var-id="SuppressProactiveRules-Timer">
+          <offset>PT300S</offset>
+        </date-variable-ref>
+      </date-compare>
+    </and>
+  </condition>
+  <actions>
+    <show-proactive>
+      <chat-spec>
+        <chat-spec-id>
+          <number-variable-ref var-id="chatSpec29001323"/>
+        </chat-spec-id>
+        <automaton-spec>
+          <automaton-data-map>
+            <item name="tGuardToken">
+              <as-string><object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/></as-string>
+            </item>
+            <item name="BAN">
+              <string-variable-ref var-id="lpBAN"/>
+            </item>
+            <item name="BTN">
+              <string-variable-ref var-id="lpBTN"/>
+            </item>
+          </automaton-data-map>
+        </automaton-spec>
+        <opener-id>
+          <number>17226371</number>
+        </opener-id>
+        <script-tree-id>
+          <number>12200550</number>
+        </script-tree-id>
+        <chat-theme>
+          <chat-theme-name>
+            <string-variable-ref var-id="ATT_v3-agentAlias-EWT"/>
+          </chat-theme-name>
+        </chat-theme>
+      </chat-spec>
+    </show-proactive>
+  </actions>
+</business-rule>
+
+<business-rule id="101450" name="ATT-BCS-Premier-O-P-G-Compare-PX2-T60" funnel-level="4">
+  <business-unit-id>19000680</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004199</agent-group-id>
+  </agent-profile>
+  <condition>
+    <when>
+      <event event-type="onPageLanding">
+        <delay>
+          <duration>PT60S</duration>
+        </delay>
+      </event>
+    </when>
+    <and>
+      <where>
+        <!-- ATT-BCS-Premier-O-Phones_Compare -->
+        <page-id-check>36215863</page-id-check>
+      </where>
+      <number-compare test="greater-than">
+        <landing-count counter-name="BCS-Prem-Phone-Compare_PC"/>
+        <count>1</count>
+      </number-compare>
+      <not>
+        <is-device-type type="Phone"/>
+      </not>
+      <not>
+        <boolean-variable-ref var-id="BCS-FAN-LDS-Check"/>
+      </not>
+      <not>
+        <boolean-variable-ref var-id="isTypeCSR"/>
+      </not>
+      <not>
+        <as-boolean>
+          <js-function-result>
+            <js-function-by-name name="fanProSuppression"/>
+          </js-function-result>
+        </as-boolean>
+      </not>
+      <date-compare op="after">
+        <now/>
+        <date-variable-ref var-id="SuppressProactiveRules-Timer">
+          <offset>PT300S</offset>
+        </date-variable-ref>
+      </date-compare>
+    </and>
+  </condition>
+  <actions>
+    <show-proactive>
+      <chat-spec>
+        <chat-spec-id>
+          <number-variable-ref var-id="chatSpec29001323"/>
+        </chat-spec-id>
+        <automaton-spec>
+          <automaton-data-map>
+            <item name="tGuardToken">
+              <as-string><object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/></as-string>
+            </item>
+            <item name="BAN">
+              <string-variable-ref var-id="lpBAN"/>
+            </item>
+            <item name="BTN">
+              <string-variable-ref var-id="lpBTN"/>
+            </item>
+          </automaton-data-map>
+        </automaton-spec>
+        <opener-id>
+          <number>17226371</number>
+        </opener-id>
+        <script-tree-id>
+          <number>12200550</number>
+        </script-tree-id>
+        <chat-theme>
+          <chat-theme-name>
+            <string-variable-ref var-id="ATT_v3-agentAlias-EWT"/>
+          </chat-theme-name>
+        </chat-theme>
+      </chat-spec>
+    </show-proactive>
+  </actions>
+</business-rule>
+
+
+<business-rule id="10156" name="ATT-BCS-Premier-O-R-G-Activations-C2C">
+  <business-unit-id>19000680</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004199</agent-group-id>
+  </agent-profile>
+  <condition>
+    <when>
+      <event event-type="onPageLanding"/>
+    </when>
+    <and>
+      <where>
+        <content-group-check cg-id="ATT-Activations"/>
+      </where>
+      <not>
+        <is-device-type type="Phone"/>
+      </not>
+      <not>
+        <boolean-variable-ref var-id="BCS-FAN-LDS-Check"/>
+      </not>
+      <not>
+        <boolean-variable-ref var-id="isTypeCSR"/>
+      </not>
+      <as-boolean>
+        <js-function-result>
+          <js-function-by-name name="checkForVar"/>
+          <params>
+            <string>Liability</string>
+            <object-create>
+              <member>
+                <id>param1</id>
+                <string>CRU</string>
+              </member>
+            </object-create>
+          </params>
+        </js-function-result>
+      </as-boolean>
+    </and>
+  </condition>
+  <actions>
+    <show-c2chat>
+      <c2c-spec>
+        <c2c-spec-id>
+          <number-variable-ref var-id="c2cspec"/>
+        </c2c-spec-id>
+        <chat-spec>
+          <chat-spec-id>
+            <number-variable-ref var-id="chatSpec29001323"/>
+          </chat-spec-id>
+          <automaton-spec>
+            <automaton-data-map>
+              <item name="acif_id">
+                <number>164</number>
+              </item>
+              <item name="name">
+                <string>BCS - Filtering Guide</string>
+              </item>
+              <item name="type">
+                <string>guide</string>
+              </item>
+              <item name="sub_type">
+                <string>pre-chat</string>
+              </item>
+              <item name="acif_version">
+                <string-constant-ref name="DEFAULT_ACIF_VERSION"/>
+              </item>
+              <item name="BAN">
+                <string-variable-ref var-id="lpBAN"/>
+              </item>
+              <item name="BTN">
+                <string-variable-ref var-id="lpBTN"/>
+              </item>
+            </automaton-data-map>
+          </automaton-spec>
+          <opener-id>
+            <number>-1</number>
+          </opener-id>
+          <script-tree-id>
+            <number>12200550</number>
+          </script-tree-id>
+          <chat-theme>
+            <chat-theme-name>
+              <string-variable-ref var-id="ATT_v3-agentAlias-Automaton-EWT"/>
+            </chat-theme-name>
+          </chat-theme>
+        </chat-spec>
+      </c2c-spec>
+    </show-c2chat>
+  </actions>
+</business-rule>
+
+
+<business-rule id="101561" name="ATT-BCS-Premier-DTM-O-R-G-Activations-C2C">
+  <business-unit-id>19000680</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004199</agent-group-id>
+  </agent-profile>
+  <condition>
+    <when>
+      <event event-type="onPageLanding"/>
+    </when>
+    <and>
+      <where>
+        <content-group-check cg-id="ATT-Activations"/>
+      </where>
+      <is-device-type type="Phone"/>
+      <not>
+        <boolean-variable-ref var-id="BCS-FAN-LDS-Check"/>
+      </not>
+      <not>
+        <boolean-variable-ref var-id="isTypeCSR"/>
+      </not>
+      <as-boolean>
+        <js-function-result>
+          <js-function-by-name name="checkForVar"/>
+          <params>
+            <string>Liability</string>
+            <object-create>
+              <member>
+                <id>param1</id>
+                <string>CRU</string>
+              </member>
+            </object-create>
+          </params>
+        </js-function-result>
+      </as-boolean>
+    </and>
+  </condition>
+  <actions>
+    <show-c2chat>
+      <c2c-spec>
+        <c2c-spec-name>
+          <string>ATT-MOB</string>
+        </c2c-spec-name>
+        <c2c-theme>
+          <c2c-theme-name>
+            <string>ATT-Mobile_C2C</string>
+          </c2c-theme-name>
+        </c2c-theme>
+        <chat-spec>
+          <chat-spec-id>
+            <number-variable-ref var-id="chatSpec29001323"/>
+          </chat-spec-id>
+          <automaton-spec>
+            <automaton-data-map>
+              <item name="tGuardToken">
+                <as-string><object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/></as-string>
+              </item>
+              <item name="BAN">
+                <string-variable-ref var-id="lpBAN"/>
+              </item>
+              <item name="BTN">
+                <string-variable-ref var-id="lpBTN"/>
+              </item>
+            </automaton-data-map>
+          </automaton-spec>
+          <opener-id>
+            <number>17254638</number>
+          </opener-id>
+          <script-tree-id>
+            <number>12200550</number>
+          </script-tree-id>
+          <chat-theme>
+            <chat-theme-name>
+              <string>ATT-Mobile</string>
+            </chat-theme-name>
+          </chat-theme>
+        </chat-spec>
+      </c2c-spec>
+    </show-c2chat>
+  </actions>
+</business-rule>

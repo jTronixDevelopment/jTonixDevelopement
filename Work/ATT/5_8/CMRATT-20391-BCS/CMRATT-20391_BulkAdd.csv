@@ -1,0 +1,6 @@
+TC_Bulk_Add_Template,,,,,
+Content_Name,Content_URL,Content_Pattern,Active(YES/NO),Cobrowse_Suppressed(YES/NO),Non-matching_page(YES/NO)
+ATT-BCS-Premier-O-BusinessConsole-Support,www.wireless.att.com/businessconsole/suppor,(?!.*firstnet).*\/businessconsole\/support,yes,no,no
+ATT-BCS-Premier-O-BusinessConsole-FAQ,www.wireless.att.com/businessconsole/faq,(?!.*firstnet).*\/businessconsole\/faq,yes,no,no
+ATT-BCS-Premier-O-BusinessConsole-SignUp,www.wireless.att.com/businessconsole/signup/accounts,(?!.*firstnet).*\/businessconsole\/signup\/accounts,yes,no,no
+BCS-Premier-O-BusinessConsole-General,www.wireless.att.com/businessconsole/,(?!.*firstnet).*\/businessconsole\/.*,,,

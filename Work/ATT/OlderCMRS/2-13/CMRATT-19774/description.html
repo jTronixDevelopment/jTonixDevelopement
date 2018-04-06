@@ -1,0 +1,1156 @@
+================================================================================
+=== Task 1 =====================================================================
+================================================================================
+Should the rules that were created fire on the other pages?
+
+BCS_Premier_C2C
+
+BCS_Premier_Pro
+
+BCS_Premier_Filter_Guide_C2C
+
+
+
+DONE
+
+*Task #1: Create new / update existing page markers*
+
+  Create page markers / CGs for the following URLs below. For any URL that already
+  has an existing page marker, you can use the ones below to overwrite
+  (*note: If renaming a page marker will impact data pass, let me know.
+  The client wants to keep data pass BAU).
+
+  *Wildcard the end of each URL string to ensure that the page is captured accordingly.*
+
+  ADD ALL PAGE MARKERS TO - BCS-Premier-POS
+
+  https://www.wireless.att.com/business/upgrade_options/
+  ATT-BCS-Premier-O-POS-Upgrade_Options
+
+  https://www.wireless.att.com/business/support/
+  ATT-BCS-Premier-O-POS-Support
+
+  https://www.wireless.att.com/business/shop/
+  ATT-BCS-Premier-O-POS-Shop
+
+  https://www.wireless.att.com/business/promos/
+  ATT-BCS-Premier-O-POS-Promos
+
+  https://www.wireless.att.com/business/plans/
+  ATT-BCS-Premier-O-POS-Plans
+
+  https://www.wireless.att.com/business/phones/
+  ATT-BCS-Premier-O-POS-Phones
+
+  https://www.wireless.att.com/business/packages/
+  ATT-BCS-Premier-O-POS-Packages
+
+  https://www.wireless.att.com/business/index.jsp?
+  ATT-BCS-Premier-O-POS-Dashboard
+
+  https://www.wireless.att.com/business/features/
+  ATT-BCS-Premier-O-POS-Features
+
+  https://www.wireless.att.com/business/error.jsp
+  ATT-BCS-Premier-O-POS-Error
+
+  https://www.wireless.att.com/business/contacts/
+  ATT-BCS-Premier-O-POS-Contacts
+
+  https://www.wireless.att.com/business/common/
+  ATT-BCS-Premier-O-POS-Common
+
+  https://www.wireless.att.com/business/checkout_sbnc/
+  ATT-BCS-Premier-I-POS-Checkout_Sbnc
+
+  https://www.wireless.att.com/business/checkout_cru/
+  ATT-BCS-Premier-I-POS-Checkout_CRU
+
+  https://www.wireless.att.com/business/cart/
+  ATT-BCS-Premier-I-POS-Cart
+
+  https://www.wireless.att.com/business/accessories/
+  ATT-BCS-Premier-O-POS-Accessories
+
+  Also create a page marker based on the regex, https://www.wireless.att.com/business/(*):
+  * Note: this is to ensure chat fires in /business/ pages that aren’t captured in the above table or in CMRATT-19714
+  * Page Marker Name == ATT-BCS-Premier-POS
+  * Content Group Name == BCS-Premier-POS (same as the others above)
+
+  <content-group id="BCS-Premier-POS">
+    <cg-marker-check op="equals">ATT-BCS-Premier-O-POS-Upgrade_Options</cg-marker-check>
+    <cg-marker-check op="equals">ATT-BCS-Premier-O-POS-Support</cg-marker-check>
+    <cg-marker-check op="equals">ATT-BCS-Premier-O-POS-Shop</cg-marker-check>
+    <cg-marker-check op="equals">ATT-BCS-Premier-O-POS-Promos</cg-marker-check>
+    <cg-marker-check op="equals">ATT-BCS-Premier-O-POS-Plans</cg-marker-check>
+    <cg-marker-check op="equals">ATT-BCS-Premier-O-POS-Phones</cg-marker-check>
+    <cg-marker-check op="equals">ATT-BCS-Premier-O-POS-Packages</cg-marker-check>
+    <cg-marker-check op="equals">ATT-BCS-Premier-O-POS-Dashboard</cg-marker-check>
+    <cg-marker-check op="equals">ATT-BCS-Premier-O-POS-Features</cg-marker-check>
+    <cg-marker-check op="equals">ATT-BCS-Premier-O-POS-Error</cg-marker-check>
+    <cg-marker-check op="equals">ATT-BCS-Premier-O-POS-Contacts</cg-marker-check>
+    <cg-marker-check op="equals">ATT-BCS-Premier-O-POS-Common</cg-marker-check>
+    <cg-marker-check op="equals">ATT-BCS-Premier-I-POS-Checkout_Sbnc</cg-marker-check>
+    <cg-marker-check op="equals">ATT-BCS-Premier-I-POS-Checkout_CRU</cg-marker-check>
+    <cg-marker-check op="equals">ATT-BCS-Premier-I-POS-Cart</cg-marker-check>
+    <cg-marker-check op="equals">ATT-BCS-Premier-O-POS-Accessories</cg-marker-check>
+    <cg-marker-check op="equals">ATT-BCS-Premier-POS</cg-marker-check>
+  </content-group>
+
+
+================================================================================
+=== Task 2 =====================================================================
+================================================================================
+
+INCOMPLETE
+
+Task #2: Retire existing business rules*
+  ATT-BCS-Premier-O-R-G-Marketing-C2C
+  ATT-DTM-BCS-Premier-O-R-G-Marketing-C2C
+  ATT-BCS-Premier-O-P-1-Cart-Conflicts-T90
+  ATT-BCS-Premier-O-P-1-Cart-T120
+  ATT-BCS-Premier-O-P-1-Shop-T90
+  ATT-BCS-Premier-O-P-1-WirelessAccess-T120
+  ATT-BCS-Premier-O-P-1-Packages-T150
+  ATT-BCS-Premier-O-P-1-Accessories-T210
+  ATT-BCS-Premier-O-P-G-Compare-PX2-T60
+  ATT-BCS-Premier-O-R-G-Activations-C2C
+  ATT-BCS-Premier-DTM-O-R-G-Activations-C2C
+
+================================================================================
+=== Task 3 =====================================================================
+================================================================================
+
+DONE
+
+*Task #3: Create new business rules*
+
+  Name: ATT-B-RA-BCS-Premier-O-R-G-Store-C2C
+  Business Unit:
+    ATT-BCS 19000680
+  Agent Group:
+    BCS-Premier 10004199
+  Device Type:
+    Desktop/Tablet
+  Launch Conditions:
+    Display a chat button on page landing for
+      CG==BCS-Premier-POS (ddo pageload)
+      *+and
+        not+* user.account.fan = 9999SBDC;
+      *when C2C clicked,
+      launch Automaton Name = BCS Premier Filtering Guide – Online Store (POS) (created in CMRASI-1242)*
+  C2C Theme:
+    ATT-BL-Round-Standard_C2C / ID=33001345).
+    Ensure that the "Resume State" as described in CMRATT-19321 is programmed as
+    well (note: if a different theme is being created for the "Resume State", please let me know).
+  Chat Theme / Spec:
+    Use same as old rule, ATT-BCS-Premier-O-R-G-Marketing-C2C
+  Auto Opener:
+    Via automaton -1
+  Script Tree:
+    Set in automaton 12200550
+  Post-Chat Survey:
+    ID=2106
+
+  <business-rule name="ATT-B-RA-BCS-Premier-O-R-G-Store-C2C" id="432432423">
+    <business-unit-id>19000680</business-unit-id>
+    <agent-profile>
+      <agent-group-id>10004199</agent-group-id>
+    </agent-profile>
+    <rule-attributes>
+      <attribute>
+        <name>Unrecognized_Page_URL</name>
+        <value>
+          <string-variable-ref var-id="unrecPageURL"/>
+        </value>
+      </attribute>
+    </rule-attributes>
+    <condition>
+      <when>
+        <custom-event event="onDDOPageLoadAction"/>
+      </when>
+      <and>
+        <not>
+          <is-device-type type="Phone"></is-device-type>
+        </not>
+        <content-group-check cg-id="BCS-Premier-POS" />
+        <exists>
+          <object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/>
+        </exists>
+        <not>
+          <string-compare test="equals">
+            <as-string>
+              <js-string-ref js-var-id="ddo.getVar('user.account.fan')" />
+            </as-string>
+            <regexp>9999SBDC</regexp>
+          </string-compare>
+        </not>
+      </and>
+    </condition>
+    <actions>
+    <show-c2chat>
+      <c2c-spec>
+        <c2c-spec-name>
+          <string-variable-ref var-id="ATT-Bubble" />
+        </c2c-spec-name>
+        <c2c-theme>
+          <c2c-theme-name>
+            <string>ATT-BL-Round-Standard_C2C</string>
+          </c2c-theme-name>
+        </c2c-theme>
+        <chat-spec>
+          <chat-spec-id>
+            <number-variable-ref var-id="chatSpec29001323"/>
+          </chat-spec-id>
+          <automaton-spec>
+            <automaton-data-map>
+              <item name="acif_id">
+                <number>164</number>
+              </item>
+              <item name="name">
+                <string>BCS - Filtering Guide</string>
+              </item>
+              <item name="type">
+                <string>guide</string>
+              </item>
+              <item name="sub_type">
+                <string>pre-chat</string>
+              </item>
+              <item name="acif_version">
+                <string-constant-ref name="DEFAULT_ACIF_VERSION"/>
+              </item>
+              <item name="tGuardToken">
+                <as-string><object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/></as-string>
+              </item>
+              <item name="BAN">
+                <string-variable-ref var-id="lpBAN"/>
+              </item>
+              <item name="BTN">
+                <string-variable-ref var-id="lpBTN"/>
+              </item>
+            </automaton-data-map>
+          </automaton-spec>
+          <opener-id>
+            <number>-1</number>
+          </opener-id>
+          <script-tree-id>
+            <number>12200550</number>
+          </script-tree-id>
+          <chat-theme>
+            <chat-theme-name>
+              <string-variable-ref var-id="ATT_v3-agentAlias-Automaton-EWT"/>
+            </chat-theme-name>
+          </chat-theme>
+        </chat-spec>
+      </c2c-spec>
+    </show-c2chat>
+    </actions>
+  </business-rule>
+
+  <not>
+  <is-device-type type="Phone"/>
+</not>
+<content-group-check cg-id="BCS-Premier-POS" />
+<exists>
+  <object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/>
+</exists>
+<not>
+  <string-compare test="equals">
+    <as-string>
+      <js-string-ref js-var-id="ddo.getVar('user.account.fan')" />
+    </as-string>
+    <regexp>9999SBDC</regexp>
+  </string-compare>
+</not>
+
+================================================================================
+
+  Name: ATT-BCS-Premier-O-R-StoreUnauth-C2C
+    Business Unit:
+      ATT-BCS 19000680
+    Agent Group:
+      BCS-Premier 10004199
+    Device Type:
+      Desktop/Tablet
+    Launch Conditions:
+      Display a chat button on page landing for
+      CG==BCS-Premier-POS (ddo pageload)
+      *+and+* user.account.fan=9999SBDC;
+      when clicked, initiate direct chat with BCS-Premier*
+    C2C Theme:
+      ATT-BL-Round-Standard_C2C / ID=33001345). Ensure that the "Resume State" as
+      described in CMRATT-19321 is programmed as well
+      (note: if a different theme is being created for the "Resume State", please let me know).
+    Chat Theme / Spec:
+      Use same as old rule, ATT-BCS-Premier-O-R-G-Marketing-C2C
+    Auto Opener:
+      ID= 17226371 (“Hello! How may I help you today?”)
+    Script Tree:
+      12200550
+    Post-Chat Survey:
+      ID=2106
+
+    <business-rule name="ATT-BCS-Premier-O-R-StoreUnauth-C2C" id="432432123">
+      <business-unit-id>19000680</business-unit-id>
+      <agent-profile>
+        <agent-group-id>10004199</agent-group-id>
+      </agent-profile>
+      <rule-attributes>
+        <attribute>
+          <name>Unrecognized_Page_URL</name>
+          <value>
+            <string-variable-ref var-id="unrecPageURL"/>
+          </value>
+        </attribute>
+      </rule-attributes>
+      <condition>
+        <when>
+          <custom-event event="onDDOPageLoadAction"/>
+        </when>
+        <and>
+          <not>
+            <is-device-type type="Phone"></is-device-type>
+          </not>
+          <content-group-check cg-id="BCS-Premier-POS" />
+          <string-compare test="equals">
+            <as-string>
+              <js-string-ref js-var-id="ddo.getVar('uuser.account.fan')" />
+            </as-string>
+            <regexp>9999SBDC</regexp>
+          </string-compare>
+        </and>
+      </condition>
+      <actions>
+        <show-c2chat>
+             <c2c-spec>
+               <c2c-spec-name>
+                 <string-variable-ref var-id="ATT-Bubble" />
+               </c2c-spec-name>
+               <c2c-theme>
+                 <c2c-theme-name>
+                   <string>ATT-BL-Round-Standard_C2C</string>
+                 </c2c-theme-name>
+               </c2c-theme>
+               <chat-spec>
+                 <chat-spec-id>
+                   <number-variable-ref var-id="chatSpec29001323"/>
+                 </chat-spec-id>
+                 <automaton-spec>
+                   <automaton-data-map>
+                     <item name="acif_id">
+                       <number>164</number>
+                     </item>
+                     <item name="name">
+                       <string>BCS - Filtering Guide</string>
+                     </item>
+                     <item name="type">
+                       <string>guide</string>
+                     </item>
+                     <item name="sub_type">
+                       <string>pre-chat</string>
+                     </item>
+                     <item name="acif_version">
+                       <string-constant-ref name="DEFAULT_ACIF_VERSION"/>
+                     </item>
+                     <item name="tGuardToken">
+                       <as-string>
+                         <object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/>
+                       </as-string>
+                     </item>
+                     <item name="BAN">
+                       <string-variable-ref var-id="lpBAN"/>
+                     </item>
+                     <item name="BTN">
+                       <string-variable-ref var-id="lpBTN"/>
+                     </item>
+                   </automaton-data-map>
+                 </automaton-spec>
+                 <opener-id>
+                   <number>-1</number>
+                 </opener-id>
+                 <script-tree-id>
+                   <number>12200550</number>
+                 </script-tree-id>
+                 <chat-theme>
+                   <chat-theme-name>
+                     <string-variable-ref var-id="ATT_v3-agentAlias-Automaton-EWT"/>
+                   </chat-theme-name>
+                 </chat-theme>
+               </chat-spec>
+             </c2c-spec>
+           </show-c2chat>
+      </actions>
+    </business-rule>
+
+  ================================================================================
+
+    Name: ATT-DTM-BCS-Premier-O-R-StoreUnauth-C2C
+      Business Unit:
+        ATT-BCS 19000680
+      Agent Group:
+        BCS-Premier 10004199
+      Device Type:
+        Mobile
+      Launch Conditions:
+        Display a chat button on page landing for
+        CG==BCS-Premier-POS (ddo pageload)
+        *+and+* user.account.fan=9999SBDC;
+        when clicked, initiate direct chat with BCS-Premier*
+      C2C Theme:
+        Use the same mobile C2C button (round/bubble/ambient ring) as being created
+        for CMRATT-19320
+      Chat Theme / Spec:
+        Use same as old rule, ATT-DTM-BCS-Premier-O-R-G-Marketing-C2C
+      Auto Opener:
+        ID= 17226371 (“Hello! How may I help you today?”)
+      Script Tree:
+        12200550
+      Post-Chat Survey:
+        ID=2106
+
+      <business-rule name="ATT-DTM-BCS-Premier-O-R-StoreUnauth-C2C" id="432432423">
+        <business-unit-id>19000680</business-unit-id>
+        <agent-profile>
+          <agent-group-id>10004199</agent-group-id>
+        </agent-profile>
+        <condition>
+          <when>
+            <custom-event event="onDDOPageLoadAction"/>
+          </when>
+          <and>
+            <is-device-type type="Phone"/>
+            <content-group-check cg-id="BCS-Premier-POS" />
+            <string-compare test="equals">
+              <as-string>
+                <js-string-ref js-var-id="ddo.getVar('uuser.account.fan')" />
+              </as-string>
+              <regexp>9999SBDC</regexp>
+            </string-compare>
+          </and>
+        </condition>
+        <actions>
+        <show-c2chat>
+          <c2c-spec>
+            <c2c-spec-name>
+              <string-variable-ref var-id="ATT-Bubble" />
+            </c2c-spec-name>
+            <chat-spec>
+              <chat-spec-id>
+                <number-variable-ref var-id="chatSpec29001323" />
+              </chat-spec-id>
+              <chat-theme>
+                <chat-theme-name>
+                  <string-variable-ref var-id="ATT_v3-agentAlias-Automaton-EWT" />
+                </chat-theme-name>
+              </chat-theme>
+              <automaton-spec>
+                <automaton-data-map>
+                  <item name="xx">fdsa</item>
+                </automaton-data-map>
+              </automaton-spec>
+              <opener-id>
+                <number>-1</number>
+              </opener-id>
+              <script-tree-id>
+                <number>12200550</number>
+              </script-tree-id>
+            </chat-spec>
+          </c2c-spec>
+        </show-c2chat>
+        </actions>
+      </business-rule>
+
+    ================================================================================
+
+    Name: ATT-BCS-Premier-O-P-Store-T90
+      Business Unit:
+        ATT-BCS 19000680
+      Agent Group:
+        BCS-Premier 10004199
+      Device Type:
+        Desktop/tablet
+      Launch Conditions:
+        Display proactive engagement window 90 seconds after page landing on
+        CG==BCS-Premier-POS (ddo pageload);
+        direct chat with BCS-Premier ??????????????????????????????????
+      Chat Theme / Spec:
+        Use same as old rule, ATT-BCS-Premier-O-R-G-Marketing-C2C
+      Auto Opener:
+        ID= 17226371 (“Hello! How may I help you today?”)
+      Script Tree:
+        ID=12200550
+      Post-Chat Survey:
+        ID=2106
+
+    <business-rule name="ATT-BCS-Premier-O-P-Store-T90" id="664363">
+      <business-unit-id>19000680</business-unit-id>
+      <agent-profile>
+        <agent-group-id>10004199</agent-group-id>
+      </agent-profile>
+      <condition>
+        <when>
+          <event event-type="onPageLanding">
+            <delay>
+              <duration>PT90S</duration>
+            </delay>
+          </event>
+        </when>
+        <and>
+          <not>
+            <is-device-type type="Phone"/>
+          </not>
+          <content-group-check cg-id="BCS-Premier-POS"/>
+        </and>
+      </condition>
+      <actions>
+        <show-proactive>
+          <chat-spec>
+            <chat-spec-id>
+              <number-variable-ref var-id="chatSpec29001323"/>
+            </chat-spec-id>
+            <automaton-spec>
+              <automaton-data-map>
+                <item name="acif_id">
+                  <number>164</number>
+                </item>
+                <item name="name">
+                  <string>BCS - Filtering Guide</string>
+                </item>
+                <item name="type">
+                  <string>guide</string>
+                 </item>
+                  <item name="sub_type">
+                    <string>pre-chat</string>
+                  </item>
+                  <item name="acif_version">
+                    <string-constant-ref name="DEFAULT_ACIF_VERSION"/>
+                  </item>
+                  <item name="tGuardToken">
+                    <as-string><object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/></as-string>
+                  </item>
+                  <item name="BAN">
+                    <string-variable-ref var-id="lpBAN"/>
+                  </item>
+                  <item name="BTN">
+                    <string-variable-ref var-id="lpBTN"/>
+                  </item>
+                </automaton-data-map>
+              </automaton-spec>
+            <opener-id>
+              <number>17226371</number>
+            </opener-id>
+            <script-tree-id>
+              <number>12200550</number>
+            </script-tree-id>
+            <chat-theme>
+              <chat-theme-name>
+                <string-variable-ref var-id="ATT_v3-agentAlias-Automaton-EWT"/>
+              </chat-theme-name>
+            </chat-theme>
+          </chat-spec>
+        </show-proactive>
+      </actions>
+    </business-rule>
+
+    WORKING
+
+    ================================================================================
+
+    Name: ATT-DTM-BCS-Premier-O-R-Store-C2C
+      Business Unit:
+        ATT-BCS 19000680
+      Agent Group:
+        BCS-Premier 10004199
+      Device Type:
+        Mobile
+      Launch Conditions:
+        Display a chat button on page landing
+        for CG==BCS-Premier-POS (ddo pageload);
+        clicking will launch direct chat with BCS-Premier agent group
+      C2C Theme:
+        Use the same mobile C2C button (round/bubble/ambient ring) as
+        being created for CMRATT-19320
+      Chat Theme / Spec:
+        Use same as old rule, ATT-DTM-BCS-Premier-O-R-G-Marketing-C2C
+      Auto Opener:
+        ID= 17226371 (“Hello! How may I help you today?”)
+      Script Tree:
+        ID=12200550
+      Post-Chat Survey:
+        ID=2106
+
+      <business-rule name="ATT-DTM-BCS-Premier-O-R-Store-C2C" id="44554477">
+        <business-unit-id>19000680</business-unit-id>
+        <agent-profile>
+          <agent-group-id>10004199</agent-group-id>
+        </agent-profile>
+        <condition>
+          <when>
+            <custom-event event="onDDOPageLoadAction"/>
+          </when>
+          <and>
+            <is-device-type type="Phone"/>
+            <content-group-check cg-id="BCS-Premier-POS"/>
+          </and>
+        </condition>
+        <actions>
+          <show-c2chat>
+            <c2c-spec>
+              <c2c-spec-name>
+                <string-variable-ref var-id="ATT-Bubble" />
+              </c2c-spec-name>
+              <c2c-theme>
+                <c2c-theme-name>
+                  <string>ATT-BL-Round-Standard_C2C</string>
+                </c2c-theme-name>
+              </c2c-theme>
+              <chat-spec>
+                <chat-spec-id>
+                  <number-variable-ref var-id="chatSpec29001323"/>
+                </chat-spec-id>
+                <automaton-spec>
+                  <automaton-data-map>
+                    <item name="tGuardToken">
+                      <as-string>
+                        <object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/>
+                      </as-string>
+                    </item>
+                    <item name="BAN">
+                      <string-variable-ref var-id="lpBAN"/>
+                    </item>
+                    <item name="BTN">
+                      <string-variable-ref var-id="lpBTN"/>
+                    </item>
+                  </automaton-data-map>
+                </automaton-spec>
+                <opener-id>
+                  <number>17226371</number>
+                </opener-id>
+                <script-tree-id>
+                  <number>12200550</number>
+                </script-tree-id>
+                <chat-theme>
+                  <chat-theme-name>
+                    <string>ATT-Mobile</string>
+                  </chat-theme-name>
+                </chat-theme>
+              </chat-spec>
+            </c2c-spec>
+          </show-c2chat>
+        </actions>
+      </business-rule>
+
+================================================================================
+=== Task 4 =====================================================================
+================================================================================
+
+*Task #4: Ensure AOP / LDS rules still working BAU*
+
+  TEST ONLY
+
+  The below rules currently fire for specific FAN IDs. They should continue to
+  work as-is after all of the optimizations made above in the ticket:
+    * ATT-B-RA-BCS-Premier-O-R-G-NBS_AOP-C2C
+    * ATT-DTM-B-RA-BCS-Premier-O-R-G-NBS_AOP-C2C
+
+  Let me know if the changes made in the other tasks impact these specific AOP
+  rules. We will have to optimize as needed.
+
+================================================================================
+=== Task 5 =====================================================================
+================================================================================
+
+*Task #5: Continue FAN suppression*
+
+  See attached excel file for FAN ID's that were previously suppressed in the
+  program and would need to continue after the above changes are made. Also as
+  was set-up previously, chat across the program should be suppressed
+  if user.attributes.ABSactorType="CSR".
+
+
+
+  <business-rule name="ATT-B-RA-BCS-Premier-O-R-G-Store-C2C" id="432432423">
+    <business-unit-id>19000680</business-unit-id>
+    <agent-profile>
+      <agent-group-id>10004199</agent-group-id>
+    </agent-profile>
+    <rule-attributes>
+      <attribute>
+        <name>Unrecognized_Page_URL</name>
+        <value>
+          <string-variable-ref var-id="unrecPageURL"/>
+        </value>
+      </attribute>
+    </rule-attributes>
+    <condition>
+      <when>
+        <event event-type="onPageLanding"/>
+      </when>
+      <and>
+        <not>
+          <is-device-type type="Phone"/>
+        </not>
+        <content-group-check cg-id="BCS-Premier-POS" />
+        <not>
+          <string-compare test="equals">
+            <as-string>
+              <js-string-ref js-var-id="ddo.getVar('user.account.fan')" />
+            </as-string>
+            <regexp>9999SBDC</regexp>
+          </string-compare>
+        </not>
+        <not>
+          <as-boolean>
+            <js-function-result>
+              <js-function-by-name name="fanC2CSuppression"/>
+            </js-function-result>
+          </as-boolean>
+        </not>
+      </and>
+    </condition>
+    <actions>
+      <show-c2chat>
+        <c2c-spec>
+          <c2c-spec-name>
+            <string>ATT-Bubble</string>
+          </c2c-spec-name>
+          <chat-spec>
+            <chat-spec-id>
+              <number-variable-ref var-id="chatSpec29001323"/>
+            </chat-spec-id>
+            <automaton-spec>
+              <automaton-data-map>
+                <item name="acif_id">
+                  <number>164</number>
+                </item>
+                <item name="name">
+                  <string>BCS - Filtering Guide</string>
+                </item>
+                <item name="type">
+                  <string>guide</string>
+                </item>
+                <item name="sub_type">
+                  <string>pre-chat</string>
+                </item>
+                <item name="acif_version">
+                  <string-constant-ref name="DEFAULT_ACIF_VERSION"/>
+                </item>
+                <item name="tGuardToken">
+                  <as-string>
+                    <object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/>
+                  </as-string>
+                </item>
+                <item name="BAN">
+                  <string-variable-ref var-id="lpBAN"/>
+                </item>
+                <item name="BTN">
+                  <string-variable-ref var-id="lpBTN"/>
+                </item>
+              </automaton-data-map>
+            </automaton-spec>
+            <opener-id>
+              <number>-1</number>
+            </opener-id>
+            <script-tree-id>
+              <number>12200550</number>
+            </script-tree-id>
+            <chat-theme>
+              <chat-theme-name>
+                <string-variable-ref var-id="ATT_v3-agentAlias-Automaton-EWT"/>
+              </chat-theme-name>
+            </chat-theme>
+          </chat-spec>
+        </c2c-spec>
+      </show-c2chat>
+    </actions>
+  </business-rule>
+  <business-rule name="ATT-DTM-BCS-Premier-O-R-StoreUnauth-C2C" id="44669988">
+    <business-unit-id>19000680</business-unit-id>
+    <agent-profile>
+      <agent-group-id>10004199</agent-group-id>
+    </agent-profile>
+    <condition>
+      <when>
+        <custom-event event="onDDOPageLoadAction"/>
+      </when>
+      <and>
+        <is-device-type type="Phone"/>
+        <content-group-check cg-id="BCS-Premier-POS" />
+        <string-compare test="equals">
+          <as-string>
+            <js-string-ref js-var-id="ddo.getVar('uuser.account.fan')" />
+          </as-string>
+          <regexp>9999SBDC</regexp>
+        </string-compare>
+        <not>
+          <exists>
+            <object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/>
+          </exists>
+        </not>
+        <not>
+          <as-boolean>
+            <js-function-result>
+              <js-function-by-name name="fanC2CSuppression"/>
+            </js-function-result>
+          </as-boolean>
+        </not>
+      </and>
+    </condition>
+    <actions>
+    <show-c2chat>
+      <c2c-spec>
+        <c2c-spec-name>
+          <string>ATT-Bubble</string>
+        </c2c-spec-name>
+          <chat-spec>
+            <chat-spec-id>
+              <number-variable-ref var-id="chatSpec29001323"/>
+            </chat-spec-id>
+            <automaton-spec>
+              <automaton-data-map>
+                <item name="tGuardToken">
+                  <as-string>
+                    <object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/>
+                  </as-string>
+                </item>
+                <item name="BAN">
+                  <string-variable-ref var-id="lpBAN"/>
+                </item>
+                <item name="BTN">
+                  <string-variable-ref var-id="lpBTN"/>
+                </item>
+              </automaton-data-map>
+            </automaton-spec>
+            <opener-id>
+              <number>17226371</number>
+            </opener-id>
+            <script-tree-id>
+              <number>12200550</number>
+            </script-tree-id>
+            <chat-theme>
+              <chat-theme-name>
+                <string>ATT-Mobile</string>
+              </chat-theme-name>
+            </chat-theme>
+          </chat-spec>
+      </c2c-spec>
+    </show-c2chat>
+    </actions>
+  </business-rule>
+  <business-rule name="ATT-BCS-Premier-O-R-StoreUnauth-C2C" id="432432123">
+    <business-unit-id>19000680</business-unit-id>
+    <agent-profile>
+      <agent-group-id>10004199</agent-group-id>
+    </agent-profile>
+    <rule-attributes>
+      <attribute>
+        <name>Unrecognized_Page_URL</name>
+        <value>
+          <string-variable-ref var-id="unrecPageURL"/>
+        </value>
+      </attribute>
+    </rule-attributes>
+    <condition>
+      <when>
+        <custom-event event="onDDOPageLoadAction"/>
+      </when>
+      <and>
+        <not>
+          <is-device-type type="Phone"/>
+        </not>
+        <content-group-check cg-id="BCS-Premier-POS" />
+        <not>
+          <exists>
+            <object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/>
+          </exists>
+        </not>
+        <string-compare test="equals">
+          <as-string>
+            <js-string-ref js-var-id="ddo.getVar('user.account.fan')" />
+          </as-string>
+          <regexp>9999SBDC</regexp>
+        </string-compare>
+        <not>
+          <as-boolean>
+            <js-function-result>
+              <js-function-by-name name="fanC2CSuppression"/>
+            </js-function-result>
+          </as-boolean>
+        </not>
+      </and>
+    </condition>
+    <actions>
+      <show-c2chat>
+        <c2c-spec>
+          <c2c-spec-name>
+            <string>ATT-Bubble</string>
+          </c2c-spec-name>
+          <chat-spec>
+            <chat-spec-id>
+              <number-variable-ref var-id="chatSpec29001323"/>
+            </chat-spec-id>
+            <automaton-spec>
+              <automaton-data-map>
+                <item name="acif_id">
+                  <number>164</number>
+                </item>
+                <item name="name">
+                  <string>BCS - Filtering Guide</string>
+                </item>
+                <item name="type">
+                  <string>guide</string>
+                </item>
+                <item name="sub_type">
+                  <string>pre-chat</string>
+                </item>
+                <item name="acif_version">
+                  <string-constant-ref name="DEFAULT_ACIF_VERSION"/>
+                </item>
+                <item name="tGuardToken">
+                  <as-string>
+                    <object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/>
+                  </as-string>
+                </item>
+                <item name="BAN">
+                  <string-variable-ref var-id="lpBAN"/>
+                </item>
+                <item name="BTN">
+                  <string-variable-ref var-id="lpBTN"/>
+                </item>
+              </automaton-data-map>
+            </automaton-spec>
+            <opener-id>
+              <number>-1</number>
+            </opener-id>
+            <script-tree-id>
+              <number>12200550</number>
+            </script-tree-id>
+            <chat-theme>
+              <chat-theme-name>
+                <string-variable-ref var-id="ATT_v3-agentAlias-Automaton-EWT"/>
+              </chat-theme-name>
+            </chat-theme>
+          </chat-spec>
+        </c2c-spec>
+      </show-c2chat>
+    </actions>
+  </business-rule>
+  <business-rule name="ATT-BCS-Premier-O-P-Store-T90" id="664363">
+    <business-unit-id>19000680</business-unit-id>
+    <agent-profile>
+      <agent-group-id>10004199</agent-group-id>
+    </agent-profile>
+    <condition>
+      <when>
+        <event event-type="onPageLanding">
+          <delay>
+            <duration>PT90S</duration>
+          </delay>
+        </event>
+      </when>
+      <and>
+        <not>
+          <is-device-type type="Phone"/>
+        </not>
+        <content-group-check cg-id="BCS-Premier-POS"/>
+        <not>
+          <as-boolean>
+            <js-function-result>
+              <js-function-by-name name="fanProSuppression"/>
+            </js-function-result>
+          </as-boolean>
+        </not>
+      </and>
+    </condition>
+    <actions>
+      <show-proactive>
+        <chat-spec>
+          <chat-spec-id>
+            <number-variable-ref var-id="chatSpec29001323"/>
+          </chat-spec-id>
+          <automaton-spec>
+            <automaton-data-map>
+              <item name="acif_id">
+                <number>164</number>
+              </item>
+              <item name="name">
+                <string>BCS - Filtering Guide</string>
+              </item>
+              <item name="type">
+                <string>guide</string>
+               </item>
+                <item name="sub_type">
+                  <string>pre-chat</string>
+                </item>
+                <item name="acif_version">
+                  <string-constant-ref name="DEFAULT_ACIF_VERSION"/>
+                </item>
+                <item name="tGuardToken">
+                  <as-string><object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/></as-string>
+                </item>
+                <item name="BAN">
+                  <string-variable-ref var-id="lpBAN"/>
+                </item>
+                <item name="BTN">
+                  <string-variable-ref var-id="lpBTN"/>
+                </item>
+              </automaton-data-map>
+            </automaton-spec>
+          <opener-id>
+            <number>17226371</number>
+          </opener-id>
+          <script-tree-id>
+            <number>12200550</number>
+          </script-tree-id>
+        </chat-spec>
+      </show-proactive>
+    </actions>
+  </business-rule>
+  <business-rule name="ATT-DTM-BCS-Premier-O-R-Store-C2C" id="443324">
+    <business-unit-id>19000680</business-unit-id>
+    <agent-profile>
+      <agent-group-id>10004199</agent-group-id>
+    </agent-profile>
+    <condition>
+      <when>
+        <custom-event event="onDDOPageLoadAction"/>
+      </when>
+      <and>
+        <is-device-type type="Phone"/>
+        <content-group-check cg-id="BCS-Premier-POS"/>
+        <not>
+          <as-boolean>
+            <js-function-result>
+              <js-function-by-name name="fanC2CSuppression"/>
+            </js-function-result>
+          </as-boolean>
+        </not>
+      </and>
+    </condition>
+    <actions>
+      <show-c2chat>
+        <c2c-spec>
+          <c2c-spec-name>
+            <string>ATT-Bubble</string>
+          </c2c-spec-name>
+          <c2c-theme>
+            <c2c-theme-name>
+              <string>ATT-BL-Round-Standard_C2C</string>
+            </c2c-theme-name>
+          </c2c-theme>
+          <chat-spec>
+            <chat-spec-id>
+              <number-variable-ref var-id="chatSpec29001323"/>
+            </chat-spec-id>
+            <automaton-spec>
+              <automaton-data-map>
+                <item name="tGuardToken">
+                  <as-string>
+                    <object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/>
+                  </as-string>
+                </item>
+                <item name="BAN">
+                  <string-variable-ref var-id="lpBAN"/>
+                </item>
+                <item name="BTN">
+                  <string-variable-ref var-id="lpBTN"/>
+                </item>
+              </automaton-data-map>
+            </automaton-spec>
+            <opener-id>
+              <number>17226371</number>
+            </opener-id>
+            <script-tree-id>
+              <number>12200550</number>
+            </script-tree-id>
+            <chat-theme>
+              <chat-theme-name>
+                <string>ATT-Mobile</string>
+              </chat-theme-name>
+            </chat-theme>
+          </chat-spec>
+        </c2c-spec>
+      </show-c2chat>
+    </actions>
+  </business-rule>
+
+
+  Business Action
+
+
+<business-action id="BCS_Premier_POS_Desktop">
+  <fire-custom-event event="setNameToAgentAlias"/>
+  <actions>
+    <show-c2chat>
+      <c2c-spec>
+        <c2c-spec-name>
+          <string>ATT-Bubble</string>
+        </c2c-spec-name>
+        <chat-spec>
+          <chat-spec-id>
+            <number-variable-ref var-id="chatSpec29001323"/>
+          </chat-spec-id>
+          <opener-id>
+            <number>17226371</number>
+          </opener-id>
+          <script-tree-id>
+            <number>12200550</number>
+          </script-tree-id>
+        </chat-spec>
+      </c2c-spec>
+    </show-c2chat>
+  </actions>
+</business-action>
+
+
+<do-business-rule-action-list action-list-id="BCS_Premier_POS"/>
+
+
+
+<business-action id="BCS_Premier_POS_Filter_Guide">
+  <fire-custom-event event="setNameToAgentAlias" />
+  <show-c2chat>
+    <c2c-spec>
+      <c2c-spec-name>
+        <string>ATT-Bubble</string>
+      </c2c-spec-name>
+      <chat-spec>
+        <chat-spec-id>
+          <number-variable-ref var-id="chatSpec29001323" />
+        </chat-spec-id>
+        <automaton-spec>
+          <automaton-data-map>
+            <item name="acif_id">
+              <number>2154</number>
+            </item>
+            <item name="name">
+              <string>BCS Premier Filtering Guide – Online Store (POS)</string>
+            </item>
+            <item name="type">
+              <string>guide</string>
+            </item>
+            <item name="sub_type">
+              <string>pre-chat</string>
+            </item>
+            <item name="acif_version">
+              <string-constant-ref name="DEFAULT_ACIF_VERSION" />
+            </item>
+            <item name="tGuardToken">
+              <as-string>
+                <object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM" />
+              </as-string>
+            </item>
+          </automaton-data-map>
+        </automaton-spec>
+        <opener-id>
+          <number>-1</number>
+        </opener-id>
+        <script-tree-id>
+          <number>12200550</number>
+        </script-tree-id>
+      </chat-spec>
+    </c2c-spec>
+  </show-c2chat>
+</business-action>
+
+<do-business-rule-action-list action-list-id="BCS_Premier_POS_Filter_Guide"/>

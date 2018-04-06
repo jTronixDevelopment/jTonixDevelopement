@@ -1,0 +1,85 @@
+<!-- BCS Premier -->
+<business-action id="BCS_Premier_B_RA_C2C">
+  <fire-custom-event event="setNameToAgentAlias"/>
+  <show-c2chat>
+    <c2c-spec>
+      <c2c-spec-name>
+        <string>ATT-Bubble</string>
+      </c2c-spec-name>
+      <chat-spec>
+        <chat-spec-name>
+          <string-variable-ref var-id="BCS_Premier_Spec"/>
+        </chat-spec-name>
+        <automaton-spec>
+          <automaton-data-map>
+            <item name="acif_id">
+              <number>2162</number>
+            </item>
+            <item name="name">
+              <string>BCS Premier Filtering Guide – Online Care (POC)</string>
+            </item>
+            <item name="type">
+              <string>guide</string>
+            </item>
+            <item name="sub_type">
+              <string>pre-chat</string>
+            </item>
+            <item name="acif_version">
+              <string-constant-ref name="DEFAULT_ACIF_VERSION"/>
+            </item>
+            <item name="tGuardToken">
+              <as-string>
+                <object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/>
+              </as-string>
+            </item>
+          </automaton-data-map>
+        </automaton-spec>
+      </chat-spec>
+      <check-agent-availability-interval>PT90S</check-agent-availability-interval>
+    </c2c-spec>
+  </show-c2chat>
+</business-action>
+<business-action id="BCS_Premier_C2C">
+  <fire-custom-event event="setNameToAgentAlias"/>
+  <show-c2chat>
+    <c2c-spec>
+      <c2c-spec-name>
+        <string>ATT-Bubble</string>
+      </c2c-spec-name>
+      <chat-spec>
+        <chat-spec-name>
+          <string-variable-ref var-id="BCS_Premier_Spec"/>
+        </chat-spec-name>
+        <automaton-spec>
+          <automaton-data-map>
+            <item name="tGuardToken">
+              <as-string>
+                <object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/>
+              </as-string>
+            </item>
+          </automaton-data-map>
+        </automaton-spec>
+      </chat-spec>
+      <check-agent-availability-interval>PT90S</check-agent-availability-interval>
+    </c2c-spec>
+  </show-c2chat>
+</business-action>
+<business-action id="BCS_Premier_Pro">
+  <fire-custom-event event="setNameToAgentAlias"/>
+  <show-proactive>
+    <chat-spec>
+      <chat-spec-name>
+        <string-variable-ref var-id="BCS_Premier_Spec" />
+      </chat-spec-name>
+      <automaton-spec>
+        <automaton-data-map>
+          <item name="tGuardToken">
+            <as-string>
+              <object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/>
+            </as-string>
+          </item>
+        </automaton-data-map>
+      </automaton-spec>
+    </chat-spec>
+  </show-proactive>
+</business-action>

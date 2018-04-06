@@ -1,0 +1,79 @@
+<business-rule id="11001" name="ATT-AEG-Telco-O-P-G-T60" funnel-level="3">
+  <business-unit-id>19000956</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004241</agent-group-id>
+  </agent-profile>
+  <q-threshold>1.0</q-threshold>
+  <rule-attributes>
+    <attribute>
+      <name>Unrecognized_Page_URL</name>
+      <value>
+        <string-variable-ref var-id="unrecPageURL"/>
+      </value>
+    </attribute>
+  </rule-attributes>
+  <condition>
+    <when>
+      <custom-event event="launchPageInactivity">
+        <delay>
+          <duration>PT60S</duration>
+        </delay>
+      </custom-event>
+    </when>
+    <and>
+      <not>
+        <is-device-type type="Phone"/>
+      </not>
+      <where>
+        <content-group-check cg-id="ATT-AEG-Telco"/>
+      </where>
+      <exists>
+        <object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/>
+      </exists>
+      <date-compare op="after">
+        <now/>
+        <date-variable-ref var-id="lastPageInteraction">
+          <offset>PT59S</offset>
+        </date-variable-ref>
+      </date-compare>
+      <not>
+        <boolean-variable-ref var-id="isDirectvCustomer"/>
+      </not>
+      <string-compare test="equals">
+        <as-string>
+          <js-string-ref js-var-id="ddo.getVar('user.account.serviceType')"/>
+        </as-string>
+        <string>Telco</string>
+      </string-compare>
+      <date-compare op="after">
+        <now/>
+        <date-variable-ref var-id="SuppressProactiveRules-Timer">
+          <offset>PT300S</offset>
+        </date-variable-ref>
+      </date-compare>
+    </and>
+  </condition>
+  <actions>
+    <fire-custom-event event="setNameToAgentAlias"/>
+    <show-proactive>
+      <chat-spec>
+        <chat-spec-name>
+          <string-variable-ref var-id="SS_ATT-HS-SS_Proactive_Desk_Tab"/>
+        </chat-spec-name>
+        <automaton-spec>
+          <automaton-data-map>
+            <item name="tGuardToken">
+              <as-string><object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/></as-string>
+            </item>
+            <item name="BAN">
+              <string-variable-ref var-id="lpBAN"/>
+            </item>
+            <item name="BTN">
+              <string-variable-ref var-id="lpBTN"/>
+            </item>
+          </automaton-data-map>
+        </automaton-spec>
+      </chat-spec>
+    </show-proactive>
+  </actions>
+</business-rule>

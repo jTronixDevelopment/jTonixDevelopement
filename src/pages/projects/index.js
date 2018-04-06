@@ -29,7 +29,7 @@ export default class NotFound extends Component {
        title : "Sarah Borrello",
        subTitle: "Square Space" ,
        content: "Poop",
-       thumbNail : "https://static1.squarespace.com/static/57a12c9c4402436133deae4d/t/5a56e1e271c10b996460fd80/1515643366445/unnamed.jpg",
+       thumbNail : "https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180",
        click: ()=>{ console.log("testing")}
      }];
 

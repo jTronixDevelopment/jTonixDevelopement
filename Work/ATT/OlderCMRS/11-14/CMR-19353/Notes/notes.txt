@@ -1,0 +1,86 @@
+This issue is related to CHAT-1662
+Credentials from CMRATT-18953-
+
+Login: bo7140 pass 123123a
+
+Stage 4 URLS
+
+https://hronestop.test.att.com/group/hr-onestop/loa-manage-team-job-aids
+Proactive – Expecting Reactive
+HRO-HR_Staffing-Proactive
+No post chat survey
+<cg-marker-check op="equals">ATT-HROnestop-LOA-O-MgmtJobAid</cg-marker-check>
+this can be fixed via letting the pro domain in there
+
+http://hronestop.test.att.com/group/hr-onestop/fmla-manage-team-process-claims
+HRO-HR_Staffing-Reactive
+No reactive button
+
+Change this page marker to reactive/ unsupress prod domain
+cg-marker-check op="equals">ATT-HROnestop-FMLA-O-MgmtProcessClaims</cg-marker-check>
+
+
+https://hronestop.test.att.com/group/hr-onestop/fmla-manage-team-process-eligibility
+HRO-HR_Staffing-Reactive
+No reactive chat button
+
+cg-marker-check op="equals">ATT-HROnestop-FMLA-O-MgmtProcessElig</cg-marker-check>
+
+https://hronestop.test.att.com/group/hr-onestop/fmla-manage-team-state-leaves
+HRO-HR_Staffing-Reactive
+no reactive chat button
+
+<cg-marker-check op="equals">ATT-HROnestop-FMLA-O-MgmtStateLeaves</cg-marker-check>
+
+https://hronestop.test.att.com/group/hr-onestop/time-reporting-more-info
+HRO-HR_Staffing-Reactive
+Should be HR_staffing group (going to payroll)
+Wrong agent group
+No survey Navigate to page no chat button appears
+
+
+
+
+=============================================================================
+== NOTES ====================================================================
+=============================================================================
+
+bo7140
+123123a
+
+HRO-HR_Staffing-Proactive
+ATT-HRO-HR_Staffing-O-P-G-T30 AG 10004247 BU 19000725
+ATT-HRO-HR_Staffing-O-P-G-PV4 AG 10004247 BU 19000725 PC_HRO-HR_Staffing-Proactive
+
+-------------------------
+ATT-HROnestop-FILLposition-O-Position
+ATT-HROnestop-FILLposition-O-Mgmtreq
+ATT-HROnestop-FILLposition-O-Mgmtreq
+ATT-HROnestop-LOA-O-MgmtTeamPoli
+ATT-HROnestop-LOA-O-MgmtJobAid
+ATT-HROnestop-LOA-O-ManageManageMain
+ATT-HROnestop-FMLA-O-Home
+ATT-HROnestop-FMLA-O-StateLeaves
+ATT-HROnestop-FMLA-O-MgmtEscalations
+ATT-HROnestop-FMLA-O-MgmtForms
+ATT-HROnestop-FMLA-O-MgmtTeam
+ATT-HROnestop-FMLA-O-MgmtProcessClaims
+ATT-HROnestop-FMLA-O-MgmtProcessElig
+ATT-HROnestop-FMLA-O-MgmtStateLeaves
+ATT-HROnestop-i9-O-JobJobAid
+
+
+
+HRO-HR_Staffing-Reactive
+ATT-HRO-HR_Staffing-O-R-G-C2C
+------------------------
+ATT-HROnestop-FILLposition-O-Moreinfo
+ATT-HROnestop-LOA-O-MgmtTeamSup
+ATT-HROnestop-FMLA-O-MoreInfo
+ATT-HROnestop-FMLA-O-MgmtTeamSup
+
+
+HRO-Payroll-Reactive
+ATT-HRO-Payroll-O-R-G-C2C AG 10004246 BU 19000725
+-----------------------
+ 	ATT-HROnestop-Time-O-ReportMoreInfo

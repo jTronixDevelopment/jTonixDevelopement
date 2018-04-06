@@ -1,0 +1,28 @@
+*Business Unit:*  Home Solution Sales (19000753)
+*Agent Group*: HSS-DIRECTVNOW-Sales (10005209)
+*Device types*:  Desktop/tablet and mobile
+
+*Goal*:  The intent of the ticket is to
+1) tag three pages
+2) add chat POIs to all of the new pages by editing a content group.
+
+*Task #1: Assign page markers to three URLs:*
+|Page marker to assign|
+
+http://directvnow.com/accounts/new-account
+DTVNow-Accounts-I-NewAccount
+
+http://directvnow.com/accounts/choose-extras
+DTVNow-Accounts-I-ChooseExtras
+
+http://directvnow.com/accounts/special-offer
+|DTVNow-Accounts-I-SpecialOffer
+
+*Task #2: Add the following page markers to the +HSS-DirecTVNow-Sales+ content group in order for the ATT-HSS-DirecTVNow-Sales-I-R-G-Buyflow-C2C and ATT-DTM-HSS-DirecTVNow-Sales-I-R-G-Buyflow-C2C business rules to launch on these new pages:*
+
+Page Markers
+DTVNow-Accounts-I-NewAccount
+DTVNow-Accounts-I-ChooseExtras
+DTVNow-Accounts-I-SpecialOffer
+
+Content Group : HSS-DirecTVNow-Sales

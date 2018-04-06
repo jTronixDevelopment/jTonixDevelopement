@@ -1,0 +1,38 @@
+th.small{
+  width: 10%;
+  border: 1px solid black;
+}
+
+tr{
+  border: 1px solid black;
+}
+tr:nth-child(odd){
+  background: darkgrey;
+}
+#checkList{
+  list-style: none;
+  padding:0;
+  margin:0;
+}
+
+.dark{
+  background: darkgray;
+}
+
+li{
+  width: 100%;
+  margin:0;
+}
+
+input{
+  width: 100%;
+}
+
+
+table{
+  border: 1px solid black;
+}
+
+thead{
+  background: darkgray;
+}

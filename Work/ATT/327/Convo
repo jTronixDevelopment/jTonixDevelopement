@@ -1,0 +1,72 @@
+HP(10:08:47 AM): Hi Ryan
+
+RJ(10:09:00 AM): Hows it going.
+HP(10:09:06 AM): Good How are u
+
+RJ(10:09:31 AM): Not to bad
+HP(10:09:42 AM): Ryan at particular use case you were seeing inqcust data unavailable
+
+HP(10:10:07 AM): i tried it but i was able to see it
+
+RJ(10:10:58 AM): Do you happen to be testing on your local.
+HP(10:11:07 AM): my local i dont see
+
+HP(10:11:28 AM): but i doubt if i am connected to right
+
+RJ(10:11:49 AM): Yes I think its part of a race condition in the zuluqa enviornment.
+RJ(10:12:01 AM): Is there a non test url I can hit?
+HP(10:12:02 AM): nope
+
+RJ(10:15:56 AM): I think its a test environment issue. I have seen this happen before. Can you point me to where in the code the inqCustData is being populated.
+RJ(10:21:36 AM): Did you happen to push the custom event
+RJ(2:26:46 PM): Inq.fireCustomEvent("inqCustDataReady")
+RJ(2:29:08 PM): can you send a SS
+HP(2:29:08 PM):
+(image) - Screen Shot 2018-03-02 at 2.27.26 PM
+
+Open Save
+
+RJ(2:32:44 PM): is inqCustData.email and inqCustData.customerType populated?
+HP(2:32:57 PM): yes we checked and fired it
+
+RJ(2:33:30 PM): can you open the object up so I can look
+RJ(2:33:37 PM): and send a SS of the object
+HP(2:35:04 PM): sure
+
+RJ(2:35:16 PM): And are you pointing to demo7
+HP(2:35:31 PM): what is demo7?
+
+RJ(2:36:17 PM): Our test environment.
+RJ(2:36:24 PM): Where my code is
+HP(2:36:41 PM): i am not sure how do i connect to your test env
+
+HP(2:37:03 PM): how to check the env of yours ?
+
+RJ(2:39:57 PM): You have point to our test enviornment. Which Jyoti had you do. I think Jyoti would help with in the chat
+HP(2:44:15 PM): we are checking now in demo7
+
+HP(2:48:21 PM):
+(image) - Screen Shot 2018-03-02 at 2.44.43 PM
+
+Open Save
+
+HP(2:48:29 PM):
+(image) - Screen Shot 2018-03-02 at 2.27.26 PM
+
+Open Save
+
+HP(2:48:45 PM):
+(image) - Screen Shot 2018-03-02 at 2.45.30 PM
+
+Open Save
+
+RJ(2:49:42 PM): can you check the page marker
+RJ(2:50:48 PM): inqFrame.Inq.LDM.getPage()
+
+RJ(2:50:59 PM): see what that gives
+HP(2:51:31 PM): ok
+
+RJ(2:54:05 PM): can you send a SS of the response.
+HP(2:54:10 PM): ill send
+
+HP(2:54:20 PM): i am screen sharing in meeting

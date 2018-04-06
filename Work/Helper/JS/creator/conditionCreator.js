@@ -1,0 +1,8 @@
+class conditionCreator{
+  constructor(){
+
+  }
+  addPageMarkerCheck(){
+
+  }
+}

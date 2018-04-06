@@ -1,0 +1,53 @@
+// All rules mets
+
+<business-rule id="8" name="ATT-FN-Care-O-P-PCS-T0">
+  <business-unit-id>19001047</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10005539</agent-group-id>
+  </agent-profile>
+  <condition>
+    <when>
+      <event event-type="onPageLanding"/>
+    </when>
+    <where>
+      <marker-check op="equals">ATT-FN-Care-O-FNCarePCS</marker-check>
+    </where>
+  </condition>
+  <actions>
+    <fire-custom-event event="setNameToAgentAlias"/>
+    <show-proactive>
+      <chat-spec>
+        <chat-spec-name>
+          <string-variable-ref var-id="chatSpecGreen"/>
+        </chat-spec-name>
+        <check-agent-availability>false</check-agent-availability>
+        <ignore-hop>true</ignore-hop>
+        <automaton-spec>
+          <automaton-data-map>
+            <item name="acif_id">
+              <number>2097</number>
+            </item>
+            <item name="name">
+              <string>Mobile - Consumer Routing - Pre-chat Surveys</string>
+            </item>
+            <item name="type">
+              <string>survey</string>
+            </item>
+            <item name="sub_type">
+              <string>pre-chat</string>
+            </item>
+            <item name="acif_version">
+              <string-constant-ref name="DEFAULT_ACIF_VERSION"/>
+            </item>
+            <item name="BAN">
+              <string-variable-ref var-id="lpBAN"/>
+            </item>
+            <item name="BTN">
+              <string-variable-ref var-id="lpBTN"/>
+            </item>
+          </automaton-data-map>
+        </automaton-spec>
+      </chat-spec>
+    </show-proactive>
+  </actions>
+</business-rule>

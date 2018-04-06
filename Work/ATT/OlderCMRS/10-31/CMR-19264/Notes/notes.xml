@@ -1,0 +1,168 @@
+See attached for new business rules and page markers.
+Exceeded character limit.
+Business Rules
+Name	ATT-HRO_Staffing_Mobile
+Rule Description/Launch Conditions	Launch C2C button on page landing
+Content group	HRO-HR_Staffing-Reactive
+Business Unit	ATT-HR_OneStop 19000725
+Agent Group	HRO-HR-Staffing_CC  10004247
+Chat Theme / Chatskin	defEWTInternalCT
+Script Tree	12200527
+C2C Spec ID	c2cspec
+Chat Spec ID	chatSpec29001246
+Device Type	Mobile
+Queue Threshold	1.2
+Funnel level	5
+
+<business-rule id="9" name="ATT-HRO_Staffing_Mobile" funnel-level="5">
+  <q-threshold>1.2</q-threshold>
+  <business-unit-id>19000725</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004247</agent-group-id>
+  </agent-profile>
+  <condition>
+    <when>
+      <event event-type="onPageLanding"/>
+    </when>
+    <and>
+      <is-device-type type="Phone"/>
+      <where>
+        <content-group-check cg-id="HRO-HR_Staffing-Reactive"/>
+      </where>
+    </and>
+  </condition>
+  <actions>
+    <fire-custom-event event="setNameToAgentAlias"/>
+    <show-c2chat>
+      <c2c-spec>
+        <c2c-spec-id>
+          <number-variable-ref var-id="c2cspec"/>
+        </c2c-spec-id>
+        <chat-spec>
+          <chat-spec-id>
+            <number-variable-ref var-id="chatSpec29001246"/>
+          </chat-spec-id>
+          <script-tree-id>
+            <number>12200527</number>
+          </script-tree-id>
+          <chat-theme>
+            <chat-theme-name>
+              <string-variable-ref var-id="defEWTInternalCT"/>
+            </chat-theme-name>
+          </chat-theme>
+        </chat-spec>
+      </c2c-spec>
+    </show-c2chat>
+  </actions>
+</business-rule>
+
+Name	ATT-HRO_Payroll_Mobile
+Rule Description/Launch Conditions	Launch C2C button on page landing
+Content Group	HRO-HR_Payroll-Reactive
+Business Unit	ATT-HR_OneStop
+Agent Group	HRO-HR-Payroll_Customer_Care
+Chat Theme / Chatskin	defEWTInternalCT
+Script Tree	12200526
+C2C Spec ID	c2cspec
+Chat Spec ID	chatSpec29001246
+Device Type	Mobile
+Queue Threshold	1.2
+Funnel level	5
+
+<business-rule id="10" name="ATT-HRO_Staffing_Mobile" funnel-level="5">
+  <q-threshold>1.2</q-threshold>
+  <business-unit-id>19000725</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004246</agent-group-id>
+  </agent-profile>
+  <condition>
+    <when>
+      <event event-type="onPageLanding"/>
+    </when>
+    <and>
+      <is-device-type type="Phone"/>
+      <where>
+        <content-group-check cg-id="HRO-HR_Staffing-Reactive"/>
+      </where>
+    </and>
+  </condition>
+  <actions>
+    <fire-custom-event event="setNameToAgentAlias"/>
+    <show-c2chat>
+      <c2c-spec>
+        <c2c-spec-id>
+          <number-variable-ref var-id="c2cspec"/>
+        </c2c-spec-id>
+        <chat-spec>
+          <chat-spec-id>
+            <number-variable-ref var-id="chatSpec29001246"/>
+          </chat-spec-id>
+          <script-tree-id>
+            <number>12200526</number>
+          </script-tree-id>
+          <chat-theme>
+            <chat-theme-name>
+              <string-variable-ref var-id="defEWTInternalCT"/>
+            </chat-theme-name>
+          </chat-theme>
+        </chat-spec>
+      </c2c-spec>
+    </show-c2chat>
+  </actions>
+</business-rule>
+
+
+Name	ATT-HRO-Annual_Compensation_Mobile
+Rule Description/Launch Conditions	Launch C2C button on page landing
+Content Group	ATT-HRO-Annual-Compensation
+Business Unit	ATT-HR_OneStop
+Agent Group	HRO-HR-Annual_Compensation
+Chat Theme / Chatskin	defEWTInternalCT
+Script Tree	12200526
+C2C Spec ID	c2cspec
+Chat Spec ID	chatSpec29001246
+Device Type	Mobile
+Queue Threshold	1.2
+Funnel level	5
+
+<business-rule id="11" name="ATT-HRO_Staffing_Mobile" funnel-level="5">
+  <q-threshold>1.2</q-threshold>
+  <business-unit-id>19000725</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10005324</agent-group-id>
+  </agent-profile>
+  <condition>
+    <when>
+      <event event-type="onPageLanding"/>
+    </when>
+    <and>
+      <is-device-type type="Phone"/>
+      <where>
+        <content-group-check cg-id="ATT-HRO-Annual-Compensation"/>
+      </where>
+    </and>
+  </condition>
+  <actions>
+    <fire-custom-event event="setNameToAgentAlias"/>
+    <show-c2chat>
+      <c2c-spec>
+        <c2c-spec-id>
+          <number-variable-ref var-id="c2cspec"/>
+        </c2c-spec-id>
+        <chat-spec>
+          <chat-spec-id>
+            <number-variable-ref var-id="chatSpec29001246"/>
+          </chat-spec-id>
+          <script-tree-id>
+            <number>12200526</number>
+          </script-tree-id>
+          <chat-theme>
+            <chat-theme-name>
+              <string-variable-ref var-id="defEWTInternalCT"/>
+            </chat-theme-name>
+          </chat-theme>
+        </chat-spec>
+      </c2c-spec>
+    </show-c2chat>
+  </actions>
+</business-rule>

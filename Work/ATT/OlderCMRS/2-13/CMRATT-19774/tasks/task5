@@ -1,0 +1,10 @@
+================================================================================
+=== Task 5 =====================================================================
+================================================================================
+
+*Task #5: Continue FAN suppression*
+
+  See attached excel file for FAN ID's that were previously suppressed in the
+  program and would need to continue after the above changes are made. Also as
+  was set-up previously, chat across the program should be suppressed
+  if user.attributes.ABSactorType="CSR".

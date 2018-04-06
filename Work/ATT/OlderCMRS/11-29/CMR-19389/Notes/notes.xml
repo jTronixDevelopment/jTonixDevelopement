@@ -1,0 +1,115 @@
+Objective: Create business rules to launch on mobile for BCS-Premier_eBill.
+The mobile rules below should match the existing desktop C2C rules - two BR's
+will need to be created, one for outside of the iframe, the other for inside
+(same set-up as the
+desktop rules). ----------------------------------------------------------------------------------------------------------------- Name: ATT-DTM-BCS-Premier_ebill-O-R-G-Marketing-C2C Device: Mobile only Launch Condition: Expose button on same URLs and
+CG as existing rule, ATT-BCS-Premier_ebill-O-R-G-Marketing-C2C - clicking will
+launch direct chat with agent (no automaton / pre-chat survey)
+Business Unit: ATT-BCS (19000680)
+Agent Group: BCS-Premier_ebill (10004200)
+Auto Opener: "Hello! How may I
+help you today?"
+C2C Theme / Spec: ATT-Mobile_C2C / ID=29001347
+ Post-Chat Survey: Automaton ID=2106
+
+<business-rule id="6771611" name="ATT-DTM-BCS-Premier_ebill-O-R-G-Marketing-C2C">
+  <business-unit-id>19000680</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004200</agent-group-id>
+  </agent-profile>
+  <condition>
+    <when>
+      <event event-type="onPageLanding"/>
+    </when>
+    <and>
+      <is-device-type type="Phone"/>
+      <or>
+        <where>
+          <content-group-check cg-id="ATT-BCS-Premier_eBill-O-All"/>
+        </where>
+        <where>
+          <url-match regexp="(.*)/businesscare-ebill/(.*)"/>
+        </where>
+      </or>
+      <not>
+        <where>
+          <url-match regexp=".*wireless.*firstnet.*\.com.*"/>
+        </where>
+      </not>
+    </and>
+  </condition>
+  <actions>
+    <show-c2chat>
+      <c2c-spec>
+        <c2c-spec-id>
+          <number>29001347</number>
+        </c2c-spec-id>
+        <c2c-theme>
+          <c2c-theme-name>
+            <string>ATT-Mobile_C2C</string>
+          </c2c-theme-name>
+        </c2c-theme>
+        <chat-spec>
+          <chat-spec-id>
+            <number-variable-ref var-id="chatSpec29001246"/>
+          </chat-spec-id>
+          <opener-id>
+            <number>17257048</number>
+          </opener-id>
+        </chat-spec>
+        <check-agent-availability>false</check-agent-availability>
+      </c2c-spec>
+    </show-c2chat>
+  </actions>
+</business-rule>
+
+-----------------------------------------------------------------------------------------------------------------
+Name: ATT-DTM-BCS-Premier_ebill-O-R-G-V2-Marketing-C2C Device: Mobile only
+Launch Condition: Expose button on same URLs and CG as
+existing rule, ATT-BCS-Premier_ebill-O-R-G-V2-Marketing-C2C -
+clicking will launch direct chat with agent (no automaton / pre-chat survey)
+Business Unit: ATT-BCS (19000680)
+Agent Group: BCS-Premier_ebill (10004200)
+Auto Opener: "Hello! How may I help you today?"
+C2C Theme / Spec: ATT-Mobile_C2C / ID=29001347
+Post-Chat Survey: Automaton ID=2106
+
+<business-rule id="6771612" name="ATT-DTM-BCS-Premier_ebill-O-R-G-V2-Marketing-C2C">
+  <business-unit-id>19000680</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004200</agent-group-id>
+  </agent-profile>
+  <condition>
+    <when>
+      <event event-type="onPageLanding"/>
+    </when>
+    <and>
+      <content-group-check cg-id="AEG-Chronic-Chat-CG"/>
+      <is-device-type type="Phone"/>
+    </and>
+  </condition>
+  <actions>
+    <fire-custom-event event="setNameToAgentAlias"/>
+    <show-c2chat>
+      <c2c-spec>
+        <c2c-spec-id>
+          <number>29001347</number>
+        </c2c-spec-id>
+        <c2c-theme>
+          <c2c-theme-name>
+            <string>ATT-Mobile_C2C</string>
+          </c2c-theme-name>
+        </c2c-theme>
+        <chat-spec>
+          <chat-spec-id>
+            <number-variable-ref var-id="chatSpec29001246"/>
+          </chat-spec-id>
+          <opener-id>
+            <number>17257048</number>
+          </opener-id>
+        </chat-spec>
+        <check-agent-availability>false</check-agent-availability>
+      </c2c-spec>
+    </show-c2chat>
+  </actions>
+</business-rule>

@@ -1,0 +1,130 @@
+<business-rule name="ATT-B-RA-ABS-MTS-O-R-G-ADI-C2C" id="200201" >
+  <business-unit-id>19000757</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10006093</agent-group-id>
+  </agent-profile>
+  <condition>
+    <when>
+      <event event-type="onPageLanding"/>
+    </when>
+    <and>
+      <not>
+        <is-device-type type="Phone"/>
+      </not>
+      <where>
+        <marker-check op="equals">ATT-ABS-MTS-O-DedicatedInternet</marker-check>
+      </where>
+    </and>
+  </condition>
+  <actions>
+    <show-c2chat>
+      <c2c-spec>
+        <c2c-spec-id>
+          <number-variable-ref var-id="c2cspec"/>
+        </c2c-spec-id>
+        <c2c-theme>
+          <c2c-theme-name>
+            <string-variable-ref var-id="btnVerticalOrgC2CTheme"/>
+          </c2c-theme-name>
+        </c2c-theme>
+        <chat-spec>
+          <chat-spec-id>
+            <number-variable-ref var-id="chatSpec29001246"/>
+          </chat-spec-id>
+          <automaton-spec>
+            <automaton-data-map>
+              <item name="acif_id">
+                <number>2160</number>
+              </item>
+              <item name="type">
+                <string>survey</string>
+              </item>
+              <item name="sub_type">
+                <string>pre-chat</string>
+              </item>
+              <item name="acif_version">
+                <string-constant-ref name="DEFAULT_ACIF_VERSION"/>
+              </item>
+            </automaton-data-map>
+          </automaton-spec>
+          <opener-id>
+            <number>-1</number>
+          </opener-id>
+          <chat-theme>
+            <chat-theme-name>
+              <string-variable-ref var-id="ATT_v3-agentAlias-Automaton-EWT"/>
+            </chat-theme-name>
+          </chat-theme>
+        </chat-spec>
+        <check-agent-availability-interval>PT90S</check-agent-availability-interval>
+        <c2c-page-element-id>tcC2CAnchoredEbiz</c2c-page-element-id>
+      </c2c-spec>
+    </show-c2chat>
+  </actions>
+</business-rule>
+
+
+<business-rule name="ATT-B-RA-ABS-MTS-O-R-G-FlexWare-C2C" id="200202">
+  <business-unit-id>19000757</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10006093</agent-group-id>
+  </agent-profile>
+  <condition>
+    <when>
+      <event event-type="onPageLanding"/>
+    </when>
+    <and>
+      <not>
+        <is-device-type type="Phone"/>
+      </not>
+      <where>
+        <marker-check op="equals">ATT-ABS-MTS-O-FlexWare</marker-check>
+      </where>
+    </and>
+  </condition>
+  <actions>
+    <show-c2chat>
+      <c2c-spec>
+        <c2c-spec-id>
+          <number-variable-ref var-id="c2cspec"/>
+        </c2c-spec-id>
+        <c2c-theme>
+          <c2c-theme-name>
+            <string-variable-ref var-id="btnVerticalOrgC2CTheme"/>
+          </c2c-theme-name>
+        </c2c-theme>
+        <chat-spec>
+          <chat-spec-id>
+            <number-variable-ref var-id="chatSpec29001246"/>
+          </chat-spec-id>
+        <automaton-spec>
+          <automaton-data-map>
+            <item name="acif_id">
+                <number>2161</number>
+            </item>
+            <item name="type">
+              <string>survey</string>
+            </item>
+            <item name="sub_type">
+              <string>pre-chat</string>
+            </item>
+            <item name="acif_version">
+              <string-constant-ref name="DEFAULT_ACIF_VERSION"/>
+            </item>
+          </automaton-data-map>
+        </automaton-spec>
+          <opener-id>
+            <number>-1</number>
+          </opener-id>
+        <chat-theme>
+          <chat-theme-name>
+              <string-variable-ref var-id="ATT_v3-agentAlias-Automaton-EWT"/>
+          </chat-theme-name>
+        </chat-theme>
+      </chat-spec>
+        <check-agent-availability-interval>PT90S</check-agent-availability-interval>
+        <c2c-page-element-id>tcC2CAnchoredEbiz</c2c-page-element-id>
+      </c2c-spec>
+    </show-c2chat>
+  </actions>
+</business-rule>

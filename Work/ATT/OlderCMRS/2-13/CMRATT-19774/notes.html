@@ -1,0 +1,71 @@
+*Task 2: New business rule checks*
+
+*ATT-B-RA-BCS-Premier-O-R-G-Store-C2C*
+Business Unit: ATT-BCS (ID: 19000680)
+Agent Group: BCS-Premier (10004199)
+Device Type: Desktop/tablet
+Go to: https://www.wireless.att.com/business/index.jsp
+Login: premierflowtest / password1
+Click “Shop”
+Click “Premier test flow”
+Click “Shop new service”, enter in a valid zip code (i.e. 90404), select “get a new phone number”, select “Create a new account” and Continue
+Expected: Round/bubble button with “Chat live” verbiage and blue ambient ring should expose (if agent is available). Ensure that the Page Marker == ATT-BCS-Premier-O-POS-Shop. Clicking the C2C will launch Guide - - please ensure the following:
+* Clicking the “Activations” topic exposes a window with the verbiage “Please click here to activate your device.” Clicking “here” will direct the user to https://www.att.com/checkmyorder/omhub.rt in a new window.
+* In another session, clicking the “Activations” topic exposes a window with the verbiage “Please click here to activate your device.” Click “Continue to chat” - - in engagement window, check auto-opener “Hello! How may I help you today?” Once connected to an agent, ensure that you are connected to BU/AG ATT-BCS and BCS-Premier. As a user, engage in 2x2 conversation, close out, and ensure that post-chat survey fires.
+
+********************************************************************************
+ATT-BCS-Premier-O-P-Store-T90 Good
+Business Unit: ATT-BCS (ID: 19000680)
+Agent Group: BCS-Premier (10004199)
+Device Type: Desktop/tablet
+Go to: https://www.wireless.att.com/business/index.jsp
+Login: premierflowtest / password1
+Click “Shop”
+Click “Premier test flow”
+Wait on page for 90 seconds
+Expected: Proactive window should fire. In engagement window, check auto-opener “Hello! How may I help you today?” Once connected to an agent, ensure that you are connected to BU/AG ATT-BCS and BCS-Premier. As a user, engage in 2x2 conversation, close out, and ensure that post-chat survey fires.
+
+ATT-DTM-BCS-Premier-O-R-Store-C2C **********************************************
+Business Unit: ATT-BCS (ID: 19000680) Good
+Agent Group: BCS-Premier (10004199)
+Device Type: Mobile
+Go to: https://www.wireless.att.com/business/index.jsp
+Login: premierflowtest / password1
+Click “Shop”
+Click “Premier test flow”
+Expected: Round/bubble button with “Chat live” verbiage and blue ambient ring should expose (if agent is available). Clicking the C2C will launch engagement window, check auto-opener “Hello! How may I help you today?” Once connected to an agent, ensure that you are connected to BU/AG ATT-BCS and BCS-Premier. As a user, engage in 2x2 conversation, close out, and ensure that post-chat survey fires.
+
+
+********************************************************************************
+*ATT-BCS-Premier-O-R-StoreUnauth-C2C* (desktop/tablet) GOOD
+AND
+*ATT-DTM-BCS-Premier-O-R-G-StoreUnauth-C2C* (mobile)
+Business Unit: ATT-BCS (ID: 19000680)
+Agent Group: BCS-Premier (10004199)
+Go to https://www.wireless.att.com/businesscenter/orp/small-business.jsp
+Select "Shop new service"
+Expected: Round/bubble button with “Chat live” verbiage and blue ambient ring should expose (if agent is available). Clicking the C2C will launch engagement window, check auto-opener “Hello! How may I help you today?” Once connected to an agent, ensure that you are connected to BU/AG ATT-BCS and BCS-Premier. As a user, engage in 2x2 conversation, close out, and ensure that post-chat survey fires.
+
+*Task 3: Ensure AOP rules still work as usual*
+********************************************************************************
+*ATT-B-RA-BCS-Premier-O-R-G-NBS_AOP-C2C* (Desktop/tablet) Good
+AND
+*ATT-DTM-B-RA-BCS-Premier-O-R-G-NBS_AOP-C2C* (Mobile)
+Go to: https://www.wireless.att.com/business/index.jsp
+Login: jn1722@att.com / jgn2468!
+Click “Shop”
+Click “Brigham Young…”
+Click “Shop new service”, enter in a valid zip code (i.e. 90404), select “get a new phone number”, select “Create a new account” and Continue
+Expected: Round/bubble button with “Chat live” verbiage and blue ambient ring should expose (if agent is available). Depending on your device that you’re testing on, ensure that the business rule firing is ATT-B-RA-BCS-Premier-O-R-G-NBS_AOP-C2C if on desktop, or ATT-DTM-B-RA-BCS-Premier-O-R-G-NBS_AOP-C2C if on mobile.
+********************************************************************************
+
+*Task 4: Ensure FAN suppression works*
+
+Go to: https://www.wireless.att.com/business/index.jsp
+Login: premierflowtest / password1
+Click “Shop”
+Click “Premier test flow”
+Click “Shop new service”, enter in a valid zip code (i.e. 90404), select “get a new phone number”, select “Create a new account” and Continue
+Wait for ddo to load
+Populate the user.accountfan ddo object with this value, 00031206, using: ddo.setVar('user.account.fan', '00031206'); Inq.reinitChat()
+Expected: Ensure that a chat button is NOT launched for this affiliated FAN.

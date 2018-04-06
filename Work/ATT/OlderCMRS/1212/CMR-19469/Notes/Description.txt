@@ -1,0 +1,28 @@
+{color:red}Desired release date - 11/14{color}
+
+Business unit: HSS (19000753)
+Agent Group: HSS-Provide (10004235)
+
+Goal:  The intent of this ticket is to change an event code and associated parameters for a URL that was changed on CHAT-1696.
+
+Edit the event code/parameters to URL: https://www.att.com/shop/entertainment/#/select-extras
+||New Event Code||Event code to remove/edit with new event code||Parameters||
+|DS_TV_Extras_Add_To_Cart_Submit|DS_TV_Hardware_Add_To_Cart_Submit|eventCode
+successFlag
+statusCode
+statusMessage
+errorType
+linkName
+linkPosition
+linkDestinationUrl
+items.itemSku
+items.itemName
+items.itemQty
+items.itemRecurringPrice
+items.itemDiscount
+items.itemAssociatedHours
+items.itemCategory
+cartOneTimeAmt
+cartTotalAmt
+cartMonthlyAmt 
+cartContents|

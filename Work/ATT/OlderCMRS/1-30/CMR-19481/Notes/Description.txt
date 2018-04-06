@@ -1,0 +1,38 @@
++{color:#d04437}*Client requests 1/30/18 launch*{color}+
+
+Objective: Configure chat support for new Business Center Services pages (ASEoD flow)
+
+*Task #1: Create page markers + content group*
+
+Please create page markers and a new content group for the following URLs:
+||Production URL||Test URL||Pagemarker||Content Group||
+|https://www.att.com/ebiz/aseod/#/manage/addPort |https://zltv8086.vci.att.com:8002/ebiz/aseod/#/manage/addPort |ATT-eBiz-ASEoD-O-PreProvision|B2B-eBiz-ASEoD|
+|https://www.att.com/ebiz/aseod/#/manage/active/editPort |https://zltv8086.vci.att.com:8002/ebiz/aseod/#/manage/active/editPort |ATT-eBiz-ASEoD-O-ActiveManage|B2B-eBiz-ASEoD|
+|https://www.att.com/ebiz/aseod/#/order/review |https://zltv8086.vci.att.com:8002/ebiz/aseod/#/order/review |ATT-eBiz-ASEoD-O-ReviewOrder|B2B-eBiz-ASEoD|
+|https://www.att.com/ebiz/aseod/#/order/details|https://zltv8086.vci.att.com:8002/ebiz/aseod/#/order/details |ATT-eBiz-ASEoD-O-OrderStatus|B2B-eBiz-ASEoD|
+
+*Task #2: Create new business rule*
+
+Name: ATT-B-RA-eBiz-O-R-G-ASEoD-C2C
+Business Unit: ATT-Business_Routing (ID: 19000766)
+Agent Group: B-RA_Business (10005028)
+Launch Conditions: Display a chat button on page landing; *when C2C clicked, launch Automaton ID=2079*
+Content Groups / Page Markers: CG= B2B-eBiz-ASEoD
+Chat Theme / Chatskin: Same as ATT-B-RA-PCS-AVPN-O-R-G-Marketing-C2C
+C2C Theme / C2C Spec: Same as ATT-B-RA-PCS-AVPN-O-R-G-Marketing-C2C
+Auto Opener: Via automaton (-1)
+Script Tree: 12200553
+Device Type: Desktop/Tablet
+
+*Task #3: Implement data pass*
+
+Ensure that data pass is implemented on the pages in scope (CG=B2B-eBiz-ASEoD) in the same way as other rules in this environment (refer to rule ATT-B-RA-PCS- AVPN-O-R-G-Marketing-C2C). Please pull the following from DTM:
+
+"firstName": "",
+"lastName": "",
+"email": "",
+"phoneNumber": "",
+"company": "",
+"User": "",
+"products": "",
+"companyCreationDate": ""

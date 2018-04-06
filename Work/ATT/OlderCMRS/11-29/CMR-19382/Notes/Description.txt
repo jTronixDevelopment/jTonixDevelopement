@@ -1,0 +1,40 @@
+BU: Digital Care
+Goal: Create a new password reset agent group and four business rules.
+Part 1: Create new Agent Group
+EG-Sign-in
+
+Part 2: Create new Business Rule
+Please replicate the following four business rules, with name and routing changes.
+Existing: ATT-C-RA-LoginRouting-O-R-G-LoginIssues-C2C
+New Rule: ATT-LoginRouting-O-R-G-UniversalLoginIssues-C2C
+Route 5% directly to EG-Sign-in from this business rule: ATT-LoginRouting-O-R-G-UniversalLoginIssues-C2C
+Route the remaining 95% to the existing Login routing Guide (Automaton 73) from this business rule: ATT-C-RA-LoginRouting-O-R-G-LoginIssues-C2C
+
+Existing: ATT-C-RA-LoginRouting-O-R-G-MyATT2Login-Errors-C2C
+New Rule: ATT-LoginRouting-O-R-G-UniversalMyATT2Login-Errors-C2C
+Route 5% directly to EG-Sign-in form this business rule: ATT-LoginRouting-O-R-G-UniversalMyATT2Login-Errors-C2C
+Route the remaining 95% to the existing Login routing Guide (Automaton 73) from this business rule: ATT-C-RA-LoginRouting-O-R-G-MyATT2Login-Errors-C2C
+
+Existing: ATT-C-RA-LoginRouting-O-R-G-LoginIssues-Error-C2C
+New Rule: ATT-LoginRouting-O-R-G-UniversalLoginIssues-Error-C2C
+Route 5% directly to EG-Sign-in from this business rule: ATT-LoginRouting-O-R-G-UniversalLoginIssues-Error-C2C
+Route the remaining 95% to the existing Login routing Guide (Automaton 73) from this business rule: ATT-C-RA-LoginRouting-O-R-G-LoginIssues-Error-C2C
+
+Existing: ATT-DTM-C-RA-LoginRouting-O-R-G-MyATT2Login-Errors-C2C
+New Rule: ATT-DTM-LoginRouting-O-R-G-UniversalMyATT2Login-Errors-C2C
+Route 5% directly to EG-Sign-in from this business rule: ATT-DTM-LoginRouting-O-R-G-UniversalMyATT2Login-Errors-C2C
+Route the remaining 95% to the existing Login routing Guide (Automaton 73) from this business rule: ATT-DTM-C-RA-LoginRouting-O-R-G-MyATT2Login-Errors-C2C
+
+var test = {
+  five:0,
+  nine:0
+}
+
+
+for(var i = 0;i < 100000;i++){
+  if(parseInt(Math.random(10,0)*100)< 95){
+    test.nine++;
+  } else{
+    test.five++;
+  }
+}

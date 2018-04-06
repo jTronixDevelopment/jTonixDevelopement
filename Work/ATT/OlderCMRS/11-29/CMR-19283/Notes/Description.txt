@@ -1,0 +1,127 @@
+PART 1: Create new page markers: COMPLETE
+https://operations.web.att.com/sites/CITLST/default.aspx - Int-TechDev-PitCrew_CITLST|
+https://intra4web.att.com/process/#/home Int-TechDev-Intra4_process_home
+https://intra4.web.att.com/mde/#/home Int-TechDev-intra4_mde_home
+http://prism.techdev.att.com Int-TechDev-prism
+
+
+*PART 2: Create a new content group: COMPLETE
+TechDev-PitCrew-Rec
+-----------------------------------------------=
+
+<content-group id="TechDev-PitCrew-Rec">
+  <cg-marker-check op="equals">Int-TechDev-PitCrew_CITLST</cg-marker-check>
+  <cg-marker-check op="equals">Int-TechDev-Intra4_process_home</cg-marker-check>
+  <cg-marker-check op="equals">Int-TechDev-intra4_mde_home</cg-marker-check>
+  <cg-marker-check op="equals">Int-TechDev-prism</cg-marker-check>
+  </content-group>
+
+*PART 3: Create 1 new business rule:
+
+ATT-Int-Pit-Crew-O-R-G-Technology_Development-C2C*
+Business Unit: ATT-Technology_Development (19001090)
+Agent Group: Int-Pit-Crew (10005874)
+Rule Description/Launch Conditions: Launch C2C button on page landing
+Content Group: TechDev-PitCrew-Rec
+Chat Theme / Chatskin: defEWTInternalCT
+Script Tree: {color:purple}[~wyork] to add in the Script Tree by 9/29{color}
+C2C Spec ID: {color:purple}[~wyork] to add in the C2C Spec by 9/29{color}
+Chat Spec ID: 29001246
+Pre-Chat Survey Node: ATT-TechDev-PitCrew Survey - {color:purple}[~wyork] to add in the automaton ID by 9/29{color}
+Device Type: Desktop/Tablet
+Queue Threshold: 2.0
+
+
+      <business-rule id="677163" name="ATT-AEG-Chronic-Chat-Uverse-O-R-G-MyATT-Chronicchatter-C2C">
+        <business-unit-id>19000956</business-unit-id>
+        <agent-profile>
+          <agent-group-id>10005659</agent-group-id>
+        </agent-profile>
+        <condition>
+          <when>
+            <custom-event event="onDDOPageLoadAction"/>
+          </when>
+          <and>
+            <content-group-check cg-id="HS_SS-All"/>
+            <string-compare test="equals">
+              <as-string>
+                <js-string-ref js-var-id="ddo.getVar('user.account.serviceType')"/>
+              </as-string>
+              <regexp>ISP|U-verse</regexp>
+            </string-compare>
+            <not>
+              <is-device-type type="Phone"/>
+            </not>
+            <!-- Chronic Check -->
+            <number-compare test="greater-than">
+              <number-variable-ref var-id="chronicChats"/>
+              <number>2</number>
+            </number-compare>
+            <!-- Chronic Check End -->
+          </and>
+        </condition>
+        <actions>
+          <fire-custom-event event="setNameToAgentAlias"/>
+          <show-c2chat>
+            <c2c-spec>
+              <c2c-spec-id>
+                <number-variable-ref var-id="c2cspec"/>
+              </c2c-spec-id>
+              <c2c-theme>
+                <c2c-theme-name>
+                  <string>ATT-Anchored-Bottom_C2C</string>
+                </c2c-theme-name>
+              </c2c-theme>
+              <chat-spec>
+                <chat-spec-name>
+                  <string-variable-ref var-id="ATT_Auto_Desk_Tab"/>
+                </chat-spec-name>
+                <automaton-spec>
+                  <automaton-data-map>
+                    <item name="acif_id">
+                      <number>153</number>
+                    </item>
+                    <item name="name">
+                      <string>HS_SS-Uverse Survey</string>
+                    </item>
+                    <item name="type">
+                      <string>survey</string>
+                    </item>
+                    <item name="sub_type">
+                      <string>pre-chat</string>
+                    </item>
+                    <item name="acif_version">
+                      <string-constant-ref name="DEFAULT_ACIF_VERSION"/>
+                    </item>
+                    <item name="BAN">
+                      <string-variable-ref var-id="lpBAN"/>
+                    </item>
+                    <item name="BTN">
+                      <string-variable-ref var-id="lpBTN"/>
+                    </item>
+                    <item name="host">
+                      <string-variable-ref var-id="custHostName"/>
+                    </item>
+                    <item name="tGuardToken">
+                      <as-string>
+                        <object-access deref-expression="_getCookie('dtvtk')" object-id="CM"/>
+                      </as-string>
+                    </item>
+                  </automaton-data-map>
+                </automaton-spec>
+              </chat-spec>
+              <check-agent-availability>false</check-agent-availability>
+            </c2c-spec>
+          </show-c2chat>
+        </actions>
+      </business-rule>
+
+
+
+
+
+*PART 4: Whitelist the following domains:*
+
+operations.web.att.com
+intra4.web.att.com
+prism.techdev.att.com

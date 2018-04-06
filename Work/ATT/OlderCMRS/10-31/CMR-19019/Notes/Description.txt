@@ -1,0 +1,35 @@
+
+BU: FirstNet
+Goal: Create new link to launch FirstNet Care Pre-Chat being created in CMRASI-744.
+{color:red}Requested Launch Date: October 31, 2017{color}
+
+Task #1: *Please create the following link that, when clicked, launches the pre-chat survey that's being created in CMRASI-744:*
+
+New URL: https://att.inq.com/chatskins/launch/chat.html?survey=firstnetcare
+
+Task #2: Create page marker
+
+Assign the following page marker to the new URL in Task #1 - *ATT-FN-Care-O-FNCarePCS*
+
+Task #3: Create proactive business rule
+
+Assign business rule to page marker created in Task #2
+Business rule name: ATT-FN-Care-O-P-PCS-T0
+Business Unit: ATT-FirstNet_Care (ID: 19001047)
+Agent Group: FirstNet_Care (ID: 10005539)
+Launch condition: On page landing
+Will fire FirstNet_Care Pre Chat Survey automaton (created in CMRASI-744)
+
+
+Automaton name: FirstNet_Care Pre Chat Survey
+Node name(s): FirstNet_Care Pre Chat Survey
+Node type: Pre-Chat Survey
+
+
+Automaton name: FirstNet_Care Mobile Pre Chat Survey
+Node name(s): FirstNet_Care Mobile Pre Chat Survey
+Node type: Pre-Chat Survey
+
+
+
+https://att.inq.com/chatskins/launch/chat.html?survey=firstnetcare

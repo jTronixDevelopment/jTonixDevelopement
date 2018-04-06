@@ -1,0 +1,9 @@
+Target delivery date: 4/10/18
+
+BU: Digital Care (19000956)
+Goal: Provide test support for AT&T
+
+Tentative test support date: 4/10
+
+Jupiter Phase 2:
+Adding integrated offer framework to assist provisioning qualified customers.

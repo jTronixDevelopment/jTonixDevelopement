@@ -1,0 +1,36 @@
+BU: AEG
+Goal: Consolidate all versions of Telco SWW, MW, and SE business rules into 1 Telco business rule for each version.
+
+*Please create the following new business rules:*
+
+COMBINE The following rules
+ATT-HS_SS-Telco_SE-O-R-G-Tguard-C2C - HS_SS-All
+ATT-HS_SS-Telco_SWW-O-R-G-Tguard-C2C - HS_SS-All
+ATT-HS_SS-Telco_MW-O-R-G-Tguard-C2C - HS_SS-All
+
+ATT-AEG-Telco-O-R-G-C2C
+
+New Agent Group: AEG-Telco (10005958)
+New q-Threshold: 1.2
+New Content Group: ATT-AEG-Telco (combine all PMs that the previous 6 C2C and PRO T60 BRs launched on and retire the old CG)
+Launch Conditions: Combine all 3 previous C2C BRs' launch conditions into 1 large OR statement (maintain all additional over-arching boolean variable checks)|
+
+
+Combine The Following
+ATT-HS_SS-TelcoSE-O-P-G-Inactivity-T60
+ATT-HS_SS-TelcoSWW-O-P-G-Inactivity-T60
+ATT-HS_SS-TelcoMW-O-P-G-Inactivity-T60
+
+ATT-AEG-Telco-O-P-G-T60
+New Agent Group: AEG-Telco (10005958)
+New q-Threshold: 1.0
+New Content Group: ATT-AEG-Telco (combine all PMs that the previous 6 C2C and PRO T60 BRs launched on and retire the old CG)
+Launch Conditions: Combine all 3 previous PRO T60 BRs' launch conditions into 1 large OR statement (maintain all additional over-arching boolean variable checks)|
+
+
+ATT-DTM-C-RA-HS_SS_Telco-ManageBill-O-R-G-1603-C2C
+
+*ATT-DTM-C-RA-Telco-O-R-G-C2C
+
+New Content Group: Same as ATT-AEG-Telco-O-R-G-C2C
+Launch Conditions: Same as ATT-AEG-Telco-O-R-G-C2C

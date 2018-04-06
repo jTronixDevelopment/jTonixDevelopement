@@ -1,0 +1,163 @@
+==============================================================================================
+Device type: Mobile
+Business unit: HSS (19000753)
+Agent Group: HSS-Provide (10004235)
+Rule Name: ATT-DTM-HSS-Provide-O-R-G-Marketing-IDP-C2C
+Launch conditions – Display a C2C button IF the flowcode contains DSPRO when a customer lands on a page
+within the ATT-HSS-Shop-IDP content group
+Chat spec: Same as ATT-DTM-HSS-O-R-G-Marketing-DFW
+ Q-threshold = 1
+
+<business-rule id="5" name="ATT-DTM-HSS-Provide-O-R-G-Marketing-IDP-C2C">
+  <business-unit-id>19000753</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004235</agent-group-id>
+  </agent-profile>
+  <q-threshold>1.0</q-threshold>
+  <condition>
+    <when>
+      <event event-type="onPageLanding"/>
+    </when>
+    <and>
+      <is-device-type type="Phone"/>
+      <boolean-variable-ref var-id="dsproFlowCode"/>
+      <where>
+        <content-group-check cg-id="ATT-HSS-Shop-IDP"/>
+      </where>
+    </and>
+  </condition>
+  <actions>
+    <fire-custom-event event="setNameToAgentAlias"/>
+    <show-c2chat>
+      <c2c-spec>
+        <c2c-spec-name>
+          <string>BL-Round-Embedded-content-inFlow</string>
+        </c2c-spec-name>
+        <c2c-theme>
+          <c2c-theme-name>
+            <string>ATT-BL-Round-Standard-C2C-content-inFlow-Mobile</string>
+          </c2c-theme-name>
+        </c2c-theme>
+        <chat-spec>
+          <chat-spec-name>
+            <string>HSS_Phone_Provide</string>
+          </chat-spec-name>
+        </chat-spec>
+      </c2c-spec>
+    </show-c2chat>
+  </actions>
+</business-rule>
+
+==============================================================================================
+
+*Create New Business Rule*
+Device type: Desktop/Tablet
+Business unit: HSS (19000753)
+Agent Group: HSS-Provide (10004235)
+Rule Name: ATT-HSS-Provide-O-R-G-Marketing-IDP-C2C
+Launch conditions – Display a C2C button IF the flowcode contains DSPRO when a
+customer lands on a page within the ATT-HSS-Shop-IDP content group
+Chat spec: Same as ATT-HSS-O-R-G-Marketing-DFW
+Q-threshold = 1
+
+<business-rule id="6" name="ATT-HSS-Provide-O-R-G-Marketing-IDP-C2C">
+  <business-unit-id>19000753</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004235</agent-group-id>
+  </agent-profile>
+  <q-threshold>1.0</q-threshold>
+  <condition>
+    <when>
+      <event event-type="onPageLanding"/>
+    </when>
+    <and>
+      <is-device-type type="Phone"/>
+      <boolean-variable-ref var-id="dsproFlowCode"/>
+      <where>
+        <content-group-check cg-id="ATT-HSS-Shop-IDP"/>
+      </where>
+    </and>
+  </condition>
+  <actions>
+    <fire-custom-event event="setNameToAgentAlias"/>
+    <show-c2chat>
+      <c2c-spec>
+        <c2c-spec-name>
+          <string>MOBS-Anchor</string>
+        </c2c-spec-name>
+        <c2c-theme>
+          <c2c-theme-name>
+            <string>ATT-BL-Round-Standard_C2C</string>
+          </c2c-theme-name>
+        </c2c-theme>
+        <chat-spec>
+          <chat-spec-name>
+            <string-variable-ref var-id="HSS_Provide_Desk_Tab"/>
+          </chat-spec-name>
+          <chat-lang>en</chat-lang>
+        </chat-spec>
+        <check-agent-availability-interval>PT90S</check-agent-availability-interval>
+      </c2c-spec>
+    </show-c2chat>
+  </actions>
+</business-rule>
+
+==============================================================================================
+
+*Create New Business Rule*
+Device type: Desktop/Tablet
+Business unit: HSS (19000753)
+Agent Group: HSS-Provide (10004235)
+Rule Name: ATT-HSS-O-P-G-Marketing-IPD-T90
+Launch conditions – A proactive chat window should be launch 90 seconds after a
+customer lands on a page in Content Group - ATT-HSS-Shop-IDP AND contains flowcode = DSPRO
+Chat spec: Same as ATT-HSS-O-P-G-Marketing-DFW-T90
+Q-threshold = 1
+Funnel level = 1
+
+<business-rule id="7" name="ATT-DTM-ISM-SS-O-P-G-IVR2Chat-T0" funnel-level="1">
+  <business-unit-id>19000753</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004235</agent-group-id>
+  </agent-profile>
+  <q-threshold>1.0</q-threshold>
+  <condition>
+    <when>
+      <event event-type="onPageLanding">
+        <delay>
+          <duration>PT90S</duration>
+        </delay>
+      </event>
+    </when>
+    <and>
+      <not>
+        <is-device-type type="Phone"/>
+      </not>
+      <boolean-variable-ref var-id="dsproFlowCode"/>
+      <where>
+        <content-group-check cg-id="ATT-HSS-Shop-IDP"/>
+      </where>
+    </and>
+  </condition>
+  <actions>
+    <fire-custom-event event="setNameToAgentAlias"/>
+    <show-proactive>
+      <chat-spec>
+        <chat-spec-name>
+          <string-variable-ref var-id="HSS_Provide_Desk_Tab"/>
+        </chat-spec-name>
+        <automaton-spec>
+          <automaton-data-map>
+            <item name="tGuardToken">
+              <as-string>
+                <object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/>
+              </as-string>
+            </item>
+          </automaton-data-map>
+        </automaton-spec>
+      </chat-spec>
+    </show-proactive>
+  </actions>
+</business-rule>
+
+NOT DONE =---------ATT-HSS-O-P-G-Marketing-DFW-T90  does not exist

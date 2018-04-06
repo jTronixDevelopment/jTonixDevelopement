@@ -1,0 +1,35 @@
+var errorDiv = document.createElement('div');
+errorDiv.id = 'tcServiceErrorC2CB';
+document.body.append('errorDiv');
+Inq.reinit();
+
+Goal: Create 2 new rules to fire on error messages.  These rules are not PM or CG dependent, and should fire as long as the specified div id is present
+
+Create New Rule: ATT-MOBC-Support-O-R-G-Service_Error-C2C
+Business Unit: 19000710
+Agent Group: 10004255
+Launch when:
+* device is NOT phone
+* <js-string-ref js-var-id="ddo.getVar('page.category.pageOwnership')"/> does not equal "Business"
+* This div exists: <js-object js-var-id="document.getElementById('tcServiceErrorC2CB');"/>
+* NOT <boolean-variable-ref var-id="isSmbCustomer"/>
+
+C2C spec: same as ATT-DTM-C-RA-LoginRouting-O-R-G-MyATT2Login-Errors-C2C
+C2C theme: 33000994	ATT-Body-Medium_C2C (can we add the new div 'tcServiceErrorC2CB' to the list of divs on this c2c theme)
+Chat Spec: same as ATT-C-PC-MOBC-Support-I-R-VAP1-MOBCSS-Auth-Anchored-Test_170725a_A
+
+
+Create new rule: ATT-DTM-MOBC-Support-O-R-G-Service_Error-C2C
+Same as: ATT-MOBC-Support-O-R-G-Service_Error-C2C
+
+Changes:
+* fire on only PHONE (not desktop/tablet)
+* Chat spec: same as ATT-DTM-C-PC-MOBC-Support-I-R-VAP1-MobPreChat-Auth-Anchored-Test_170725a_A
+* C2C spec: same as ATT-DTM-C-RA-LoginRouting-O-R-G-MyATT2Login-Errors-C2C
+
+
+Please create the following attribute and add it to the above rules.
+
+Create Business Rule Attribute
+Name: Login_Error
+Goal: Capture the error code (will be the title of our C2C div container)

@@ -1,0 +1,5 @@
+TC_Bulk_Add_Template,,,,,
+Content_Name,Content_URL,Content_Pattern,Active(YES/NO),Cobrowse_Suppressed(YES/NO),Non-matching_page(YES/NO)
+ATT-HRO-O-Support_EEData,https://www.e-access.att.com/hronestop/group/hr-onestop/support-eedata,e-access(.*)hronestop/group/hr-onestop/support-eedata,Yes,no,no 
+ATT-HROW-O-Support_EEData,https://hronestop.web.att.com/group/hr-onestop/support-eedata,hronestop(.*)/group/hr-onestop/support-eedata,Yes,no,no 
+ATT-HRO-O-Emp_Discounts_Offers,https://www.e-access.att.com/hronestop/group/hr-onestop/employee-discounts-offers,e-access(.*)/hronestop/group/hr-onestop/employee-discounts-offers,Yes,no,no 

@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" initialize="InqApplication.initCompleted(this);"
+    layout="absolute" height="100%" width="100%" horizontalScrollPolicy="off"
+    verticalScrollPolicy="off" usePreloader="false" currentState="INPUT">
+  <mx:Style source="ATT-Blue-Phone-ACIF.css"/>
+
+  <mx:Script>
+    <![CDATA[
+         public var skinConfig:Object = {
+          minWidth: 150,
+          minHeight: 200,
+          defaultAgentAlias: "AT&amp;T",
+          enableModal: true,
+          divSkin: true,
+          readOpenerScript: true,
+          html5AudioSrc: "ATT-Blue-Phone-ACIF/chimes.mp3",
+          useAgentAlias: true,
+          resizeable: false,
+          soundEnabled: true,
+          soundURL: "/ATT-Blue-Phone-ACIF/chimes.mp3",
+          soundOnImgURL: "/ATT-Blue-Phone-ACIF/btnMuteOn.png",
+          soundOffImgURL: "/ATT-Blue-Phone-ACIF/btnMuteOff.png",
+          sPersistentFrameTitle: " ",
+          sAgentIsTyping: "Agent is typing...",
+          smallScreenDef: {
+            height: 100,
+            width: 100
+          },
+          initialTimeOut: 500,
+          focusEmailField: true,
+          processingBehavior: "SEQUENCE_MESSAGE_PROCESSING",
+          needWaitSequenceMessages: "Please wait while a secure chat connection is established. | 1 | 1 //Thank you for your patience. Please continue to wait. | 1 | 60"
+        };
+ ]]>
+  </mx:Script>
+
+  <mx:ClientBody>
+    <html:Div id="Minimized" visible="false" bottom="0" left="0"
+        right="0" height="65" position="fixed" z-index="1000" text-align="center">
+      <!--
+			<html:Text id="unreadText" text="unread message(s)"
+				visible="false"
+				z-index="102"
+    />
+      -->
+      <html:Div id="btnRestore" position="absolute" bottom="0" left="0"
+          height="50"
+       />
+      <html:Span id="agentMsgCounter" z-index="103" visible="false"
+          text-align="center" position="relative" top="0" right="115px"
+          width="35" height="30" font-family="arial, helvetica, sans-serif"
+          font-weight="bold" font-size="18px" color="#FFF" border-color="#FFF"
+          border-style="solid" border-thickness="2" border-radius="5px"
+          background-color="#b30a3c">
+      </html:Span>
+      <html:Div id="tc-aria-readme-mini" aria-live="assertive" visible="true"
+          position="absolute" left="-9999"
+       />
+      <html:Div id="agentText_bg" backgroundColor="transparent">
+        <html:Marquee id="agentText" visible="false" position="absolute"
+            color="#666" left="0" right="0" bottom="0" z-index="50">
+        </html:Marquee>
+      </html:Div>
+    </html:Div>
+    <html:Div id="Skin" visible="true" position="absolute" z-index="9999998" />
+    <mx:Style source="/ATT-Resources/normalize-mobile.css"/>
+    <mx:Style source="ATT-Blue-Phone-ACIF/Host.css"/>
+    <mx:Button id="btnRestore" position="fixed" height="50" bottom="0"
+        overflow="hidden" alt="Resume chat" z-index="101"
+     />
+  </mx:ClientBody>
+  <mx:Canvas id="background" bottom="0" top="0" left="0" right="0" />
+
+  <mx:Canvas id="titleBar" height="52" top="0"
+      backgroundColor="#147DFF" left="0"
+      right="0" border-color="#cbcbcb"
+      border-style="solid" border-thickness="1">
+    <mx:Text id="ChatWith" text="<h1>Chat with AT&amp;T</h1>"
+        position="absolute" vertical-align="middle" text-align="left"
+        width="180" height="53" left="15" top="7" fontFamily="Arial"
+        color="#FFF" aria-hidden="true" z-index="102"
+     />
+    <mx:Button id="btnEmail" top="12" role="button" right="103" height="30"
+        width="30" alt="Email Transcript" useHandCursor="true" upSkin="@Embed('./ATT-Blue-Phone-ACIF/btnEmail.png')"
+     />
+    <mx:Button id="btnChime" top="12" role="button" right="72" height="30"
+        width="30" alt="Chime On" useHandCursor="true" upSkin="@Embed('./ATT-Blue-Phone-ACIF/btnMuteOn.png')"
+     />
+    <mx:Button id="minimize" onClick="minimize()" role="button" top="12"
+        right="41" height="30" width="30" alt="Minimize" useHandCursor="true"
+        upSkin="@Embed('./ATT-Blue-Phone-ACIF/btnMin.png')"
+     />
+    <mx:Button id="btnCloseChat" onClick="close()" role="button"
+        top="12" right="10" height="30" width="30" alt="Close Chat"
+        useHandCursor="true" upSkin="@Embed('./ATT-Blue-Phone-ACIF/btnclose.png')"
+     />
+  </mx:Canvas>
+
+ <mx:Canvas id="chat" backgroundColor="transparent"
+		visible="false"
+    role="form"
+		top="58" bottom="0"
+		left="0" right="0">
+
+    <mx:TextArea id="chatWindow"
+			top="0" bottom="{chatFooter.height}"
+			left="15" right="15"
+			role="contentinfo"
+			aria-label="Chat Transcript"
+			backgroundColor="transparent"
+			backgroundSize="100%"
+			text-align="left"/>
+
+
+  <mx:Canvas id="chatFooter"
+      backgroundColor="#f2f2f2"
+      border-color="#cbcbcb"
+      border-style="solid"
+      border-thickness="1"
+			bottom="0"
+			height="54"
+			left="0"
+			right="0">
+
+    <mx:Canvas id="txtInput_bg"
+      bottom="10"
+      height="36"
+      left="16"
+      border-radius="3px"
+      backgroundColor="#FFF"
+      border-color="#cbcbcb"
+      border-style="solid"
+      border-thickness="2"
+      right="100">
+
+      <mx:TextInput id="txtInput" backgroundColor="transparent"
+        editable="true" borderStyle="none"
+        top="0"
+        bottom="0"
+        left="0"
+        right="0"
+        title="Type your message here"
+        outline="none"/>
+    </mx:Canvas>
+
+    <mx:Button id="btnSend"
+        role="button"
+        alt="Send Message"
+				bottom="10"
+				right="10"
+				height="36"
+				width="79"
+				useHandCursor="true"
+        upSkin="@Embed('./ATT-Blue-Phone-ACIF/btnSend.png')"/>
+
+  </mx:Canvas>
+
+  </mx:Canvas>
+  <mx:Canvas id="emailTitlebarCover" top="1" right="45" height="45"
+      width="125" backgroundColor="#147DFF" opacity=".8" visible="false"
+      z-index="9999"
+   />
+
+  <mx:Canvas id="email" top="58"
+      height="100%" left="0"
+      right="0" visible="false"
+      onVisible="show(emailFormInput) show(emailTitlebarCover)" onHidden="hide(emailFormInput) hide(emailTitlebarCover)"
+      bottom="0"
+   />
+
+  <mx:Canvas id="emailFormInput" top="50" height="160" left="0"
+      right="0" background-color="#f6f6f6" visible="false">
+    <mx:Text id="FailedSend" text="Please enter a valid email address."
+        text-align="left" height="25" backgroundColor="#ce2929" color="#FFF"
+        top="71" left="15" right="15" fontFamily="Arial" fontSize="10"
+        visible="false" onVisible="show(emailFailBox)"
+     />
+
+<mx:Text id="SuccessSend" text="Your transcript will be sent to the email you supplied once your chat session has ended."
+        text-align="left" top="10" left="15" right="15" fontFamily="Arial"
+        fontSize="10" visible="false" font-weight="bold" onVisible="hide(btnCancelEmail) show(btnCloseEmail) hide(FailedSend) hide(emailFailBox) hide(emailInput) hide(enterEmail) hide(EmailTitle) hide(btnSendEmail)"
+     />
+    <mx:Text id="enterEmail" top="10" left="15" right="15" font-size="14px"
+        line-height="17px" font-family="arial, helvetica, sans-serif"
+        text="Enter your email address and select <b>Submit</b> to get a transcript of this chat session."
+     />
+    <mx:TextInput id="emailInput" aria-describedby="enterEmail" top="55"
+        left="15" height="30" right="15" border-color="#cbcbcb" border-style="solid"
+        border-thickness="1" title="Enter email address" border-radius="5px"
+     />
+    <mx:Canvas id="emailFailBox" top="55" left="15" height="30" right="15"
+        border-color="#ce2929" border-style="solid" border-thickness="1"
+        title="Enter email address" border-radius="5px" visible="false"
+     />
+    <mx:Button id="btnCancelEmail" bottom="15" left="15" height="34"
+        width="130" overflow="visible" onClick="hide(email) hide(emailFormInput)"
+        role="button" alt="Cancel Transcript Form" useHandCursor="true"
+        upSkin="@Embed('./ATT-Blue-Phone-ACIF/btnCancelEmail.png')"
+     />
+    <mx:Button id="btnCloseEmail" position="relative" visible="false"
+        bottom="15" left="15" height="34" margin="auto" width="130"
+        overflow="visible" onClick="hide(email) hide(emailFormInput)"
+        role="button" alt="Return to chat button" useHandCursor="true"
+        upSkin="@Embed('./ATT-Blue-Phone-ACIF/btnCloseEmail.png')"
+     />
+    <!-- CI Framework: email() needs to be supported. -->
+    <mx:Button id="btnSendEmail" bottom="15" right="15" height="34"
+        width="130" role="button" useHandCursor="true" alt="Send Email Transcript"
+        upSkin="@Embed('./ATT-Blue-Phone-ACIF/btnSendEmail.png')"
+     />
+  </mx:Canvas>
+  <mx:Canvas id="thankYou" visible="false" backgroundColor="white"
+      onVisible="hide(optionsContainer)" top="{titleBar.height}"
+      bottom="0" left="0"
+      right="0">
+    <mx:Button id="btnThankYou" top="0" bottom="0" left="0" right="0"
+        label="Thank you for chatting with us today!"
+     />
+  </mx:Canvas>
+  <html:Div id="tc-aria-readme" aria-live="polite" visible="true"
+      position="absolute" left="-9999"
+   />
+  <mx:XFrame id="xframe1" source="/orbeon/inq/view?dtid=18000356"
+      onHidden="show(chat) show(chatFooter) show(btnPopOut) show(btnMinimize) show(btnEmail) show(btnChime) show(minimize)"
+      onVisible="hide(chat) hide(chatFooter) hide(btnPopOut) hide(btnMinimize) hide(btnEmail) hide(btnChime) hide(minimize)"
+      top="53" bottom="1" left="1" right="1" z-index="200" backgroundColor="#FFFFFF"
+      visible="true" init="true" overflow-x="hidden" overflow-y="scroll"
+   />
+  	<!-- START ACIF v3 PANELS -->
+  <!-- Relative Panels -->
+  <mx:Canvas id="acifCenter" visible="false" top="{titleBar.height}"
+      bottom="0" left="0"  right="0"
+			onVisible="hide(chat)" onHidden="show(chat)"
+      nativescroll:"true"
+   />
+  <mx:Canvas id="acifInnerFull" visible="false"
+			top="0"  bottom="0" left="0"  right="0" z-index="102"
+			onVisible="hide(chat)"  onHidden="show(chat)"
+   />
+  <mx:Canvas id="acifOuterFull" visible="false"
+		top="0" bottom="0"  left="0" right="0" z-index="102"
+		onVisible="hide(chat)" onHidden="show(chat)"
+   />
+  <mx:Canvas onVisible="fire(ACIFCanvasReady)"/>
+  <!-- END ACIF PANELS -->
+</mx:Application>

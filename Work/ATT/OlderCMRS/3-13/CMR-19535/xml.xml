@@ -1,0 +1,150 @@
+<business-rule id="101011" name="ATT-MOBC-Support-O-R-G-Service_Error-C2C">
+  <business-unit-id>19000710</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004255</agent-group-id>
+  </agent-profile>
+  <condition>
+    <when>
+      <custom-event event="onDDOPageLoadAction" />
+    </when>
+    <and>
+      <not>
+        <is-device-type type="Phone" />
+      </not>
+      <not>
+        <string-compare test="equal">
+          <as-string>
+            <js-string-ref js-var-id="ddo.getVar('page.category.pageOwnership')" />
+          </as-string>
+          <regexp>Business</regexp>
+        </string-compare>
+      </not>
+      <exists>
+        <js-object js-var-id="document.getElementById('tcEmbeddedC2CB');" />
+      </exists>
+      <not>
+        <boolean-variable-ref var-id="isSmbCustomer" />
+      </not>
+    </and>
+  </condition>
+  <actions>
+    <show-c2chat>
+      <c2c-spec>
+        <c2c-spec-id>
+          <number-variable-ref var-id="c2cspec" />
+        </c2c-spec-id>
+        <c2c-theme>
+          <c2c-theme-name>
+            <string>ATT-Body-Medium_C2C</string>
+          </c2c-theme-name>
+        </c2c-theme>
+        <chat-spec>
+          <chat-spec-name>
+            <string-variable-ref var-id="MOBC_Auto_Desk_Tab" />
+          </chat-spec-name>
+          <automaton-spec>
+            <automaton-data-map>
+              <item name="acif_id">
+                <number>151</number>
+              </item>
+              <item name="type">
+                <string>guide</string>
+              </item>
+              <item name="sub_type">
+                <string>pre-chat</string>
+              </item>
+              <item name="acif_version">
+                <string-constant-ref name="DEFAULT_ACIF_VERSION" />
+              </item>
+              <item name="tGuardToken">
+                <as-string>
+                  <object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM" />
+                </as-string>
+              </item>
+              <item name="routeChatNode">
+                <number-variable-ref var-id="mobcSupportRouteChatGuard" />
+              </item>
+            </automaton-data-map>
+          </automaton-spec>
+        </chat-spec>
+        <check-agent-availability-interval>PT90S</check-agent-availability-interval>
+        <c2c-page-element-id>tcServiceErrorC2CB</c2c-page-element-id>
+      </c2c-spec>
+    </show-c2chat>
+  </actions>
+</business-rule>
+<business-rule id="101012" name="ATT-DTM-MOBC-Support-O-R-G-Service_Error-C2C">
+  <business-unit-id>19000710</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004255</agent-group-id>
+  </agent-profile>
+  <condition>
+    <when>
+      <custom-event event="onDDOPageLoadAction" />
+    </when>
+    <and>
+      <not>
+        <is-device-type type="Phone" />
+      </not>
+      <not>
+        <string-compare test="equal">
+          <as-string>
+            <js-string-ref js-var-id="ddo.getVar('page.category.pageOwnership')" />
+          </as-string>
+          <regexp>Business</regexp>
+        </string-compare>
+      </not>
+      <exists>
+        <js-object js-var-id="document.getElementById('tcEmbeddedC2CB');" />
+      </exists>
+      <not>
+        <boolean-variable-ref var-id="isSmbCustomer" />
+      </not>
+    </and>
+  </condition>
+  <actions>
+    <show-c2chat>
+      <c2c-spec>
+        <c2c-spec-id>
+          <number-variable-ref var-id="c2cspec" />
+        </c2c-spec-id>
+        <c2c-theme>
+          <c2c-theme-name>
+            <string>ATT-Body-Medium_C2C</string>
+          </c2c-theme-name>
+        </c2c-theme>
+        <chat-spec>
+          <chat-spec-name>
+            <string-variable-ref var-id="MOBC_Auto_Desk_Tab" />
+          </chat-spec-name>
+          <automaton-spec>
+            <automaton-data-map>
+              <item name="acif_id">
+                <number>151</number>
+              </item>
+              <item name="type">
+                <string>guide</string>
+              </item>
+              <item name="sub_type">
+                <string>pre-chat</string>
+              </item>
+              <item name="acif_version">
+                <string-constant-ref name="DEFAULT_ACIF_VERSION" />
+              </item>
+              <item name="tGuardToken">
+                <as-string>
+                  <object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM" />
+                </as-string>
+              </item>
+              <item name="routeChatNode">
+                <number-variable-ref var-id="mobcSupportRouteChatGuard" />
+              </item>
+            </automaton-data-map>
+          </automaton-spec>
+        </chat-spec>
+        <check-agent-availability-interval>PT90S</check-agent-availability-interval>
+        <c2c-page-element-id>tcServiceErrorC2CB</c2c-page-element-id>
+      </c2c-spec>
+    </show-c2chat>
+  </actions>
+</business-rule>

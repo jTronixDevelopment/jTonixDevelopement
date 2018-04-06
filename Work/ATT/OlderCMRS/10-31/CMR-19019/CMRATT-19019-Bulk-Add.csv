@@ -1,0 +1,3 @@
+TC_Bulk_Add_Template,,,,,
+Content_Name,Content_URL,Content_Pattern,Active(YES/NO),Cobrowse_Suppressed(YES/NO),Non-matching_page(YES/NO)
+ATT-FN-Care-O-FNCarePCS,https://att.inq.com/chatskins/launch/chat.html?survey=firstnetcare,(.*)chatskins/launch/chat.html\?survey=firstnetcare(.*),YES,NO,NO

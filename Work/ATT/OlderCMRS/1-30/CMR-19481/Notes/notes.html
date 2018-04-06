@@ -1,0 +1,229 @@
+ Content content-group
+
+<content-group id="B2B-eBiz-ASEoD">
+  <cg-marker-check op="equals">ATT-eBiz-ASEoD-O-PreProvision</cg-marker-check>
+  <cg-marker-check op="equals">ATT-eBiz-ASEoD-O-ActiveManage</cg-marker-check>
+  <cg-marker-check op="equals">ATT-eBiz-ASEoD-O-ReviewOrder</cg-marker-check>
+  <cg-marker-check op="equals">ATT-eBiz-ASEoD-O-OrderStatus</cg-marker-check>
+</content-group>
+
+BR Name: ATT-B-RA-eBiz-O-R-G-ASEoD-C2C Business Unit: ATT-Business_Routing (ID: 19000766) Agent Group: B-RA_Business (10005028) Launch Conditions: Display a chat button on page landing; when C2C clicked, launch Automaton ID=2079 Content Groups / Page
+Markers: CG= B2B-eBiz-ASEoD Chat Theme / Chatskin: Same as ATT-B-RA-PCS-AVPN-O-R-G-Marketing-C2C C2C Theme / C2C Spec: Same as ATT-B-RA-PCS-AVPN-O-R-G-Marketing-C2C Auto Opener: Via automaton (-1) Script Tree: 12200553 Device Type: Desktop/Tablet
+
+<business-rule name="ATT-B-RA-eBiz-O-R-G-ASEoD-C2C" id="12347444">
+  <business-unit-id>19000766</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10005028</agent-group-id>
+  </agent-profile>
+  <rule-attributes>
+    <attribute>
+      <name>FirstName</name>
+      <value>
+        <string-variable-ref var-id="inqCustDatafirstName" />
+      </value>
+    </attribute>
+    <attribute>
+      <name>LastName</name>
+      <value>
+        <string-variable-ref var-id="inqCustDatalastName" />
+      </value>
+    </attribute>
+    <attribute>
+      <name>Email</name>
+      <value>
+        <string-variable-ref var-id="inqCustDataEMail" />
+      </value>
+    </attribute>
+    <attribute>
+      <name>PhoneNumber</name>
+      <value>
+        <string-variable-ref var-id="inqCustDataCustContNum" />
+      </value>
+    </attribute>
+    <attribute>
+      <name>Company</name>
+      <value>
+        <string-variable-ref var-id="inqCustDataCompany" />
+      </value>
+    </attribute>
+    <attribute>
+      <name>User</name>
+      <value>
+        <string-variable-ref var-id="inqCustDataUser" />
+      </value>
+    </attribute>
+    <attribute>
+      <name>Products</name>
+      <value>
+        <string-variable-ref var-id="inqCustDataProducts" />
+      </value>
+    </attribute>
+    <attribute>
+      <name>CompanyCreationDate</name>
+      <value>
+        <string-variable-ref var-id="inqCustDataCompCreationDate" />
+      </value>
+    </attribute>
+  </rule-attributes>
+  <condition>
+    <when>
+      <event event-type="onPageLanding"></event>
+    </when>
+    <and>
+      <not>
+        <is-device-type type="Phone"></is-device-type>
+      </not>
+      <content-group-check cg-id="B2B-eBiz-ASEoD" />
+    </and>
+  </condition>
+  <actions>
+    <show-c2chat>
+      <c2c-spec>
+        <c2c-spec-id>
+          <number-variable-ref var-id="c2cspec" />
+        </c2c-spec-id>
+        <c2c-theme>
+          <c2c-theme-name>
+            <string-variable-ref var-id="btnVerticalOrgC2CTheme" />
+          </c2c-theme-name>
+        </c2c-theme>
+        <chat-spec>
+          <chat-spec-id>
+            <number-variable-ref var-id="chatSpec29001246" />
+          </chat-spec-id>
+          <automaton-spec>
+            <automaton-data-map>
+              <item name="acif_id">
+                <number>2079</number>
+              </item>
+              <item name="type">
+                <string>survey</string>
+              </item>
+              <item name="sub_type">
+                <string>pre-chat</string>
+              </item>
+              <item name="acif_version">
+                <string-constant-ref name="DEFAULT_ACIF_VERSION" />
+              </item>
+              <item name="inqCustDataFirstName">
+                <string-variable-ref var-id="inqCustData-FirstName" />
+              </item>
+            </automaton-data-map>
+          </automaton-spec>
+          <opener-id>
+            <number>-1</number>
+          </opener-id>
+          <script-tree-id>
+            <number>12200553</number>
+          </script-tree-id>
+          <chat-theme>
+            <chat-theme-name>
+              <string-variable-ref var-id="ATT_v3-agentAlias-Automaton-EWT" />
+            </chat-theme-name>
+          </chat-theme>
+        </chat-spec>
+        <check-agent-availability-interval>PT90S</check-agent-availability-interval>
+        <c2c-page-element-id>tcC2CAnchoredEbiz</c2c-page-element-id>
+      </c2c-spec>
+    </show-c2chat>
+  </actions>
+</business-rule>
+
+
+Datapass
+
+<rule id="20010" name="eBizDataAttributes">
+  <condition>
+    <when>
+      <event event-type="onPageLanding" />
+    </when>
+    <or>
+      <where>
+        <url-match regexp="(.*)att.com(.*)/(ebiz|eServiceCollaborate|trinity|vsp|vsp_uat)/(.*)" />
+      </where>
+      <content-group-check cg-id="B2B-eBiz-ASEoD" />
+    </or>
+  </condition>
+  <actions>
+    <set-string-var var-id="inqCustDatafirstName">
+      <as-string>
+        <js-function-result>
+          <js-function-by-name name="inqCustDataAttribute" />
+          <params>
+            <string>firstName</string>
+          </params>
+        </js-function-result>
+      </as-string>
+    </set-string-var>
+    <set-string-var var-id="inqCustDatalastName">
+      <as-string>
+        <js-function-result>
+          <js-function-by-name name="inqCustDataAttribute" />
+          <params>
+            <string>lastName</string>
+          </params>
+        </js-function-result>
+      </as-string>
+    </set-string-var>
+    <set-string-var var-id="inqCustDataEMail">
+      <as-string>
+        <js-function-result>
+          <js-function-by-name name="inqCustDataAttribute" />
+          <params>
+            <string>email</string>
+          </params>
+        </js-function-result>
+      </as-string>
+    </set-string-var>
+    <set-string-var var-id="inqCustDataCustContNum">
+      <as-string>
+        <js-function-result>
+          <js-function-by-name name="inqCustDataAttribute" />
+          <params>
+            <string>phoneNumber</string>
+          </params>
+        </js-function-result>
+      </as-string>
+    </set-string-var>
+    <set-string-var var-id="inqCustDataCompany">
+      <as-string>
+        <js-function-result>
+          <js-function-by-name name="inqCustDataAttribute" />
+          <params>
+            <string>company</string>
+          </params>
+        </js-function-result>
+      </as-string>
+    </set-string-var>
+    <set-string-var var-id="inqCustDataUser">
+      <as-string>
+        <js-function-result>
+          <js-function-by-name name="inqCustDataAttribute" />
+          <params>
+            <string>User</string>
+          </params>
+        </js-function-result>
+      </as-string>
+    </set-string-var>
+    <set-string-var var-id="inqCustDataProducts">
+      <as-string>
+        <js-function-result>
+          <js-function-by-name name="inqCustDataAttribute" />
+          <params>
+            <string>products</string>
+          </params>
+        </js-function-result>
+      </as-string>
+    </set-string-var>
+    <set-string-var var-id="inqCustDataCompCreationDate">
+      <as-string>
+        <js-function-result>
+          <js-function-by-name name="inqCustDataAttribute" />
+          <params>
+            <string>companyCreationDate</string>
+          </params>
+        </js-function-result>
+      </as-string>
+    </set-string-var>
+  </actions>
+</rule>

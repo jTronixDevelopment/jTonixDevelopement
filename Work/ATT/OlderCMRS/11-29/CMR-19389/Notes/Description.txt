@@ -1,0 +1,28 @@
+Objective:
+
+Create business rules to launch on mobile for BCS-Premier_eBill.
+The mobile rules below should match the existing desktop C2C rules - two BR's will need to be created, one for outside of the iframe, the other for inside (same set-up as the desktop rules).
+
+-----------------------------------------------------------------------------------------------------------------
+Name: ATT-DTM-BCS-Premier_ebill-O-R-G-Marketing-C2C
+Device: Mobile only
+Launch Condition: Expose button on same URLs and CG as existing rule,
+ATT-BCS-Premier_ebill-O-R-G-Marketing-C2C -
+clicking will launch direct chat with agent (no automaton / pre-chat survey)
+Business Unit: ATT-BCS (19000680)
+Agent Group: BCS-Premier_ebill (10004200)
+Auto Opener: "Hello! How may I help you today?"
+C2C Theme / Spec: ATT-Mobile_C2C / ID=29001347
+Post-Chat Survey: Automaton ID=2106
+
+-----------------------------------------------------------------------------------------------------------------
+Name: ATT-DTM-BCS-Premier_ebill-O-R-G-V2-Marketing-C2C
+Device: Mobile only
+Launch Condition: Expose button on same URLs and CG as existing rule,
+ATT-BCS-Premier_ebill-O-R-G-V2-Marketing-C2C -
+clicking will launch direct chat with agent (no automaton / pre-chat survey)
+Business Unit: ATT-BCS (19000680)
+Agent Group: BCS-Premier_ebill (10004200)
+Auto Opener: "Hello! How may I help you today?"
+C2C Theme / Spec: ATT-Mobile_C2C / ID=29001347
+Post-Chat Survey: Automaton ID=2106

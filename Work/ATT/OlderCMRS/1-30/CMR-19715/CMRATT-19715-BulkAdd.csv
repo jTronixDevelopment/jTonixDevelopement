@@ -1,0 +1,5 @@
+TC_Bulk_Add_Template,,,,,
+Content_Name,Content_URL,Content_Pattern,Active(YES/NO),Cobrowse_Suppressed(YES/NO),Non-matching_page(YES/NO)
+DTVNow-Accounts-I-NewAccount,http://directvnow.com/accounts/new-account,(.*)directvnow.com/accounts/new-account,YES,NO,NO
+DTVNow-Accounts-I-ChooseExtras,http://directvnow.com/accounts/choose-extras,(.*)directvnow.com/accounts/choose-extras,YES,NO,NO
+DTVNow-Accounts-I-SpecialOffer,http://directvnow.com/accounts/special-offer,(.*)directvnow.com/accounts/special-offer,YES,NO,NO

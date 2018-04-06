@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<head>
+  <title>ATT</title>
+  <meta http-equiv=Content-Type content="text/html; charset=utf-8" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.bundle.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="CSS/app.css">
+</head>
+
+<body>
+  <!-- Nav Area -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+       Tools</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="createBR.html">Create BR</a>
+          <a class="dropdown-item" href="createDP.html">Create DataPass</a>
+          <a class="dropdown-item" href="createCG.html">Create Content Group</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="testing.html">Testing</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+
+  <!-- Set/Get Varible and Fire a Rule -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12  text-center">
+        <h1>My Test Enviornment</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6 ">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Set/Get Variables</h4>
+            <button id="gsAreaButton">Show</button>
+            <div id='gsArea' class="card-text">
+              <h6>Set Variable</h6>
+              <input placeholder="Variable to set">
+              <input placeholder="Value">
+              <a href="#!" class="btn btn-primary">Set Var</a>
+              <h6>Get Variable</h6>
+              <input placeholder="Value to Get">
+              <input placeholder="Value" disabled>
+              <a href="#!" class="btn btn-primary">Get Var</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 ">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Fire Rule</h4>
+            <button id="showvarAreaButton">Show</button>
+            <div id='varArea' class="card-text">
+              <h6>Rule Name</h6>
+              <input id="ruleToFireInput" type="text" name="" value="">
+              <button id='fireRuleButton' type="button" name="button">Fire Rule</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page Marker and TBD  -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-6 ">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Check Page Marker</h4>
+            <button id="pmAreaButton">Show</button>
+            <div id='pmArea' class="card-text">
+              <b>Check what page marker for a specified URL</b>
+              <h6>Set URL</h6>
+              <input id='pmURL' type="text">
+              <button id="pmURLButton" type="button" name="button">Check PM</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 ">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">List Rule Conditions</h4>
+            <button id="showfrAreaButton">Show</button>
+            <div id='frArea' class="card-text">
+              <h6>Rule Name</h6>
+              <input id="ruleConditionsInput" type="text" name="" value="">
+              <button id='listConditionsButton' type="button" name="button">List Conditions</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- A/B Rule -->
+
+  <h2>ATT</h2> Show me chat!
+
+  <div id="tcEntBus_C2CB" aria-live="polite">
+    <div onclick="inqFrame.Inq.C2CM.agrty(0); return false;" onmouseover="this.style.cursor='pointer'" style="cursor: pointer;">
+      <button>
+			  Find Your Account Rep
+			</button></div>
+  </div>
+  <div id="inqTestDiv"></div>
+  <div id="inqC2CMobDiv"></div>
+  <div id="tcMobileC2CB"></div>
+  <div id="inqTestDiv"></div>
+  <div id="inqC2CMobDiv"></div>
+  <div id="tcMobileC2CB"></div>
+  <div id="tcDTVC2CF"></div>
+  <div id="tcMobileC2CB"></div>
+  <div id="inqTestDiv"></div>
+  <div id="inqC2CMobDiv"></div>
+  <div id="tcEmbeddedC2CB"></div>
+  <div id="inqC2CMobDiv"></div>
+  <div id="Chat_Bottom_Right"></div>
+
+  <script type="text/javascript" language="javascript">
+    //var inqSiteID = 36216367;
+  </script>
+  <script type="text/javascript" language="javascript" charset="utf-8" src="https://att.inq.com/chatskins/launch/inqChatLaunch10004119.js">
+  </script>
+  <script type="text/javascript" src="JS/app.js"></script>
+  <script type="text/javascript" src="JS/testing.js"></script>
+</body>
+
+</html>

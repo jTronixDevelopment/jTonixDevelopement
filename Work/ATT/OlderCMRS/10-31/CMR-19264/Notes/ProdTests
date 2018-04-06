@@ -1,0 +1,33 @@
+
+
+<div class="cob-banner cob-banner-bottom" id="tcCob" style="background-color: #ffbaba;" aria-live="polite">
+    <div class="cob-agent-message" id="agentNotConnected" style="display:none;" aria-hidden="true">
+        You're no longer connected.
+    </div>
+    <div class="cob-agent-message" id="agentAssisted" style="top: 1px; color: #ff0000;" onclick="(inqFrame.Inq.CBC).toggleMenuBoxForCobBanner();" tabindex="0">
+        You're being assisted.
+    </div>
+    <div class="cob-agent-message hamBugMenuDisplay" onclick="(inqFrame.Inq.CBC).toggleMenuBoxForCobBanner();">
+        <a class="hamBugMenuIcon highlight" </a>
+    </div>
+    <div class="cob-ui-buttons cob-button-display" style="top: 5px; left: 8px; text-align:left;">
+        <a class="cob-button" href="#" id="stop" onclick="(inqFrame.Inq.CBC).stop(); return false;" ><span class="cob-icon cob-stop-icon"></span>End CoBrowse</a>
+        </div>
+</div>
+
+<div class="hamBugMenuBox" id="hamBugMenuBoxId" style="display:none;">
+    <ul class="accordion" style="margin:0;background:#ffbaba;">
+        <li class="" style="background:#ffbaba;">
+            <a href="#" id="stop" onclick="(inqFrame.Inq.CBC).stop(); return false;">End Cobrowse</a>
+        </li>
+        <li class="" style="background:#ffbaba;">
+            <a href="#" onclick="(inqFrame.Inq.CBC).stop(); inqFrame.Inq.FlashPeer.ciActionRestoreAndExitChat(); return false;" >End Chat + Cobrowse</a>
+        </li>
+    </ul>
+</div>
+
+<style type="text/css">
+<!--
+@import url(https://cobrowse.inq.com/cobrowse/banner.css);
+-->
+</style>

@@ -1,0 +1,12 @@
+TC_Bulk_Add_Template,,,,,
+Content_Name,Content_URL,Content_Pattern,Active(YES/NO),Cobrowse_Suppressed(YES/NO),Non-matching_page(YES/NO)
+ATT-Shop-IDP-O-offers_list,https://www.wireless.att.com/shop/service/offers/#/offers-list,(.*)/shop/service/offers/#/offers-list(.*),YES,NO,NO
+ATT-Shop-IDP-O-equipment,https://www.wireless.att.com/shop/service/configuration/#/equipment,(.*)/shop/service/configuration/#/equipment(.*),YES,NO,NO
+ATT-Shop-IDP-O-check_avail,https://www.wireless.att.com/shop/address/#/check-availability,(.*)/shop/address/#/check-availability(.*),YES,NO,NO
+ATT-Shop-IDP-O-response,https://www.wireless.att.com/shop/address/#/response,(.*)/shop/address/#/response(.*),YES,NO,NO
+ATT-Shop-IDP-O-mdu_addr,https://www.wireless.att.com/shop/address/#/mdu-address,(.*)/shop/address/#/mdu-address(.*),YES,NO,NO
+ATT-Shop-IDP-O-close_match,https://www.wireless.att.com/shop/address/#/close-match,(.*)/shop/address/#/close-match(.*),YES,NO,NO
+ATT-Shop-IDP-O-connect_comty,https://www.wireless.att.com/shop/address/#/connected-community,(.*)/shop/address/#/connected-community(.*),YES,NO,NO
+ATT-Shop-IDP-O-results,https://www.wireless.att.com/shop/address/#/results,(.*)/shop/address/#/results(.*),YES,NO,NO
+ATT-Shop-IDP-O-exist_servs,https://www.wireless.att.com/shop/address/#/existing-services,(.*)/shop/address/#/existing-services(.*),YES,NO,NO
+ATT-Shop-IDP-O-order,https://www.wireless.att.com/shop/address/#/order,(.*)/shop/address/#/order(.*),YES,NO,NO

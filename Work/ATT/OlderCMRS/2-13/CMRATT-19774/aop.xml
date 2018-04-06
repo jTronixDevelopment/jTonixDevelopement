@@ -1,0 +1,199 @@
+<business-rule id="101091" name="ATT-B-RA-BCS-Premier-O-R-G-NBS_AOP-C2C">
+  <business-unit-id>19000680</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10005690</agent-group-id>
+  </agent-profile>
+  <rule-attributes>
+    <attribute>
+      <name>Unrecognized_Page_URL</name>
+      <value>
+        <string-variable-ref var-id="unrecPageURL"/>
+      </value>
+    </attribute>
+  </rule-attributes>
+  <condition>
+    <when>
+      <custom-event event="onDDOPageLoadAction"/>
+    </when>
+    <and>
+      <where>
+        <content-group-check cg-id="ATT-BCS-Premier-Mega"/>
+      </where>
+      <not>
+        <is-device-type type="Phone"/>
+      </not>
+      <not>
+        <string-compare test="contains">
+          <as-string>
+            <js-string-ref js-var-id="ddo.getVar('user.account.liabilityType')"/>
+          </as-string>
+          <regexp>CRU|IRU</regexp>
+        </string-compare>
+      </not>
+      <boolean-variable-ref var-id="BCS-FAN-LDS-Check"/>
+    </and>
+  </condition>
+  <actions>
+    <show-c2chat>
+      <c2c-spec>
+        <c2c-spec-name>
+          <string>ATT-Bubble</string>
+        </c2c-spec-name>
+        <chat-spec>
+          <chat-spec-name>
+            <string-variable-ref var-id="BCS_Premier_Auto_Spec"/>
+          </chat-spec-name>
+          <automaton-spec>
+            <automaton-data-map>
+              <item name="acif_id">
+                <number>2096</number>
+              </item>
+              <item name="name">
+                <string>BCS-Premier LDS Routing Guide</string>
+              </item>
+              <item name="type">
+                <string>guide</string>
+              </item>
+              <item name="sub_type">
+                <string>routing</string>
+              </item>
+              <item name="acif_version">
+                <string-constant-ref name="DEFAULT_ACIF_VERSION"/>
+              </item>
+              <item name="tGuardToken">
+                <as-string>
+                  <object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/>
+                </as-string>
+              </item>
+              <item name="BAN">
+                <string-variable-ref var-id="lpBAN"/>
+              </item>
+              <item name="BTN">
+                <string-variable-ref var-id="lpBTN"/>
+              </item>
+            </automaton-data-map>
+          </automaton-spec>
+          <opener-id>
+            <number>-1</number>
+          </opener-id>
+        </chat-spec>
+        <check-agent-availability-interval>PT90S</check-agent-availability-interval>
+      </c2c-spec>
+    </show-c2chat>
+  </actions>
+</business-rule>
+<business-rule id="101092" name="ATT-DTM-B-RA-BCS-Premier-O-R-G-NBS_AOP-C2C">
+  <business-unit-id>19000680</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10005690</agent-group-id>
+  </agent-profile>
+  <condition>
+    <when>
+      <custom-event event="onDDOPageLoadAction"/>
+    </when>
+    <and>
+      <where>
+        <content-group-check cg-id="ATT-BCS-Premier-Mega"/>
+      </where>
+      <is-device-type type="Phone"/>
+      <boolean-variable-ref var-id="BCS-FAN-LDS-Check"/>
+    </and>
+  </condition>
+  <actions>
+    <show-c2chat>
+      <c2c-spec>
+        <c2c-spec-name>
+          <string>ATT-Bubble</string>
+        </c2c-spec-name>
+        <chat-spec>
+          <chat-spec-name>
+            <string-variable-ref var-id="BCS_Premier_Spec"/>
+          </chat-spec-name>
+          <automaton-spec>
+            <automaton-data-map>
+              <item name="acif_id">
+                <number>2096</number>
+              </item>
+              <item name="name">
+                <string>BCS-Premier LDS Routing Guide</string>
+              </item>
+              <item name="type">
+                <string>guide</string>
+              </item>
+              <item name="sub_type">
+                <string>routing</string>
+              </item>
+              <item name="acif_version">
+                <string-constant-ref name="DEFAULT_ACIF_VERSION"/>
+              </item>
+              <item name="tGuardToken">
+                <as-string>
+                  <object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/>
+                </as-string>
+              </item>
+              <item name="BAN">
+                <string-variable-ref var-id="lpBAN"/>
+              </item>
+              <item name="BTN">
+                <string-variable-ref var-id="lpBTN"/>
+              </item>
+            </automaton-data-map>
+          </automaton-spec>
+          <opener-name>
+            <string>BCS-Premier-NBS</string>
+          </opener-name>
+          <script-tree-id>
+            <number>12200665</number>
+          </script-tree-id>
+        </chat-spec>
+        <check-agent-availability-interval>PT90S</check-agent-availability-interval>
+      </c2c-spec>
+    </show-c2chat>
+  </actions>
+</business-rule>
+<business-action id="BCS_Premier_AOP_C2C">
+        <fire-custom-event event="setNameToAgentAlias"/>
+        <show-c2chat>
+          <c2c-spec>
+            <c2c-spec-name>
+              <string>ATT-Bubble</string>
+            </c2c-spec-name>
+            <chat-spec>
+              <chat-spec-name>
+                <string-variable-ref var-id="BCS_Premier_Spec"/>
+              </chat-spec-name>
+              <automaton-spec>
+                <automaton-data-map>
+                  <item name="acif_id">
+                    <number>2096</number>
+                  </item>
+                  <item name="name">
+                    <string>BCS-Premier LDS Routing Guide</string>
+                  </item>
+                  <item name="type">
+                    <string>guide</string>
+                  </item>
+                  <item name="sub_type">
+                    <string>routing</string>
+                  </item>
+                  <item name="acif_version">
+                    <string-constant-ref name="DEFAULT_ACIF_VERSION"/>
+                  </item>
+                  <item name="tGuardToken">
+                    <as-string>
+                      <object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/>
+                    </as-string>
+                  </item>
+                </automaton-data-map>
+              </automaton-spec>
+              <opener-name>
+                <string>BCS-Premier-NBS</string>
+              </opener-name>
+              <script-tree-id>
+                <number>12200665</number>
+              </script-tree-id>
+            </chat-spec>
+            <check-agent-availability-interval>PT90S</check-agent-availability-interval>
+          </c2c-spec>
+        </show-c2chat>
+      </business-action>

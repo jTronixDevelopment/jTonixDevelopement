@@ -1,0 +1,13 @@
+================================================================================
+=== Task 4 =====================================================================
+================================================================================
+
+*Task #4: Ensure AOP / LDS rules still working BAU*
+
+  The below rules currently fire for specific FAN IDs. They should continue to
+  work as-is after all of the optimizations made above in the ticket:
+  * ATT-B-RA-BCS-Premier-O-R-G-NBS_AOP-C2C
+  * ATT-DTM-B-RA-BCS-Premier-O-R-G-NBS_AOP-C2C
+
+  Let me know if the changes made in the other tasks impact these specific AOP
+  rules. We will have to optimize as needed.

@@ -1,0 +1,60 @@
+
+========================================================================================
+
+**ATT-Mobile-ACIF-C2C**
+
+"ATT-DTM-HSC-Support-O-R-G-Care-C2C"
+"ATT-DTM-ATS-Support-O-R-G-Care-C2C"
+"ATT-DTM-MOBC-ATS-O-R-G-KM-CV-C2C"
+"ATT-DTM-COL-HS-ManageBill-O-R-G-C2C"
+"ATT-DTM-COL-ManageBill-O-R-G-C2C"
+"ATT-DTM-COL-Mobility-O-R-G-Care_RWD-C2C"
+"ATT-DTM-COL-HomeSolutions-O-R-G-Care_RWD-C2C"
+"ATT-DTM-BCS-Support-O-R-G-Activation-C2C"
+"ATT-DTM-SMB-Support-O-R-G-Care-C2C"
+"ATT-DTM-SMB-O-R-G-Business-KM-CV-C2C"
+"ATT-DTM-MYATT-Shop-O-R-G-Checkout-C2C"
+"ATT-DTM-MOBA-O-R-G-Yahoo_Password-C2C"
+"ATT-DTM-HSC-UVC-O-R-G-Yahoo_Password-C2C"
+
+<show-c2chat>
+  <c2c-spec>
+    <c2c-spec-name>
+      <string>ATT-MOB-native</string>
+    </c2c-spec-name>
+    <chat-spec>
+      <chat-spec-id>
+        <number-variable-ref var-id="chatSpec29001347"/>
+      </chat-spec-id>
+      <automaton-spec>
+        <automaton-data-map>
+          <item name="acif_id">
+            <number-variable-ref var-id="MobilePreChatSurveys-ID"/>2008
+          </item>
+          <item name="name">
+            <string>Mobile - Consumer Routing - Pre-chat Surveys</string>
+          </item>
+          <item name="type">
+            <string>survey</string>
+          </item>
+          <item name="sub_type">
+            <string>routing</string>
+          </item>
+          <item name="acif_version">
+            <string-constant-ref name="DEFAULT_ACIF_VERSION"/>
+          </item>
+          <item name="tGuardToken">
+            <as-string><object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/></as-string>
+          </item>
+        </automaton-data-map>
+      </automaton-spec>
+      <chat-theme>
+        <chat-theme-name>
+          <string>ATT-ACIF-Mobile</string>
+        </chat-theme-name>
+      </chat-theme>
+    </chat-spec>
+  </c2c-spec>
+</show-c2chat>
+
+========================================================================================

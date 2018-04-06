@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>XML Helper</title>
+  <script type="text/javascript" language="javascript" charset="utf-8" src="https://att.inq.com/chatskins/launch/inqChatLaunch10004119.js">
+  </script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="app.css"> -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+  </script>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>XML Helper</h1>
+
+    <h1><button class='btn btn-danger btn-block' id="run" type="button" name="button">Start Program</button></h1>
+    <div id='programStatus'></div>
+    <div class="search">
+      <h1><button class='btn btn-primary' id="showSearchBy"> Show</button> Search Business Rules by : </h1>
+      <div id="searchByArea">
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon3">Search By</span>
+          <select class="form-control" id="searchBy">
+                <option value="BU">Business Unit</option>
+                <option value="AG">Agent Group</option>
+                <option value="phone">Phone Rules</option>
+                <option value="desktop">Desktop Rules</option>
+              </select>
+          <input class="form-control" id="searchValue" placeholder="Enter Value">
+          <button id="startSearch" type="button" name="button" class="btn btn-primary">Start  Search</button>
+        </div>
+        <br>
+        <h3>Filtererd results</h3>
+        <br>
+        <form class="input-group">
+          <input id='isPhone' class="form-control outline" type="checkbox">Mobile Only</input>
+          <input id='isDesktop' class="form-control outline" type="checkbox">Desktop Only</input>
+          <input id='hasAuto' class="form-control outline" type="checkbox">Has Autamaton</input>
+          <input id='proactive' class="form-control outline" type="checkbox">Proactive</input>
+          <input id='reactive' class="form-control outline" type="checkbox">Reactive</input>
+        </form>
+
+        <br/>
+        <div class="input-group">
+          <span class="input-group-addon">Refine By</span>
+          <select id="refineBy" class="form-control">
+                <option value="BU">Business Unit</option>
+                <option value="AG">Agent Group</option>
+                <option value="phone">Phone</option>
+                <option value="desktop">Desktop</option>
+              </select>
+          <input id="refineValue" class="form-control" placeholder="Enter Value">
+          <button id="startRefine" type="button" name="button" class="btn btn-primary">Refine Search</button>
+        </div>
+        <h5>Results</h5>
+        <ul id="searchByResults">
+        </ul>
+      </div>
+    </div>
+
+
+    <condition id='testLoop'>
+      <when>
+        <event event-type="onPageLanding" />
+      </when>
+      <and>
+        <not>
+          <is-device-type type="Phone" />
+        </not>
+        <or>
+          <where>
+            <marker-check op="equals">ATT-Support-O-KM-Main</marker-check>
+          </where>
+          <where>
+            <marker-check op="equals">ATT-Support-O-KM-Article</marker-check>
+          </where>
+        </or>
+        <where>
+          <url-match regexp="(.*)u-verse-high-speed-internet(.*)" />
+        </where>
+        <exists>
+          <object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM" />
+        </exists>
+        <!--- A Test 80% -->
+        <number-compare test="greater-than">
+          <number-variable-ref var-id="TDATA_170321" />
+          <number>1</number>
+        </number-compare>
+        <!--- A Test 80% -->
+      </and>
+    </condition>
+
+
+    <div id="inqTestDiv"></div>
+    <div id="tcDTVC2CF"></div>
+    <script type="text/javascript" src="/app.js">
+    </script>
+</body>
+
+</html>

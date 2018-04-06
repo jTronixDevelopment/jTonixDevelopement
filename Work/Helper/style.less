@@ -1,0 +1,71 @@
+body {
+  height: 200vh;
+}
+
+#Chat_Bottom_Right {
+  position: fixed!important;
+  z-index: 999999!important;
+  top: auto!important;
+  right: 5px!important;
+  bottom: 110px!important;
+  width: 67px !important;
+  height: 67px !important;
+}
+/* Desktop formatting (800+ pixels) */
+@media screen and (min-width: 800px) {
+  #Chat_Bottom_Right {
+    right: 30px!important;
+    width: 79px !important;
+    height: 79px !important;
+  }
+}
+
+#tc-chat-bubble {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  height: auto;
+  background: none;
+  cursor: pointer;
+  overflow: visible;
+  z-index: 1;
+  min-width: auto !important;
+
+  &:focus {
+    outline: 1px dotted #767676;
+  }
+
+  .text-format {
+    font-size: 19px !important;
+    line-height: 16.5px !important;
+    width: 79px !important;
+    top: 21px !important;
+  }
+
+  .speech-bubble-icon {
+    width: 67px !important;
+    height: 67px !important;
+    background: url("https://mediaeastv3.inq.com/media/sites/10004119/flash/images/att-bubble-static.png") no-repeat;
+    background-size: cover !important;
+    z-index: 0 !important;
+  }
+
+  .text-format {
+    position: absolute !important;
+    top: 17px !important;
+    z-index: 10 !important;
+    color: #FFF !important;
+    font-family: "Omnes-ATT-W02", "Arial";
+    font-size: 16px !important;
+    line-height: 14px !important;
+    width: 67px !important;
+    text-align: center !important;
+    font-weight: normal !important;
+
+    span {
+      font-size: 14px !important;
+      display: block !important;
+    }
+  }
+}

@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<head>
+  <title>ATT</title>
+  <meta http-equiv=Content-Type content="text/html; charset=utf-8" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.bundle.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="CSS/app.css">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true">
+       Tools</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="createBR.html">Create BR</a>
+          <a class="dropdown-item" href="createDP.html">Create DataPass</a>
+          <a class="dropdown-item" href="createCG.html">Create Content Group</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="testing.html">Testing</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12  text-center">
+        <h1>My Test Enviornment</h1>
+      </div>
+    </div>
+  </div>
+
+  <!-- Create Business Rule -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12 ">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Rule Maker</h4>
+            <div id="rmArea" class="card-text">
+              <h5>Rule Type</h5>
+
+              <select id="ruleType">
+                  <option value="">Choose Rule Type</option>
+                  <option value="actionList">Action List</option>
+                  <option value="reactive">Reactive Chat</option>
+                  <option value="proactive">Pro-active Chat</option>
+                  <option value="rule">Rule</option>
+                  <option value="ABChat">AB Chat</option>
+                </select>
+
+                <select id="abRuleType">
+                  <option value="proactive">Proactive</option>
+                  <option value="reactive">Reactive</option>
+                </select>
+
+              <!-- Standard -->
+              <h5>Common</h5>
+
+              <table id='commonRules' style="width:100%">
+                <tr>
+                  <td>Rule Name</td>
+                  <td><input id='ruleName' placeholder="Rule Name"></td>
+                </tr>
+                <tr>
+                  <td>Rule ID</td>
+                  <td><input id='ruleID' placeholder="ID"></td>
+                </tr>
+                <tr>
+                  <td>Agent Group</td>
+                  <td><input id='agentGroup' placeholder="AG"></td>
+                </tr>
+                <tr>
+                  <td>Business Unit</td>
+                  <td>
+                    <input id='businessUnit' placeholder="BU">
+                  </td>
+                </tr>
+                <tr>
+                  <td>Event Type</td>
+                  <td>
+                    <select id="eventType">
+                        <option value="">Event Types</option>
+                        <option value="onPageLanding">On page landing</option>
+                        <option value="AssistedEvent">setNameToAgentAlias</option>
+                        <option value="Assisted">onDDOPageLoadAction</option>
+                        <option value="NewSession">dataReadyInDL</option>
+                        <option value="SaleLanding">tempDataReady</option>
+                      </select>
+                  </td>
+                </tr>
+                <tr id='onPageLandingDelay'>
+                  <td>Delay</td>
+                  <td>
+                    <input id='eventDelay' type="number" value="0">
+                  </td>
+                </tr>
+                <tr>
+                  <td>Device Type</td>
+                  <td>
+                    <select id='deviceType'>
+                        <option value="">Choose Device Type</option>
+                        <option value="phone">Phone</option>
+                        <option value="desktop">Desktop/Tablet</option>
+                      </select>
+                  </td>
+                </tr>
+              </table>
+
+              <h5>Options</h5>
+
+              <table id='ruleOptions' style="width:100%">
+                <tr>
+                  <td>Q-threshold</td>
+                  <td>
+                    <select id="qThresholdSelector">
+                      <option value = false >No</option>
+                      <option value = true >True</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr id='qThresholdArea'>
+                  <td>Q-threshold Value</td>
+                  <td>
+                    <input id='qThresholdInput' type="number" value="0">
+                  </td>
+                </tr>
+                <tr>
+                  <td>Has Automaton or Guide</td>
+                  <td>
+                    <select id="hasAutomaton">
+                      <option value= false >No</option>
+                      <option value= true >True</option>
+                    </select>
+                  </td>
+                </tr>
+
+                <tr id='chatSpecNameRow'>
+                  <td>Chat Spec Name / ID</td>
+                  <td>
+                    <input id="chatSpecName" placeholder="Chatspec (string) or ID( # )">
+                  </td>
+                </tr>
+
+              <tr id='actionListRow'>
+                <td>Business Action Lists</td>
+                <td>
+                  <input id="actionList" placeholder="Var Ref">
+                </td>
+              </tr>
+            </table>
+              <!-- Reactive Chat -->
+              <table id='reactive-choices' style="width:100%">
+                <thead>
+                  <tr>
+                    <th>Reactive Chat Specific</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>C2C Theme Name / ID</td>
+                    <td>
+                      <input id="c2cThemeName" placeholder="C2C Name (string) or ID( # )">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>C2C Spec Name / ID</td>
+                    <td>
+                      <input id="c2cSpecName" placeholder="C2C Spec (string) or ID( # )">
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- AB Rule -->
+              <table id='rule-choices' style="width:100%">
+              </table>
+              <!-- Rule Rule -->
+              <table id='ABRule-choices' style="width:100%">
+              </table>
+
+              <table id='proactive-choices' style="width:100%">
+                <h5>Proactive Specific</h5>
+                <tr>
+                  <td>Funnel Level</td>
+                  <td>
+                    <input id="funnelLevel" type="number" >
+                  </td>
+                </tr>
+              </table>
+
+              <textarea id="ruleOuput" rows="8" cols="80"></textarea>
+              <button id="createBR" class="btn btn-primary">Create CG</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RuleTypes -->
+
+  <div id="pro-active-br">
+  </div>
+
+  <div id="reactive-br">
+  </div>
+
+  <!-- A/B Rule -->
+  <div id="inqTestDiv"></div>
+
+  <script type="text/javascript" language="javascript">
+    //var inqSiteID = 36216367;
+  </script>
+  <script type="text/javascript" language="javascript" charset="utf-8" src="https://att.inq.com/chatskins/launch/inqChatLaunch10004119.js">
+  </script>
+  <script type="text/javascript" src="JS/app.js"></script>
+  <script type="text/javascript" src="JS/creator/createBR.js"></script>
+</body>
+
+</html>

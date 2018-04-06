@@ -1,0 +1,30 @@
+// All rules mets
+
+<business-rule id="9" name="ATT-DTM-ISM-SS-O-P-G-IVR2Chat-T0" funnel-level="999">
+  <business-unit-id>19000956</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004465</agent-group-id>
+  </agent-profile>
+  <condition>
+    <when>
+      <event event-type="onPageLanding"/>
+    </when>
+    <and>
+      <is-device-type type="Phone"/>
+      <where>
+        <url-match regexp="(.*)agentgrp=ism-ss(.*)"/>
+      </where>
+    </and>
+  </condition>
+  <actions>
+    <fire-custom-event event="setNameToAgentAlias"/>
+    <show-proactive>
+      <chat-spec>
+        <chat-spec-name>
+          <string>SS_ATT-ISM-SS_Reactive_Phone</string>
+        </chat-spec-name>
+        <automaton-spec>
+      </chat-spec>
+    </show-proactive>
+  </actions>
+</business-rule>

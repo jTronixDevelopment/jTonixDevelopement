@@ -1,0 +1,25 @@
+Goal: Allow IVR visitors to receive a deep link via text to launch proactive chat.
+\\
+Unsuppress mobile chat MobileProactiveSuppression when the URL contains "agentgrp=ism-ss"
+\\
+*Create New Rule*
+Rule Name: ATT-DTM-ISM-SS-O-P-G-IVR2Chat-T0
+Launch Condition:
+- Show proactive window on page landing when the URL contains "agentgrp=ism-ss" and
+  the device is a smartphone (both mdot and native experiences).
+- Business Unit: 19000956
+- Agent Group: 10004465
+- Auto Opener: same as ATT-DTM-MYATT-ISM-O-R-G-AcctBill-C2C
+- Chat theme: n/a
+- Chat spec: same as ATT-DTM-MYATT-ISM-O-R-G-AcctBill-C2C
+- Device Type: Phone (both mdot and native)
+- Queue Threshold: Always show chat
+- Funnel Level: 999
+- Agent Name: same as ATT-DTM-MYATT-ISM-O-R-G-AcctBill-C2C
+- Script Tree: same as ATT-DTM-MYATT-ISM-O-R-G-AcctBill-C2C
+
+
+BU --- 19000956 - ATT-AEG-Digital-Care
+AG --- 10004465 - ISM-SS
+
+Page is not tagged.

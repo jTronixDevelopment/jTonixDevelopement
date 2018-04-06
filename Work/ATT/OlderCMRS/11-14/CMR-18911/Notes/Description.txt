@@ -1,0 +1,65 @@
+ATT-MOBC-Support-O-P-G-Billing-T120
+
+Go to https://att.com/olam/loginAction.olamexecute
+Login: olampstamu419969/test1ng
+Go To URL:https://www.att.com/my/#/viewBill
+Wait 120 seconds
+BR to display: ATT-MOBC-Support-O-P-G-Billing-T120
+
+GOOD
+
+-------------------------------------------------------------------------------------------------------------
+On Mobile Device -
+Go to att.com
+Log in: olamtest01-5169/TestAccount1
+Go to: https://www.att.com/esupport/mysupport.jsp?pgId=index#/wireless
+Click the C2C at the bottom
+You should get either the following two rules
+ATT-DTM-C-RG-MobCRouting-O-R-G-VAP1-MobMobRG-MySupport-KM-CV-Auth-C2C-Test_YYMMDDzx_A (original rule with routing guide)
+ATT-DTM-C-VA-MobCRouting-O-R-G-VAP1-MobMobRG-MySupport-KM-CV-Auth-C2C-Test_YYMMDDzx_B (NINA rule)
+
+ATT-DTM-C-PC-MYATT-Support-O-R-G-VAP1-MobPreChat-Account-NonBillPg-Auth-C2C-Test_171031zx_B
+ATT-DTM-C-PC-MYATT-Support-O-R-G-VAP1-MobPreChat-Account-NonBillPg-Auth-C2C-Test_171031zx_A
+
+GOOD
+
+-------------------------------------------------------------------------------------------------------------
+
+Desktop
+
+Rule: ATT-C-PC-MOBC-Support-O-R-VAP1-MOBCSS-Unauth-Anchored
+Device Type: Desktop/Tablet
+Validation Steps:
+Go to: https://www.att.com/esupport/main.html#!/wireless/topic_planfeature-topic_featuressettings
+Chat button should display
+Click on the chat button
+Sign in Using - olamtest01-5169/TestAccount1
+Fill our PCS
+BR to display : ATT-C-PC-MOBC-Support-O-R-VAP1-MOBCSS-Unauth-Anchored
+
+Good
+
+-------------------------------------------------------------------------------------------------------------
+
+*Desktop Test*
+Go to att.com
+Log in: olamtest01-5169/TestAccount1
+Click the myAT&T hamburger menu
+Click Billing & Payments
+Click View my Bill
+In JS console Exectue Command - inqFrame.Inq.PM.getVar("170725a_18770").z3(1);
+Then in JS Console execute Inq.reinit();
+Click on the chat button
+ATT-C-PC-MOBC-Support-I-R-VAP1-MOBCSS-Auth-Anchored-Test_170725a_A/B should fire
+
+-------------------------------------------------------------------------------------------------------------
+
+ATT-DTM-C-PC-MOBC-Support-I-R-VAP1-MobPreChat-Auth-Anchored-Test_170725a_A
+
+Mobile Test
+Go to att.com
+Log in: olamtest01-5169/TestAccount1
+Click the myAT&T hamburger menu
+Click Billing & Payments
+Click View my Bill
+ATT-DTM-C-PC-MOBC-Support-I-R-VAP1-MobPreChat-Auth-Anchored-Test_170725a_A should fire

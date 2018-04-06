@@ -1,0 +1,3 @@
+TC_Bulk_Add_Template,,,,,
+Content_Name,Content_URL,Content_Pattern,Active(YES/NO),Cobrowse_Suppressed(YES/NO),Non-matching_page(YES/NO)
+ATT-BCS-Premier-O-POS,https://www.wireless.att.com/business,https://www.wireless.att.com/business(.*),YES,NO,NO

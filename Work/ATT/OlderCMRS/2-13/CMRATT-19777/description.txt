@@ -1,0 +1,25 @@
+BCS_Premier_Login_C2C
+BCS_Premier_Login_Phone_C2C
+BCS_Premier_Login_Pro
+
+
+BCS_Premier_Phone_C2C
+BCS_Premier_Pro
+
+BCS_Premier_B_RA_C2C
+BCS_Premier_C2C
+BCS_Premier_Pro
+
+ATT-BCS-Premier-O-Shop
+
+
+36215889
+ATT-BCS-Premier-O-BusinessCare_Home
+
+36215871
+ATT-BCS-Premier-O-Shop
+
+
+<content-group-check cg-id="ATT-BCS-Premier-Mega"/>
+<content-group-check cg-id="BCS-Premier-POS"/>
+<content-group-check cg-id="BCS-Premier-POC"/>

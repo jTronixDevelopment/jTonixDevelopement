@@ -1,0 +1,85 @@
+{panel}
+BU: Enterprise
+Goal: Update the chat experience in the eSupport space to accomplish the following:
+* T.DATA should only launch for authenticated users on the Internet, TV, and Digital Phone product pages. (CHAT-880)
+* Touchguides should only launch for unauthenticated users on the Internet, TV, and Digital Phone product pages
+* Neither T.DATA nor guides should launch for authenticated or unauthenticated users on the Wireless eSupport pages because the VA is present there, and T.DATA does not have Wireless intents configured.
+* Remove chat from the Email page
+
+*PART 1: Please create the following new business rule:*
+
+Name: *ATT-C-RA-UverseVoiceRouting-O-R-G-Care-KM-TDATA-C2C*
+BU: 19000765
+AG: 10004331
+Site Location: URL == (.*)u-verse-voice(.*), Marker == ATT-Support-O-KM-Main, Marker == ATT-Support-O-KM-Article
+Launch Conditions: For authenticated customers only, please launch an anchored chat button on page landing that, when click, launches T.DATA.
+Chat Theme / Chatskin: Same as ATT-C-RA-PhoneRouting-O-R-G-Care-KM-TDATA-C2C
+C2C Theme / Chat Button(s): Same as ATT-C-RA-PhoneRouting-O-R-G-Care-KM-TDATA-C2C
+Auto Opener: Welcome to AT&T Chat. Briefly state your reason for chatting to be connected to the appropriate specialist.
+Script Tree: Same as ATT-C-RA-PhoneRouting-O-R-G-Care-KM-TDATA-C2C
+Device Type: Standard & Tablet only
+Queue Threshold: 1.0
+Agent Name: Agent Alias
+
+*PART 2: Please update the +ATT-C-RA-PhoneRouting-O-R-G-Care-KM-TDATA-C2C+ business rule with the following:*
+* Ensure that this business rule only launches for authenticated customers
+* Update the site location on which this BR launches to: URL == (.*)u-verse-voice(.*), Marker == ATT-Support-O-KM-MySupport
+** This will prevent the business rule from launching on Wireless eSupport pages
+* Rename the BR to ATT-C-RA-UverseVoiceRouting-O-R-G-Care-MySupport-TDATA-C2C
+
+*PART 3: Retire the following business rule (to remove chat from the Email page):*
+
+ATT-DTM-MOBC-Support-O-R-G-EmailSupport-KM-CV-C2C
+
+{panel}
+
+-----------------------------------
+
+*Original Ticket Content:*
+
+Esupport pages stopped launching the TDATA business rules since 10/3
+Impacted business rules:
+ATT-C-RA-UverseIntRouting-O-R-G-Care-KM-C2C-Test_TDATA_170321_A
+ATT-C-RA-DTVRouting-O-R-G-MySupport-Care-TDATA-C2C
+ATT-C-RA-UverseIntRouting-O-R-G-MySupport-Care-KM-C2C-Test_TDATA_170321_A
+ATT-C-RA-UverseVoiceRouting-O-R-G-MySupport-Care-KM-TDATA-C2C
+ATT-C-RA-INTRouting-O-R-G-Care-KM-TDATA-C2C
+ATT-C-RA-PhoneRouting-O-R-G-Care-KM-TDATA-C2C
+ATT-C-RA-DigTVRouting-O-R-G-Care-KM-TDATA-C2C
+
+# Go to www.att.com
+# Log in with huntland_03@att.net / uverse123
+# Go to https://www.att.com/esupport/
+# Click on one of the following support options:
+# Internet Account | Internet Basic 6
+# Phone Account | AT&T Phone - Unlimited
+# Email Account
+*Expected:*
+Chat button should be available. Upon clicking the chat button the TDATA experience should be present to handle the chat.
+*Observed:*
+For Email or Phone selection: No chat button is displayed
+For Internet selection: A chat button appears, upon clicking the chat button a blank chat window appears
+
+
+Impacted business units:
+Home Solutions Care; Home Solutions Sales & Service; Integrated Service Model (ISM)
+
+h2. Update
+BU: Digital Care
+Goal: A TDATA rule was retired back in October, but needs to be added back onto a Uverse page.
+Rule: ATT-C-RA-PhoneRouting-O-R-G-Care-KM-TDATA-C2C
+URL: https://www.att.com/esupport/mysupport.jsp?pgId=index#/u-verse-voice
+Login credentials: huntland_03@att.net / uverse123
+The rule should launch on the URL when the user has logged in
+
+h5. Per Sean's conversation with the client, Email page should not have chat button.
+
+
+
+
+
+ATT-C-RA-MobCRouting-O-R-VAP1-KM-CV_Auth-C2C-Test_W_160816a_A Added force rule.
+
+
+Task 11 ATT-C-RA-UverseTVRouting-O-R-G-MySupport-Care-KM-C2C-Test_TDATA_170321_B
+DNE

@@ -1,0 +1,24 @@
+PART 1: Please create the following new page markers:
+
+URL	Page Marker
+https://www.e-access.att.com/hronestop/group/hr-onestop/support-eedata	ATT-HRO-O-Support_EEData
+https://hronestop.web.att.com/group/hr-onestop/support-eedata	ATT-HROW-O-Support_EEData
+https://www.e-access.att.com/hronestop/group/hr-onestop/employee-discounts-offers	ATT-HRO-O-Emp_Discounts_Offers
+
+ADD The Following PM's to CG { HRO-HR_Staffing_CC-Delay_Reactive }
+<cg-marker-check op="equals">ATT-HRO-O-Support_EEData</cg-marker-check>
+<cg-marker-check op="equals">ATT-HROW-O-Support_EEData</cg-marker-check>
+<cg-marker-check op="equals">ATT-HRO-O-Emp_Discounts_Offers</cg-marker-check>
+<cg-marker-check op="equals">ATT-HROW-O-Emp_Discounts_Offers</cg-marker-check>
+
+
+PART 2: Please update the HRO-employee-discounts-offers page marker NAME to the following:
+
+ATT-HROW-O-Emp_Discounts_Offers
+
+PART 3: Please add the following page markers to the HRO-HR_Staffing_CC-Delay_Reactive content group:
+
+ATT-HRO-O-Support_EEData
+ATT-HROW-O-Support_EEData
+ATT-HRO-O-Emp_Discounts_Offers
+ATT-HROW-O-Emp_Discounts_Offers

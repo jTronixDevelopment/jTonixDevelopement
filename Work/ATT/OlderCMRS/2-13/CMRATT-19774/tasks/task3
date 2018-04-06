@@ -1,0 +1,126 @@
+================================================================================
+=== Task 3 =====================================================================
+================================================================================
+
+*Task #3: Create new business rules*
+
+  Name: ATT-B-RA-BCS-Premier-O-R-G-Store-C2C
+  Business Unit:
+  ATT-BCS 19000680
+  Agent Group:
+  BCS-Premier 10004199
+  Device Type:
+  Desktop/Tablet
+  Launch Conditions:
+  Display a chat button on page landing for CG==BCS-Premier-POS (ddo pageload)
+  *+and not+* user.account.fan = 9999SBDC;
+  *when C2C clicked,
+  launch Automaton Name = BCS Premier Filtering Guide – Online Store (POS) (created in CMRASI-1242)*
+  C2C Theme:
+  ATT-BL-Round-Standard_C2C / ID=33001345).
+  Ensure that the "Resume State" as described in CMRATT-19321 is programmed as
+  well (note: if a different theme is being created for the "Resume State", please let me know).
+  Chat Theme / Spec:
+  Use same as old rule, ATT-BCS-Premier-O-R-G-Marketing-C2C
+  Auto Opener:
+  Via automaton -1
+  Script Tree:
+  Set in automaton 12200550
+  Post-Chat Survey:
+  ID=2106
+
+  ================================================================================
+
+  Name: ATT-BCS-Premier-O-R-StoreUnauth-C2C
+  Business Unit:
+    ATT-BCS 19000680
+    Agent Group:
+    BCS-Premier 10004199
+    Device Type:
+    Desktop/Tablet
+    Launch Conditions:
+    Display a chat button on page landing for CG==BCS-Premier-POS (ddo pageload)
+    *+and+* user.account.fan=9999SBDC;
+    when clicked, initiate direct chat with BCS-Premier*
+    C2C Theme:
+    ATT-BL-Round-Standard_C2C / ID=33001345). Ensure that the "Resume State" as
+    described in CMRATT-19321 is programmed as well
+    (note: if a different theme is being created for the "Resume State", please let me know).
+    Chat Theme / Spec:
+    Use same as old rule, ATT-BCS-Premier-O-R-G-Marketing-C2C
+    Auto Opener:
+    ID= 17226371 (“Hello! How may I help you today?”)
+    Script Tree:
+    12200550
+    Post-Chat Survey:
+    ID=2106
+
+    ================================================================================
+
+    Name: ATT-DTM-BCS-Premier-O-R-StoreUnauth-C2C
+    Business Unit:
+    ATT-BCS 19000680
+    Agent Group:
+    BCS-Premier 10004199
+    Device Type:
+    Mobile
+    Launch Conditions:
+    Display a chat button on page landing for CG==BCS-Premier-POS (ddo pageload)
+    *+and+* user.account.fan=9999SBDC;
+    when clicked, initiate direct chat with BCS-Premier*
+    C2C Theme:
+    Use the same mobile C2C button (round/bubble/ambient ring) as being created
+    for CMRATT-19320
+    Chat Theme / Spec:
+    Use same as old rule, ATT-DTM-BCS-Premier-O-R-G-Marketing-C2C
+    Auto Opener:
+    ID= 17226371 (“Hello! How may I help you today?”)
+    Script Tree:
+    12200550
+    Post-Chat Survey:
+    ID=2106
+
+    ================================================================================
+
+    Name: ATT-BCS-Premier-O-P-Store-T90
+    Business Unit:
+    ATT-BCS 19000680
+    Agent Group:
+    BCS-Premier 10004199
+    Device Type:
+    Desktop/tablet
+    Launch Conditions:
+    Display proactive engagement window 90 seconds after page landing on
+    CG==BCS-Premier-POS (ddo pageload); direct chat with BCS-Premier
+    Chat Theme / Spec:
+    Use same as old rule, ATT-BCS-Premier-O-R-G-Marketing-C2C
+    Auto Opener:
+    ID= 17226371 (“Hello! How may I help you today?”)
+    Script Tree:
+    ID=12200550
+    Post-Chat Survey:
+    ID=2106
+
+    ================================================================================
+
+    Name: ATT-DTM-BCS-Premier-O-R-Store-C2C
+    Business Unit:
+    ATT-BCS 19000680
+    Agent Group:
+    BCS-Premier 10004199
+    Device Type:
+    Mobile
+    Launch Conditions:
+    Display a chat button on page landing for CG==BCS-Premier-POS (ddo pageload);
+    clicking will launch direct chat with BCS-Premier agent group
+    C2C Theme:
+    Use the same mobile C2C button (round/bubble/ambient ring) as
+    being created for CMRATT-19320
+    Chat Theme / Spec:
+    Use same as old rule, ATT-DTM-BCS-Premier-O-R-G-Marketing-C2C
+    Auto Opener:
+    ID= 17226371 (“Hello! How may I help you today?”)
+    Script Tree:
+    ID=12200550
+    Post-Chat Survey:
+    ID=2106

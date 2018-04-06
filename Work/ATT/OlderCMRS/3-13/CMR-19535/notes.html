@@ -1,0 +1,49 @@
+<rule id="8675309" name="MXML Config">
+  <condition>
+    <when>
+      <event event-type="onPageLanding" />
+    </when>
+    <always/>
+  </condition>
+  <actions>
+    <log>
+      <string-concat>
+        <string>** Ryan isSmbCustomer : </string>
+        <as-string>
+          <boolean-variable-ref var-id="isSmbCustomer" />
+        </as-string>
+      </string-concat>
+    </log>
+    <log>
+      <string-concat>
+        <string>** Ryan Page Ownership : </string>
+        <as-string>
+          <<js-string-ref js-var-id="ddo.getVar('page.category.pageOwnership')" />
+        </as-string>
+      </string-concat>
+    </log>
+    <log>
+      <string-concat>
+        <string>** Ryan </string>
+        <as-string>
+          <boolean-variable-ref var-id="isSmbCustomer" />
+        </as-string>
+      </string-concat>
+    </log>
+  </actions>
+</rule>
+
+
+<or>
+  <custom-event event="zuluPageLoad"/>
+  <event event-type="onPageLanding"/>
+</or>
+
+ATTWTV-AEG-attwatchtv-O-R-Care-ForgotPW-C2C
+ATTWTV-DTM-AEG-attwatchtv-O-R-Care-ForgotPW-C2C
+ATTWTV-AEG-attwatchtv-O-R-G-Care-Subscriber-C2C
+ATTWTV-DTM-AEG-attwatchtv-O-R-G-Care-Subscriber-C2C
+ATTWTV-AEG-attwatchtv-O-R-G-Care-Freeview-C2C
+ATTWTV-DTM-AEG-attwatchtv-O-R-G-Care-Freeview-C2C
+ATTWTV-C-RA-AEG-attwatchtv-Care-O-R-Support-C2C
+ATTWTV-DTM-C-RA-AEG-attwatchtv-Care-O-R-Support-C2C

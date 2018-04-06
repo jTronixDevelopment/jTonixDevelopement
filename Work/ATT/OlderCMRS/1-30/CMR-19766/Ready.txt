@@ -1,0 +1,127 @@
+<style>
+	#inqC2CMobDiv {
+		position: fixed!important;
+		bottom: 110px!important;
+		right: 5px!important;
+		z-index: 999999!important;
+		width: auto!important;
+		box-shadow: none!important;
+		background-color: transparent!important;
+		border-top: 0!important;
+	}
+
+	#inqTestDiv {
+		position: fixed!important;
+		top: auto!important;
+		right: 5px!important;
+		bottom: 110px!important;
+		z-index: 999999!important;
+	}
+
+	#tc-chat-bubble {
+		position: relative;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		height: auto;
+		background: none;
+		cursor: pointer;
+		overflow: visible;
+		z-index: 1;
+		min-width: auto;
+	}
+
+	#tc-chat-bubble:focus {
+		outline: 1px dotted #767676;
+	}
+
+	#tc-chat-bubble .speech-bubble-icon {
+		width: 60px;
+		height: 60px;
+		background: #191919;
+		border-radius: 55px;
+		border: 3px solid #009FDB;
+		box-sizing: border-box;
+		box-shadow: -3px 0px 5px #959595;
+		z-index:0;
+		margin: 10px 0 10px 10px;
+	}
+  
+    #tc-chat-bubble .speech-bubble-tip {
+		background: transparent;
+	}
+
+	#tc-chat-bubble .speech-bubble-icon::before, #tc-chat-bubble .speech-bubble-icon::after {
+		content: "";
+		position: absolute;
+		left: -27px;
+		top: -17px;
+		height: 1px;
+		z-index: 0;
+		margin: 57px 0 0 63px;
+		-ms-transform: rotate(55deg);
+		-webkit-transform: rotate(55deg);
+		transform: rotate(55deg);
+		border-top: 15px solid transparent;
+		border-bottom: 15px solid transparent;
+		border-left: 35px solid #191919;
+		-webkit-box-sizing: unset;
+		-moz-box-sizing: unset;
+		box-sizing: unset;
+	}
+
+	#tc-chat-bubble .speech-bubble-icon::after {
+		z-index: -1;
+		height: 5px;
+		width: 29px;
+		left: -37px;
+		top: 9px;
+		border-left: 33px solid #009FDB;
+		border-top: 16px solid transparent;
+		border-right: 33px solid transparent;
+		border-bottom: 16px solid transparent;
+		-webkit-filter: drop-shadow(0px 3px 2px #959595);
+		filter: drop-shadow(0px 3px 2px #959595);
+	}
+  
+    #tc-chat-bubble .speech-bubble-tip::before, #tc-chat-bubble .speech-bubble-tip::after {
+		content: "";
+		position: absolute;
+		z-index: -1;
+		width: 5px;
+		height: 5px;
+		left: 52px;
+		top: 59px;
+		border-radius: 5px;
+		background: #009FDB;
+		margin-left: 10px;
+		margin-top: 10px;
+	}
+
+	#tc-chat-bubble .text-format {
+		position: absolute;
+		top: 0;
+		line-height: 0.8em;
+		z-index: 10;
+		color: #FFF;
+		font-family: "Omnes-ATT-W02", "Arial";
+		font-size: 16px;
+		width: 60px;
+		text-align: center;
+		margin-top: 28px;
+		font-weight: normal;
+		margin-left: 10px;
+	}
+
+	#tc-chat-bubble .text-format span {
+		font-size: 14px;
+		display: block;
+	}
+</style>
+<button id="tc-chat-bubble">
+  <div class="speech-bubble-icon"></div>
+  <div class="speech-bubble-tip"></div>
+  <div class="text-format">
+    Chat <span>live</span>
+  </div>
+</button>

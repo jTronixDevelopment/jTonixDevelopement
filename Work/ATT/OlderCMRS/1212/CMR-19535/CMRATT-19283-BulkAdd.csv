@@ -1,0 +1,6 @@
+TC_Bulk_Add_Template,,,,,
+Content_Name,Content_URL,Content_Pattern,Active(YES/NO),Cobrowse_Suppressed(YES/NO),Non-matching_page(YES/NO)
+Int-TechDev-PitCrew_CITLST,https://operations.web.att.com/sites/CITLST/default.aspx,(.*)/sites/CITLST/default.aspx(.*),YES,NO,NO
+Int-TechDev-Intra4_process_home,https://intra4web.att.com/process/#/home,(.*)/process/#/home(.*),YES,NO,NO
+Int-TechDev-intra4_mde_home,https://intra4.web.att.com/mde/#/home,(.*)att.com/mde/#/home(.*),YES,NO,NO
+Int-TechDev-prism,http://prism.techdev.att.com,(.*)http://prism.techdev.att.com(.*),YES,NO,NO

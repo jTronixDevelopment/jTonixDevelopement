@@ -1,0 +1,333 @@
+<!-- BCS Premier POC: Events -->
+<custom-event-def name="BCSPremierPOCTrigger"/>
+<custom-event-def name="BCSPremierPOCPro"/>
+<custom-event-def name="BCSPremierPOCProAlert"/>
+<!-- BCS Premier POC: Events End -->
+
+<!-- BCS Premier POC: Rules -->
+<rule name="BCS Premier POC Controller" id="100500">
+  <description>
+    This rule will handle the majority of the routing logic for the entire BCS-Premier-POC application. All data checks will be run within this rule as well to prevent multiple calls for the same value. The rule will trigger a custom event that will pass
+    data to the specific BRs to determine which should launch.
+  </description>
+  <variables>
+    <!-- Initialize Vars here only. Values cannot be set at this level because their values are then fixed when the rule is initially created. This means the value won't update every time the rule is triggered. Values must be set in the actions instead.
+    An initial value was added to help identify if there are timing issues. -->
+    <map-variable name="BCSPremierPOCData" short-name="msm">
+      <resource resource-id="tmpVars"/>
+    </map-variable>
+    <string-variable name="fan" short-name="afan">
+      <resource resource-id="tmpVars"/>
+      <default>
+        <string>none</string>
+      </default>
+    </string-variable>
+    <string-variable name="isAuth" short-name="iauth">
+      <resource resource-id="tmpVars"/>
+      <default>
+        <string>none</string>
+      </default>
+    </string-variable>
+  </variables>
+  <condition>
+    <when>
+      <or>
+        <custom-event event="onDDOPageLoadAction"/>
+        <custom-event event="BCSPremierPOCProAlert"/>
+      </or>
+    </when>
+    <content-group-check cg-id="BCS-Premier-POC"/>
+  </condition>
+  <actions>
+    <!-- BCS Premier POC: Set Variables -->
+    <map-clear>
+      <map-variable-ref var-id="BCSPremierPOCData"/>
+    </map-clear>
+    <set-string-var var-id="fan">
+      <as-string>
+        <js-string-ref js-var-id="ddo.getVar('user.account.fan')"/>
+      </as-string>
+    </set-string-var>
+    <set-string-var var-id="auth">
+      <as-string>
+        <string-compare ignore-case="true" test="equals">
+          <string-variable-ref var-id="fan"/>
+          <string>9999SBDC</string>
+        </string-compare>
+        <js-string-ref js-var-id="ddo.getVar('user.account.fan')"/>
+      </as-string>
+    </set-string-var>
+
+
+    <!-- BCS Premier POC: Logging -->
+    <conditional-action>
+      <if>
+        <boolean-variable-ref var-id="DemoOnly"/>
+        <do>
+          <log>
+            <string>*CHAT - BCS Premier POC - Logging*</string>
+          </log>
+          <log>
+            <string-concat>
+              <string>*CHAT - BCS Premier POC - user.account.fan:
+              </string>
+              <string-variable-ref var-id="fan"/>
+            </string-concat>
+          </log>
+        </do>
+      </if>
+    </conditional-action>
+
+    <!-- BCS Premier POC: Routing -->
+    <conditional-action>
+      <!-- BCS Premier POC: Routing: BCS-Premier: BCS-Premier-B-RA -->
+      <if>
+        <and>
+          <not>
+            <string-compare ignore-case="true" test="equals">
+              <string-variable-ref var-id="fan"/>
+              <string>9999SBDC</string>
+            </string-compare>
+          </not>
+          <not>
+            <is-device-type type="Phone"/>
+          </not>
+        </and>
+        <do>
+          <map-set>
+            <map-variable-ref var-id="BCSPremierPOCData"/>
+            <key>
+              <string>agentGroup</string>
+            </key>
+            <value>
+              <string>BCS-Premier-B-RA</string>
+            </value>
+          </map-set>
+        </do>
+      </if>
+      <!-- BCS Premier POC: Routing: BCS-Premier -->
+      <else>
+        <map-set>
+          <map-variable-ref var-id="BCSPremierPOCData"/>
+          <key>
+            <string>agentGroup</string>
+          </key>
+          <value>
+            <string>BCS-Premier</string>
+          </value>
+        </map-set>
+      </else>
+    </conditional-action>
+
+    <!-- BCS Premier POC: Immediate Proactive Trigger -->
+    <conditional-action>
+      <if>
+        <exists>
+          <object-access object-id="evt" deref-expression="proType"/>
+        </exists>
+        <do>
+          <map-set>
+            <map-variable-ref var-id="BCSPremierPOCData"/>
+            <key>
+              <string>proType</string>
+            </key>
+            <value>
+              <as-string>
+                <object-access object-id="evt" deref-expression="proType"/>
+              </as-string>
+            </value>
+          </map-set>
+        </do>
+      </if>
+    </conditional-action>
+
+    <!-- BCS Premier POC: Trigger Rule Events -->
+    <conditional-action>
+      <!-- Standard Page Load -->
+      <if>
+        <not>
+          <exists>
+            <object-access object-id="evt" deref-expression="proType"/>
+          </exists>
+        </not>
+        <do>
+          <fire-custom-event event="BCSPremierPOCTrigger">
+            <map-variable-ref var-id="BCSPremierPOCData"/>
+          </fire-custom-event>
+        </do>
+      </if>
+      <!-- Immediate Proactive Rule -->
+      <else>
+        <fire-custom-event event="BCSPremierPOCPro">
+          <map-variable-ref var-id="BCSPremierPOCData"/>
+        </fire-custom-event>
+      </else>
+    </conditional-action>
+  </actions>
+</rule>
+<!-- BCS Premier POC: Targeting Logs -->
+<rule name="BCS Premier POC Target Log" id="100501">
+  <condition>
+    <when>
+      <custom-event event="BCSPremierPOCTrigger"/>
+    </when>
+    <boolean-variable-ref var-id="DemoOnly"/>
+  </condition>
+  <actions>
+    <log>
+      <string-concat>
+        <string>*CHAT - BCS Premier POC - Targeted Agent Group: </string>
+        <as-string>
+          <object-access object-id="evt" deref-expression="agentGroup"/>
+        </as-string>
+      </string-concat>
+    </log>
+  </actions>
+</rule>
+<rule name="BCS Premier POC Target Log Pro" id="100502">
+  <condition>
+    <when>
+      <custom-event event="BCSPremierPOCPro"/>
+    </when>
+    <boolean-variable-ref var-id="DemoOnly"/>
+  </condition>
+  <actions>
+    <log>
+      <string-concat>
+        <string>*CHAT - BCS Premier POC - Targeted Agent Group: </string>
+        <as-string>
+          <object-access object-id="evt" deref-expression="agentGroup"/>
+        </as-string>
+      </string-concat>
+    </log>
+    <log>
+      <string-concat>
+        <string>*CHAT - BCS Premier POC - Proactive Satisfied: </string>
+        <as-string>
+          <object-access object-id="evt" deref-expression="proType"/>
+        </as-string>
+      </string-concat>
+    </log>
+  </actions>
+</rule>
+<!-- BCS Premier POC: BCS-Premier-B-RA: C2C-->
+<business-rule name="ATT-BCS-Premier-POC-BCS-Premier-B-RA-C2C" id="100510">
+  <business-unit-id>19000680</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004199</agent-group-id>
+  </agent-profile>
+  <q-threshold>1.0</q-threshold>
+  <condition>
+    <when>
+      <custom-event event="BCSPremierPOCTrigger"/>
+    </when>
+    <and>
+      <not>
+        <is-device-type type="Phone"/>
+      </not>
+      <string-compare ignore-case="true" test="equals">
+        <string>BCS-Premier-B-RA</string>
+        <as-string>
+          <object-access object-id="evt" deref-expression="agentGroup"/>
+        </as-string>
+      </string-compare>
+    </and>
+  </condition>
+  <actions>
+    <do-business-rule-action-list action-list-id="BCS_Premier_B_RA_C2C"/>
+  </actions>
+</business-rule>
+<!-- BCS Premier POC: BCS-Premier: C2C-->
+<business-rule name="ATT-BCS-Premier-POC-BCS-Premier-C2C" id="100510">
+  <business-unit-id>19000680</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004199</agent-group-id>
+  </agent-profile>
+  <q-threshold>1.0</q-threshold>
+  <condition>
+    <when>
+      <custom-event event="BCSPremierPOCTrigger"/>
+    </when>
+    <and>
+      <not>
+        <is-device-type type="Phone"/>
+      </not>
+      <string-compare ignore-case="true" test="equals">
+        <string>BCS-Premier</string>
+        <as-string>
+          <object-access object-id="evt" deref-expression="agentGroup"/>
+        </as-string>
+      </string-compare>
+    </and>
+  </condition>
+  <actions>
+    <do-business-rule-action-list action-list-id="BCS_Premier_C2C"/>
+  </actions>
+</business-rule>
+<business-rule name="ATT-BCS-Premier-POC-BCS-Premier-DTM-C2C" id="100515">
+  <business-unit-id>19000680</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004199</agent-group-id>
+  </agent-profile>
+  <q-threshold>1.0</q-threshold>
+  <condition>
+    <when>
+      <custom-event event="BCSPremierPOCTrigger"/>
+    </when>
+    <and>
+      <is-device-type type="Phone"/>
+      <string-compare ignore-case="true" test="equals">
+        <string>BCS-Premier</string>
+        <as-string>
+          <object-access object-id="evt" deref-expression="agentGroup"/>
+        </as-string>
+      </string-compare>
+    </and>
+  </condition>
+  <actions>
+    <do-business-rule-action-list action-list-id="BCS_Premier_Phone_C2C"/>
+  </actions>
+</business-rule>
+<!-- BCS Premier POC: BCS-Premier: Pro-->
+<business-rule name="ATT-BCS-Premier-POC-BCS-Premier-Pro" id="100510">
+  <business-unit-id>19000680</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004199</agent-group-id>
+  </agent-profile>
+  <q-threshold>1.0</q-threshold>
+  <condition>
+    <when>
+      <custom-event event="BCSPremierPOCTrigger">
+        <delay>
+          <duration>PT90S</duration>
+        </delay>
+      </custom-event>
+    </when>
+    <and>
+      <not>
+        <is-device-type type="Phone"/>
+      </not>
+      <string-compare ignore-case="true" test="equals">
+        <string>BCS-Premier</string>
+        <as-string>
+          <object-access object-id="evt" deref-expression="agentGroup"/>
+        </as-string>
+      </string-compare>
+
+    </and>
+  </condition>
+  <actions>
+    <do-business-rule-action-list action-list-id="BCS_Premier_Pro"/>
+  </actions>
+</business-rule>
+<!-- BCS Premier POC: Rules End -->
+
+Business Rule Name	New/Existing	CMR	NEW Chat Spec
+ATT-B-RA-BCS-Premier-O-R-G-Store-C2C	New	CMRATT-19774	ATT_Bus_Auto_Phone
+ATT-BCS-Premier-O-R-StoreUnauth-C2C	New	CMRATT-19774	ATT_Bus_Desktop
+ATT-DTM-BCS-Premier-O-R-StoreUnauth-C2C	New	CMRATT-19774	ATT_Bus_Phone
+ATT-BCS-Premier-O-P-Store-T90	New	CMRATT-19774	ATT_Bus_Desktop
+ATT-DTM-BCS-Premier-O-R-Store-C2C	New	CMRATT-19774	ATT_Bus_Phone
+ATT-B-RA-BCS-Premier-O-R-G-Care-C2C	New	CMRATT-19777	ATT_Bus_Auto_Desktop
+ATT-BCS-Premier-O-P-Care-T90	New	CMRATT-19777	ATT_Bus_Desktop
+ATT-DTM-BCS-Premier-O-R-Care-C2C	New	CMRATT-19777	ATT_Bus_Phone

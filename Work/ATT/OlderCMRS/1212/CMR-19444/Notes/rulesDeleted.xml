@@ -1,0 +1,620 @@
+<business-rule id="2400" name="ATT-HS_SS-Telco_MW-O-R-G-Tguard-C2C">
+  <business-unit-id>19000956</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004240</agent-group-id>
+  </agent-profile>
+  <q-threshold>1.2</q-threshold>
+  <rule-attributes>
+    <attribute>
+      <name>Unrecognized_Page_URL</name>
+      <value>
+        <string-variable-ref var-id="unrecPageURL"/>
+      </value>
+    </attribute>
+  </rule-attributes>
+  <condition>
+    <when>
+      <custom-event event="onDDOPageLoadAction"/>
+    </when>
+    <and>
+      <not>
+        <is-device-type type="Phone"/>
+      </not>
+      <content-group-check cg-id="HS_SS-All"/>
+      <exists>
+        <object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/>
+      </exists>
+      <or>
+        <as-boolean>
+          <map-get>
+            <map-variable-ref var-id="agentGroupMap"/>
+            <key>
+              <string-constant-ref name="HS_SS-TELCO_MW"/>
+            </key>
+          </map-get>
+        </as-boolean>
+        <and>
+          <string-compare test="equals">
+            <as-string>
+              <js-string-ref js-var-id="ddo.getVar('user.account.serviceType')"/>
+            </as-string>
+            <string>Telco</string>
+          </string-compare>
+          <string-compare test="contains">
+            <as-string>
+              <js-string-ref js-var-id="ddo.getVar('user.account.State')"/>
+            </as-string>
+            <regexp>(IL|IN|MI|OH|WI)</regexp>
+          </string-compare>
+        </and>
+      </or>
+      <not>
+        <boolean-variable-ref var-id="isDirectvCustomer"/>
+      </not>
+    </and>
+  </condition>
+  <actions>
+    <fire-custom-event event="setNameToAgentAlias"/>
+    <show-c2chat>
+      <c2c-spec>
+        <c2c-spec-id>
+          <number-variable-ref var-id="c2cspec"/>
+        </c2c-spec-id>
+        <c2c-theme>
+          <c2c-theme-name>
+            <string>ATT-Anchored-Bottom_C2C</string>
+          </c2c-theme-name>
+        </c2c-theme>
+        <chat-spec>
+          <chat-spec-name>
+            <string-variable-ref var-id="ATT_Auto_Desk_Tab"/>
+          </chat-spec-name>
+          <automaton-spec>
+            <automaton-data-map>
+              <item name="acif_id">
+                <number>203</number>
+              </item>
+              <item name="name">
+                <string>Standalone Inline Auth Desktop</string>
+              </item>
+              <item name="type">
+                <string>guide</string>
+              </item>
+              <item name="sub_type">
+                <string>pre-chat</string>
+              </item>
+              <item name="acif_version">
+                <string-constant-ref name="DEFAULT_ACIF_VERSION"/>
+              </item>
+              <item name="tGuardToken">
+                <as-string><object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/></as-string>
+              </item>
+              <item name="routeChatNode">
+                <number>914</number>
+              </item>
+              <item name="BAN">
+                <string-variable-ref var-id="lpBAN"/>
+              </item>
+              <item name="BTN">
+                <string-variable-ref var-id="lpBTN"/>
+              </item>
+            </automaton-data-map>
+          </automaton-spec>
+        </chat-spec>
+        <check-agent-availability-interval>PT90S</check-agent-availability-interval>
+      </c2c-spec>
+    </show-c2chat>
+  </actions>
+</business-rule>
+<business-rule id="2600" name="ATT-HS_SS-Telco_SWW-O-R-G-Tguard-C2C">
+  <business-unit-id>19000956</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004239</agent-group-id>
+  </agent-profile>
+  <q-threshold>1.2</q-threshold>
+  <rule-attributes>
+    <attribute>
+      <name>Unrecognized_Page_URL</name>
+      <value>
+        <string-variable-ref var-id="unrecPageURL"/>
+      </value>
+    </attribute>
+  </rule-attributes>
+  <condition>
+    <when>
+      <custom-event event="onDDOPageLoadAction"/>
+    </when>
+    <and>
+      <not>
+        <is-device-type type="Phone"/>
+      </not>
+      <content-group-check cg-id="HS_SS-All"/>
+      <exists>
+        <object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/>
+      </exists>
+      <or>
+        <as-boolean>
+          <map-get>
+            <map-variable-ref var-id="agentGroupMap"/>
+            <key>
+              <string-constant-ref name="HS_SS-TELCO_SWW"/>
+            </key>
+          </map-get>
+        </as-boolean>
+        <and>
+          <string-compare test="equals">
+            <as-string>
+              <js-string-ref js-var-id="ddo.getVar('user.account.serviceType')"/>
+            </as-string>
+            <string>Telco</string>
+          </string-compare>
+          <string-compare test="contains">
+            <as-string>
+              <js-string-ref js-var-id="ddo.getVar('user.account.State')"/>
+            </as-string>
+            <regexp>(AR|CA|KS|MO|NV|OK|TX)</regexp>
+          </string-compare>
+        </and>
+      </or>
+      <not>
+        <boolean-variable-ref var-id="isDirectvCustomer"/>
+      </not>
+    </and>
+  </condition>
+  <actions>
+    <fire-custom-event event="setNameToAgentAlias"/>
+    <show-c2chat>
+      <c2c-spec>
+        <c2c-spec-id>
+          <number-variable-ref var-id="c2cspec"/>
+        </c2c-spec-id>
+        <c2c-theme>
+          <c2c-theme-name>
+            <string>ATT-Body-Medium_C2C</string>
+          </c2c-theme-name>
+        </c2c-theme>
+        <chat-spec>
+          <chat-spec-name>
+            <string-variable-ref var-id="ATT_Auto_Desk_Tab"/>
+          </chat-spec-name>
+          <automaton-spec>
+            <automaton-data-map>
+              <item name="acif_id">
+                <number>203</number>
+              </item>
+              <item name="name">
+                <string>Standalone Inline Auth Desktop</string>
+              </item>
+              <item name="type">
+                <string>guide</string>
+              </item>
+              <item name="sub_type">
+                <string>routing</string>
+              </item>
+              <item name="acif_version">
+                <string-constant-ref name="DEFAULT_ACIF_VERSION"/>
+              </item>
+              <item name="tGuardToken">
+                <as-string><object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/></as-string>
+              </item>
+              <item name="routeChatNode">
+                <number>914</number>
+              </item>
+              <item name="BAN">
+                <string-variable-ref var-id="lpBAN"/>
+              </item>
+              <item name="BTN">
+                <string-variable-ref var-id="lpBTN"/>
+              </item>
+            </automaton-data-map>
+          </automaton-spec>
+        </chat-spec>
+        <check-agent-availability-interval>PT90S</check-agent-availability-interval>
+      </c2c-spec>
+    </show-c2chat>
+  </actions>
+</business-rule>
+<business-rule id="2500" name="ATT-HS_SS-Telco_SE-O-R-G-Tguard-C2C">
+  <business-unit-id>19000956</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004241</agent-group-id>
+  </agent-profile>
+  <q-threshold>1.2</q-threshold>
+  <rule-attributes>
+    <attribute>
+      <name>Unrecognized_Page_URL</name>
+      <value>
+        <string-variable-ref var-id="unrecPageURL"/>
+      </value>
+    </attribute>
+  </rule-attributes>
+  <condition>
+    <when>
+      <custom-event event="onDDOPageLoadAction"/>
+    </when>
+    <and>
+      <not>
+        <is-device-type type="Phone"/>
+      </not>
+      <exists>
+        <object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/>
+      </exists>
+      <content-group-check cg-id="HS_SS-All"/>
+      <or>
+        <as-boolean>
+          <map-get>
+            <map-variable-ref var-id="agentGroupMap"/>
+            <key>
+              <string-constant-ref name="HS_SS-TELCO_SE"/>
+            </key>
+          </map-get>
+        </as-boolean>
+        <and>
+          <string-compare test="equals">
+            <as-string>
+              <js-string-ref js-var-id="ddo.getVar('user.account.serviceType')"/>
+            </as-string>
+            <string>Telco</string>
+          </string-compare>
+          <string-compare test="contains">
+            <as-string>
+              <js-string-ref js-var-id="ddo.getVar('user.account.State')"/>
+            </as-string>
+            <regexp>(AL|FL|GA|KY|LA|MS|NC|SC|TN)</regexp>
+          </string-compare>
+        </and>
+      </or>
+      <not>
+        <boolean-variable-ref var-id="isSmbCustomer"/>
+      </not>
+      <not>
+        <boolean-variable-ref var-id="isDirectvCustomer"/>
+      </not>
+    </and>
+  </condition>
+  <actions>
+    <fire-custom-event event="setNameToAgentAlias"/>
+    <show-c2chat>
+      <c2c-spec>
+        <c2c-spec-id>
+          <number-variable-ref var-id="c2cspec"/>
+        </c2c-spec-id>
+        <c2c-theme>
+          <c2c-theme-name>
+            <string>ATT-Body-Medium_C2C</string>
+          </c2c-theme-name>
+        </c2c-theme>
+        <chat-spec>
+          <chat-spec-name>
+            <string-variable-ref var-id="ATT_Auto_Desk_Tab"/>
+          </chat-spec-name>
+          <automaton-spec>
+            <automaton-data-map>
+              <item name="acif_id">
+                <number>203</number>
+              </item>
+              <item name="name">
+                <string>Standalone Inline Auth Desktop</string>
+              </item>
+              <item name="type">
+                <string>survey</string>
+              </item>
+              <item name="sub_type">
+                <string>routing</string>
+              </item>
+              <item name="acif_version">
+                <string-constant-ref name="DEFAULT_ACIF_VERSION"/>
+              </item>
+              <item name="tGuardToken">
+                <as-string><object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/></as-string>
+              </item>
+              <item name="routeChatNode">
+                <number>914</number>
+              </item>
+              <item name="BAN">
+                <string-variable-ref var-id="lpBAN"/>
+              </item>
+              <item name="BTN">
+                <string-variable-ref var-id="lpBTN"/>
+              </item>
+            </automaton-data-map>
+          </automaton-spec>
+        </chat-spec>
+        <check-agent-availability-interval>PT90S</check-agent-availability-interval>
+      </c2c-spec>
+    </show-c2chat>
+  </actions>
+</business-rule>
+
+================================================================================
+<business-rule id="2508" name="ATT-HS_SS-TelcoSE-O-P-G-Inactivity-T60" funnel-level="3">
+  <business-unit-id>19000956</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004241</agent-group-id>
+  </agent-profile>
+  <q-threshold>1.0</q-threshold>
+  <rule-attributes>
+    <attribute>
+      <name>Unrecognized_Page_URL</name>
+      <value>
+        <string-variable-ref var-id="unrecPageURL"/>
+      </value>
+    </attribute>
+  </rule-attributes>
+  <condition>
+    <when>
+      <custom-event event="launchPageInactivity">
+        <delay>
+          <duration>PT60S</duration>
+        </delay>
+      </custom-event>
+    </when>
+    <and>
+      <not>
+        <is-device-type type="Phone"/>
+      </not>
+      <where>
+        <content-group-check cg-id="HS_SS-Proactive"/>
+      </where>
+      <exists>
+        <object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/>
+      </exists>
+      <date-compare op="after">
+        <now/>
+        <date-variable-ref var-id="lastPageInteraction">
+          <offset>PT59S</offset>
+        </date-variable-ref>
+      </date-compare>
+      <or>
+        <as-boolean>
+          <map-get>
+            <map-variable-ref var-id="agentGroupMap"/>
+            <key>
+              <string-constant-ref name="HS_SS-TELCO_SE"/>
+            </key>
+          </map-get>
+        </as-boolean>
+        <and>
+          <string-compare test="equals">
+            <as-string>
+              <js-string-ref js-var-id="ddo.getVar('user.account.serviceType')"/>
+            </as-string>
+            <string>Telco</string>
+          </string-compare>
+          <string-compare test="contains">
+            <as-string>
+              <js-string-ref js-var-id="ddo.getVar('user.account.State')"/>
+            </as-string>
+            <regexp>(AL|FL|GA|KY|LA|MS|NC|SC|TN)</regexp>
+          </string-compare>
+        </and>
+      </or>
+      <not>
+        <boolean-variable-ref var-id="isDirectvCustomer"/>
+      </not>
+      <date-compare op="after">
+        <now/>
+        <date-variable-ref var-id="SuppressProactiveRules-Timer">
+          <offset>PT300S</offset>
+        </date-variable-ref>
+      </date-compare>
+    </and>
+  </condition>
+  <actions>
+    <fire-custom-event event="setNameToAgentAlias"/>
+    <show-proactive>
+      <chat-spec>
+        <chat-spec-name>
+          <string-variable-ref var-id="SS_ATT-HS-SS_Proactive_Desk_Tab"/>
+        </chat-spec-name>
+        <automaton-spec>
+          <automaton-data-map>
+            <item name="tGuardToken">
+              <as-string><object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/></as-string>
+            </item>
+            <item name="BAN">
+              <string-variable-ref var-id="lpBAN"/>
+            </item>
+            <item name="BTN">
+              <string-variable-ref var-id="lpBTN"/>
+            </item>
+          </automaton-data-map>
+        </automaton-spec>
+      </chat-spec>
+    </show-proactive>
+  </actions>
+</business-rule>
+<business-rule id="2608" name="ATT-HS_SS-TelcoSWW-O-P-G-Inactivity-T60" funnel-level="3">
+  <business-unit-id>19000956</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004239</agent-group-id>
+  </agent-profile>
+  <q-threshold>1.0</q-threshold>
+  <rule-attributes>
+    <attribute>
+      <name>Unrecognized_Page_URL</name>
+      <value>
+        <string-variable-ref var-id="unrecPageURL"/>
+      </value>
+    </attribute>
+  </rule-attributes>
+  <condition>
+    <when>
+      <custom-event event="launchPageInactivity">
+        <delay>
+          <duration>PT60S</duration>
+        </delay>
+      </custom-event>
+    </when>
+    <and>
+      <not>
+        <is-device-type type="Phone"/>
+      </not>
+      <where>
+        <content-group-check cg-id="HS_SS-Proactive"/>
+      </where>
+      <exists>
+        <object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/>
+      </exists>
+      <date-compare op="after">
+        <now/>
+        <date-variable-ref var-id="lastPageInteraction">
+          <offset>PT59S</offset>
+        </date-variable-ref>
+      </date-compare>
+      <or>
+        <as-boolean>
+          <map-get>
+            <map-variable-ref var-id="agentGroupMap"/>
+            <key>
+              <string-constant-ref name="HS_SS-TELCO_SWW"/>
+            </key>
+          </map-get>
+        </as-boolean>
+        <and>
+          <string-compare test="equals">
+            <as-string>
+              <js-string-ref js-var-id="ddo.getVar('user.account.serviceType')"/>
+            </as-string>
+            <string>Telco</string>
+          </string-compare>
+          <string-compare test="contains">
+            <as-string>
+              <js-string-ref js-var-id="ddo.getVar('user.account.State')"/>
+            </as-string>
+            <regexp>(AR|CA|KS|MO|NV|OK|TX)</regexp>
+          </string-compare>
+        </and>
+      </or>
+      <not>
+        <boolean-variable-ref var-id="isDirectvCustomer"/>
+      </not>
+      <date-compare op="after">
+        <now/>
+        <date-variable-ref var-id="SuppressProactiveRules-Timer">
+          <offset>PT300S</offset>
+        </date-variable-ref>
+      </date-compare>
+    </and>
+  </condition>
+  <actions>
+    <fire-custom-event event="setNameToAgentAlias"/>
+    <show-proactive>
+      <chat-spec>
+        <chat-spec-name>
+          <string-variable-ref var-id="SS_ATT-HS-SS_Proactive_Desk_Tab"/>
+        </chat-spec-name>
+        <automaton-spec>
+          <automaton-data-map>
+            <item name="tGuardToken">
+              <as-string><object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/></as-string>
+            </item>
+            <item name="BAN">
+              <string-variable-ref var-id="lpBAN"/>
+            </item>
+            <item name="BTN">
+              <string-variable-ref var-id="lpBTN"/>
+            </item>
+          </automaton-data-map>
+        </automaton-spec>
+      </chat-spec>
+    </show-proactive>
+  </actions>
+</business-rule>
+<business-rule id="2408" name="ATT-HS_SS-TelcoMW-O-P-G-Inactivity-T60" funnel-level="3">
+  <business-unit-id>19000956</business-unit-id>
+  <agent-profile>
+    <agent-group-id>10004240</agent-group-id>
+  </agent-profile>
+  <q-threshold>1.0</q-threshold>
+  <rule-attributes>
+    <attribute>
+      <name>Unrecognized_Page_URL</name>
+      <value>
+        <string-variable-ref var-id="unrecPageURL"/>
+      </value>
+    </attribute>
+  </rule-attributes>
+  <condition>
+    <when>
+      <custom-event event="launchPageInactivity">
+        <delay>
+          <duration>PT60S</duration>
+        </delay>
+      </custom-event>
+    </when>
+    <and>
+      <not>
+        <is-device-type type="Phone"/>
+      </not>
+      <where>
+        <content-group-check cg-id="HS_SS-Proactive"/>
+      </where>
+      <exists>
+        <object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/>
+      </exists>
+      <date-compare op="after">
+        <now/>
+        <date-variable-ref var-id="lastPageInteraction">
+          <offset>PT59S</offset>
+        </date-variable-ref>
+      </date-compare>
+      <or>
+        <as-boolean>
+          <map-get>
+            <map-variable-ref var-id="agentGroupMap"/>
+            <key>
+              <string-constant-ref name="HS_SS-TELCO_MW"/>
+            </key>
+          </map-get>
+        </as-boolean>
+        <and>
+          <string-compare test="equals">
+            <as-string>
+              <js-string-ref js-var-id="ddo.getVar('user.account.serviceType')"/>
+            </as-string>
+            <string>Telco</string>
+          </string-compare>
+          <string-compare test="contains">
+            <as-string>
+              <js-string-ref js-var-id="ddo.getVar('user.account.State')"/>
+            </as-string>
+            <regexp>(IL|IN|MI|OH|WI)</regexp>
+          </string-compare>
+        </and>
+      </or>
+      <not>
+        <boolean-variable-ref var-id="isDirectvCustomer"/>
+      </not>
+      <date-compare op="after">
+        <now/>
+        <date-variable-ref var-id="SuppressProactiveRules-Timer">
+          <offset>PT300S</offset>
+        </date-variable-ref>
+      </date-compare>
+    </and>
+  </condition>
+  <actions>
+    <fire-custom-event event="setNameToAgentAlias"/>
+    <show-proactive>
+      <chat-spec>
+        <chat-spec-name>
+          <string-variable-ref var-id="SS_ATT-HS-SS_Proactive_Desk_Tab"/>
+        </chat-spec-name>
+        <automaton-spec>
+          <automaton-data-map>
+            <item name="tGuardToken">
+              <as-string><object-access deref-expression="_getCookie('TATS-SS-TokenID')" object-id="CM"/></as-string>
+            </item>
+            <item name="BAN">
+              <string-variable-ref var-id="lpBAN"/>
+            </item>
+            <item name="BTN">
+              <string-variable-ref var-id="lpBTN"/>
+            </item>
+          </automaton-data-map>
+        </automaton-spec>
+      </chat-spec>
+    </show-proactive>
+  </actions>
+</business-rule>

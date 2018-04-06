@@ -1,0 +1,96 @@
+
+Business unit - HSS – (19000753)
+Agent group - HSS-Provide (10004235)
+
+*Goal: * The intent of this ticket is to create new POI’s in the new IDP flow.  Tasks related to this ticket include:
+
+•	Assign page markers
+•	Create a content group
+•	Create three new business rules (two desktop/tablet and one mobile)
+•	Build data pass
+
+=======================================================================
+===== *Assign page markers* ===========================================
+=======================================================================
+
+(.*)/shop/service/offers/#/offers-list(.*)
+ATT-Shop-IDP-O-offers_list
+
+(.*)/shop/service/configuration/#/equipment(.*)
+ATT-Shop-IDP-O-equipment
+
+(.*)/shop/address/#/check-availability(.*)
+ATT-Shop-IDP-O-check_avail
+
+(.*)/shop/address/#/response(.*)
+ATT-Shop-IDP-O-response
+
+(.*)/shop/address/#/mdu-address(.*)
+ATT-Shop-IDP-O-mdu_addr
+
+(.*)/shop/address/#/close-match(.*)
+ATT-Shop-IDP-O-close_match
+
+(.*)/shop/address/#/connected-community(.*)
+ATT-Shop-IDP-O-connect_comty
+
+(.*)/shop/address/#/results(.*)
+ATT-Shop-IDP-O-results
+
+(.*)/shop/address/#/existing-services(.*)
+ATT-Shop-IDP-O-exist_servs
+
+(.*)/shop/address/#/order(.*)
+ATT-Shop-IDP-O-order
+
+
+=======================================================================
+=====*Create content group* ===========================================
+=======================================================================
+
+ATT-HSS-Shop-IDP
+
+www.att.com/shop/service/offers/#/offers-list
+www.att.com/shop/service/configuration/#/equipment
+
+<content-group id="ATT-HSS-Shop-IDP">
+   <cg-marker-check op="equals">ATT-Shop-IDP-O-equipment</cg-marker-check>
+   <cg-marker-check op="equals">ATT-Shop-IDP-O-offers_list</cg-marker-check>
+ </content-group>
+
+
+=======================================================================
+===== *Create New Business Rule* ======================================
+=======================================================================
+
+
+Device type: Mobile
+Business unit: HSS (19000753)
+Agent Group: HSS-Provide (10004235)
+Rule Name: ATT-DTM-HSS-Provide-O-R-G-Marketing-IDP-C2C
+Launch conditions – Display a C2C button IF the flowcode contains DSPRO
+  when a customer lands on a page within the ATT-HSS-Shop-IDP content group
+Chat spec:  Same as ATT-DTM-HSS-O-R-G-Marketing-DFW
+Q-threshold = 1
+
+*Create New Business Rule*
+Device type: Desktop/Tablet
+Business unit: HSS (19000753)
+Agent Group: HSS-Provide (10004235)
+Rule Name: ATT-HSS-Provide-O-R-G-Marketing-IDP-C2C
+Launch conditions – Display a C2C button IF the flowcode contains DSPRO
+  when a customer lands on a page within the ATT-HSS-Shop-IDP content group
+Chat spec:  Same as ATT-HSS-O-R-G-Marketing-DFW
+Q-threshold = 1
+
+*Create New Business Rule*
+Device type: Desktop/Tablet
+Business unit: HSS (19000753)
+Agent Group: HSS-Provide (10004235)
+Rule Name: ATT-HSS-O-P-G-Marketing-IPD-T90
+Launch conditions – A proactive chat window should be launch 90 seconds after a customer lands on a page
+  in Content Group - ATT-HSS-Shop-IDP
+  AND contains flowcode = DSPRO
+Chat spec:  Same as ATT-HSS-O-P-G-Marketing-DFW-T90
+Q-threshold = 1
+Funnel level = 1

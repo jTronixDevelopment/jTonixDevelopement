@@ -1,0 +1,88 @@
+Bala Ramesh(6:14:57 AM): Hello Laura, Good Morning
+Laura McGraw-Morris(6:15:41 AM): good morning Bala
+Bala Ramesh(6:15:53 AM):
+
+Bala Ramesh(6:16:08 AM): Still the issue is going on, and the now we are getting chat busy too
+Laura McGraw-Morris(6:17:37 AM): checking on that
+Laura McGraw-Morris(6:18:06 AM): hey, since chat is showing busy, I'm going to check that Modify Modal to see if it is there too... the business wanted a screenshot of that
+Laura McGraw-Morris(6:42:10 AM):
+
+Bala Ramesh(6:43:17 AM): Let me check again laura
+Laura McGraw-Morris(6:47:10 AM): Bala, we are still not getting the pageattributes.eligibleServices on offers page in the agent console
+Laura McGraw-Morris(6:47:44 AM):
+
+Laura McGraw-Morris(7:23:40 AM): Morning team! Just to recap our separate discussions this morning, the test environment is still experiencing issues. I was able to get in once, but then not a second time
+Laura McGraw-Morris(7:23:52 AM): I believe Jyoti knows the status of a system reboot
+Brandy Edwards(7:24:19 AM): @Laura - Thanks for the update!
+Laura McGraw-Morris(7:26:35 AM): Brandy, what this means is we haven't had a stable enough environment to determine if any defects have been fixed by Nuance
+Laura McGraw-Morris(7:27:04 AM): we have a testing meeting in 35 mins and have one with Nuance this afternoon to level-set on the existing issues
+Brandy Edwards(7:27:23 AM): Please forward me the invite.
+Brandy Edwards(7:27:36 AM): Is the environment issue on our end our Nuance?
+Jyoti Mahajan(7:27:46 AM): ATT end Brandy
+Brandy Edwards(7:28:19 AM): Thank you!
+Brandy Edwards(8:11:54 AM): Hi Jyoti - Is this issue only with IDP environment?
+Brandy Edwards(8:58:48 AM): ~M~  Ryan Johnson has been invited to the meeting.
+Laura McGraw-Morris(10:55:36 AM): hey Jyoti/Bala, any luck on the env?
+Jyoti Mahajan(10:56:52 AM): yeah Laura
+Jyoti Mahajan(10:56:59 AM): got resolved few mins ago
+Jyoti Mahajan(10:57:08 AM): dev build was deplpyed
+Laura McGraw-Morris(10:57:09 AM): okay, just getting back from my appointment
+Laura McGraw-Morris(10:57:24 AM): okay, so good... hopefully Ryan will come to the meeting
+Jyoti Mahajan(11:01:30 AM): yep
+Jyoti Mahajan(11:01:30 AM):
+Brandy Edwards(11:30:56 AM): How did the meeting go team?
+Laura McGraw-Morris(11:40:13 AM): it was just Jyoti and I
+Laura McGraw-Morris(11:40:25 AM): i'm emailing now
+Laura McGraw-Morris(11:47:42 AM): ~M~  Ryan Johnson has been invited to the meeting.
+11:49:00 AM - Rolling archive has been enabled. (load today's messages)
+Jyoti Mahajan(12:01:14 PM): Hi Ryan
+Jyoti Mahajan(12:01:20 PM): the env has not changed
+Jyoti Mahajan(12:01:24 PM): its still tst01
+Jyoti Mahajan(12:01:33 PM): Nicole updated it incorrectly
+Jyoti Mahajan(12:01:46 PM): she meant it for a different JIRA
+Ryan Johnson(12:47:22 PM): Okay that sounds good. I am on the call now to find a solution for this ticket.
+Laura McGraw-Morris(12:48:09 PM): Thanks so much for the update Ryan!
+Brandy Edwards(1:51:51 PM): @Ryan - Any update?
+Ryan Johnson(2:02:44 PM): Still on the call now working, to fin what the issue is.
+Jyoti Mahajan(2:06:10 PM): Ryan - tst01 env is working now
+2:08:13 PM - Laura McGraw-Morris has left the meeting
+Ryan Johnson(2:15:02 PM): Ok awesome
+Jyoti Mahajan(2:15:20 PM): I am raising another defect Ryan
+2:22:09 PM - Brandy Edwards has left the meeting
+Ryan Johnson(2:30:12 PM): Okay what is this defect for.
+Jyoti Mahajan(2:30:22 PM): the page attribute.eligible Services is not passed on to AGent COnsole if i Initiate chat from Equipment page after i have added offer to Cart..
+Jyoti Mahajan(2:30:54 PM): I dont initiate chat on the offers page , rather navigate to Equipment page and then initiate it
+Ryan Johnson(2:58:11 PM): So it is looking like this is a timing issue because of the tst01 environments
+Jyoti Mahajan(2:58:48 PM): timing issue?
+Ryan Johnson(3:00:25 PM): So the way our framework does data pass, is the same on every AT&T page.
+Ryan Johnson(3:01:21 PM): So this is not working because when the Nuance framework iterates through the events list, the DS_Bundle_Offers_list is not present.
+Ryan Johnson(3:01:36 PM): Although it is present in the Data Layer
+Jyoti Mahajan(3:03:11 PM): and when we do page refresh/reload - it still doesnt find it? that should not be case as we get it on all other AT&T pages
+Jyoti Mahajan(3:03:53 PM): you are currently only talking about the event variable right, not the page attribute
+Ryan Johnson(3:04:59 PM): The page attribute will show on offer-list page, but the DS_Bundle_Offers_list event will not show because the event is not present in the array that we use to pass the Datapass to the agent console.
+Jyoti Mahajan(3:05:32 PM): Ryan
+Jyoti Mahajan(3:05:35 PM): 2 issues here
+Ryan Johnson(3:05:54 PM): What is the 2 issues
+Ryan Johnson(3:07:26 PM): ?
+Jyoti Mahajan(3:07:28 PM): page attribute should come without page refresh or reload as soon as user initiates Chat with Agent - doesnt happen without page refresh and according to discussion with Laura it should not depend on page refresh, its a page level attribute, it should pass as soon as Chat is initiated as a data pass variable
+Jyoti Mahajan(3:07:51 PM): i am really not sure how is that a timing issue
+Jyoti Mahajan(3:09:23 PM): 2nd issue - DS_Bundle_Offers_list may not pass initially due to timing but when we refresh the page it should be passed and displayed to AGent , this is how we are getting this on other AT& Pages in test environment
+Jyoti Mahajan(3:09:50 PM): if you need i can send you screenshots of other AT&T pages where we are looking for offers attributes
+Ryan Johnson(3:13:43 PM): I do not need screen shots I understand what you are saying. What I am trying to say is that: the events are not getting triggered because nuance's frame work has not actually fully loaded when the the events are being emited by AT&T  
+Jyoti Mahajan(3:14:14 PM): Ryan - page attribute variable is not linked to the events at all
+Jyoti Mahajan(3:15:23 PM): that is why I mentioned there are 2 issues on the offers page
+3:17:31 PM -  Park Mermel (TOUCHCOMMERCE, INC) has joined the meeting
+Ryan Johnson(3:17:42 PM): Hello Park
+Park Mermel(3:18:51 PM): Hello, one minute please to read through the history
+Ryan Johnson(3:19:57 PM): Jyoti I have invited Park to better explain what the issue is.
+Park Mermel(3:25:27 PM): Hi Jyoti for the page attribute issue, we should be able to pass that on agent assigned Ryan is double checking that now
+Jyoti Mahajan(3:28:34 PM): Yeah Park - that should be passed without us having to refresh the page, it is only coming when we refresh that page though - whether we initiate chat from Offers page or from Equipment page
+Park Mermel(3:29:48 PM): However, the issue we saw with DS_Bundle_Offers_list is that we are not seeing that event exist at the time when we are checking. For these events there is two ways we can recieve them. One is if they are sent directly to us when the chat framework is loaded on the page. However, if an event is pushed to the ddo prior to our framework being active the events object is queried "ddo.getVar('events')" immediately after we load and the missed events are grabbed from there. However, in this case there seems to be a strange delay at the point when the event "DS_Bundle_Offers_list" is added to the ddo.getVar('events') object, which is causing it to not be available when we check for it.
+Park Mermel(3:32:42 PM): so for this event what we are seeing is that it triggers prior to us having loaded on the page and even though the event has already triggered it is not added to that events object until later
+Park Mermel(3:32:57 PM): causing us to miss our opportunity to grab the event and it's data
+Park Mermel(3:33:18 PM): this is also how we pull events for every other page from the ddo
+Park Mermel(3:33:53 PM): so it seems to be that there is something unique to this page / event that is causing a slight delay
+Jyoti Mahajan(3:35:02 PM): i understand about event timing - shouldnt page reload get the event code to pass on offers page though as it does on other tst01 offer pages for DTV n other products? or is something else you are observing for this standalone IDP flow?
+Park Mermel(3:36:13 PM): it's something completely unique to this page, where the event data isn't available during the opportunities we have to access it.
+Park Mermel(3:36:55 PM): if the event was populated in the events obj at the same time it was displaying in the ddo.dumpList() then we would be able to pick it up correctly
+Jyoti Mahajan(3:47:53 PM): ohh

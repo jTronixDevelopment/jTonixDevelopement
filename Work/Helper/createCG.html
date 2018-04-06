@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<head>
+  <title>ATT</title>
+  <meta http-equiv=Content-Type content="text/html; charset=utf-8" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.bundle.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="CSS/app.css">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">
+       Tools</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="createBR.html">Create BR</a>
+          <a class="dropdown-item" href="createDP.html">Create DataPass</a>
+          <a class="dropdown-item" href="createCG.html">Create Content Group</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="testing.html">Testing</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12  text-center">
+        <h1 class="white-text">Create Content Group</h1>
+      </div>
+    </div>
+  </div>
+
+  <!-- Create Content Gorup -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12 ">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Create Content Group</h4>
+            <div id="cgArea" class="card-text">
+              <h6>Content Group Name</h6>
+              <input id='contentGroupName' type="text" name="" value="">
+              <h6>Input Content Group Names</h6>
+              <textarea id="contentGroupTextArea" name="name" rows="8" cols="80"></textarea>
+              <h6>Content Group Created</h6>
+              <textarea id="contentGroupCreated" name="name" rows="8" cols="80"></textarea>
+              <br>
+              <button id="createCG" class="btn btn-primary">Create CG</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" language="javascript" charset="utf-8" src="https://att.inq.com/chatskins/launch/inqChatLaunch10004119.js">
+  </script>
+  <script type="text/javascript" src="JS/app.js"></script>
+  <script type="text/javascript" src="JS/creator/createCG.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+Business Unit:
+ATT-AEG-Digital-Care, Home Solutions Sales, ISM, Mobility Adv Tech Support, Mobility Care, Mobility Order Status, Mobility Sales, TouchCommerce
+
+When Chat-2097 (CMRATT-19787) was released, there were four business rules that were missed and are still routing through CRA_Mega. They are:
+
+Business Rule	Update default AG to...
+ATT-C-RA-UverseIntRouting-O-R-G-Care-KM-C2C-Test_TDATA_170321_A	HSC-UVC-Uverse
+ATT-C-RA-UverseIntRouting-O-R-G-MySupport-Care-KM-C2C-Test_TDATA_170321_A	HSC-UVC-Uverse
+ATT-C-RA-UverseVoiceRouting-O-R-G-Care-MySupport-TDATA-C2C	HSC-UVC-Uverse
+ATT-C-RA-UverseVoiceRouting-O-R-G-Care-KM-TDATA-C2C (new as of 1/30/18)	HS_SS-Uverse
+These need to also be included

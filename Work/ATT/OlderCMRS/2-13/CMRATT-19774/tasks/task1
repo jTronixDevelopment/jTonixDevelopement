@@ -1,0 +1,67 @@
+================================================================================
+=== Task 1 =====================================================================
+================================================================================
+
+*Task #1: Create new / update existing page markers*
+
+  Create page markers / CGs for the following URLs below. For any URL that already
+  has an existing page marker, you can use the ones below to overwrite
+  (*note: If renaming a page marker will impact data pass, let me know.
+  The client wants to keep data pass BAU).
+
+  *Wildcard the end of each URL string to ensure that the page is captured accordingly.*
+
+  ADD ALL PAGE MARKERS TO - BCS-Premier-POS
+
+  https://www.wireless.att.com/business/upgrade_options/
+  ATT-BCS-Premier-O-POS-Upgrade_Options
+
+  https://www.wireless.att.com/business/support/
+  ATT-BCS-Premier-O-POS-Support
+
+  https://www.wireless.att.com/business/shop/
+  ATT-BCS-Premier-O-POS-Shop
+
+  https://www.wireless.att.com/business/promos/
+  ATT-BCS-Premier-O-POS-Promos
+
+  https://www.wireless.att.com/business/plans/
+  ATT-BCS-Premier-O-POS-Plans
+
+  https://www.wireless.att.com/business/phones/
+  ATT-BCS-Premier-O-POS-Phones
+
+  https://www.wireless.att.com/business/packages/
+  ATT-BCS-Premier-O-POS-Packages
+
+  https://www.wireless.att.com/business/index.jsp?
+  ATT-BCS-Premier-O-POS-Dashboard
+
+  https://www.wireless.att.com/business/features/
+  ATT-BCS-Premier-O-POS-Features
+
+  https://www.wireless.att.com/business/error.jsp
+  ATT-BCS-Premier-O-POS-Error
+
+  https://www.wireless.att.com/business/contacts/
+  ATT-BCS-Premier-O-POS-Contacts
+
+  https://www.wireless.att.com/business/common/
+  ATT-BCS-Premier-O-POS-Common
+
+  https://www.wireless.att.com/business/checkout_sbnc/
+  ATT-BCS-Premier-I-POS-Checkout_Sbnc
+
+  https://www.wireless.att.com/business/checkout_cru/
+  ATT-BCS-Premier-I-POS-Checkout_CRU
+
+  https://www.wireless.att.com/business/cart/
+  ATT-BCS-Premier-I-POS-Cart
+
+  https://www.wireless.att.com/business/accessories/
+  ATT-BCS-Premier-O-POS-Accessories
+
+  Also create a page marker based on the regex, https://www.wireless.att.com/business/(*):
+  * Note: this is to ensure chat fires in /business/ pages that aren’t captured in the above table or in CMRATT-19714
+  * Page Marker Name == ATT-BCS-Premier-POS
+  * Content Group Name == BCS-Premier-POS (same as the others above)

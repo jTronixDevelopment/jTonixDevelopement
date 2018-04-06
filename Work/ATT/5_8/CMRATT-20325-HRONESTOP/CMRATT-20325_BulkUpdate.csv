@@ -1,0 +1,3 @@
+TC_Bulk_Update_Template,,,,,,,
+Page_ID,Content_Name,Content_URL,Content_Pattern,Marker_ID,Active(YES/NO),Cobrowse_Suppressed(YES/NO),Non-matching_page(YES/NO)
+37603686,ATT-HROW-O-Emp_Discounts_Offers,http://hronestop.web.att.com/group/hr-onestop/employee-discounts-offers,(.*)group/hr-onestop/employee-discounts-offers,ATT-HROW-O-Emp_Discounts_Offers,yes,no,no

@@ -1,0 +1,26 @@
+This issue is related to CHAT-1662
+Credentials from CMRATT-18953-
+
+Login: bo7140 pass 123123a
+
+Stage 4 URLS
+
+https://hronestop.test.att.com/group/hr-onestop/loa-manage-team-job-aids
+Proactive – Expecting Reactive
+No post chat survey
+
+http://hronestop.test.att.com/group/hr-onestop/fmla-manage-team-process-claims
+No reactive button
+
+https://hronestop.test.att.com/group/hr-onestop/fmla-manage-team-process-eligibility
+No reactive chat button
+
+https://hronestop.test.att.com/group/hr-onestop/fmla-manage-team-state-leaves
+no reactive chat button
+
+https://hronestop.test.att.com/group/hr-onestop/time-reporting-more-info
+Should be HR_staffing group (going to payroll)
+Wrong agent group
+No survey Navigate to page no chat button appears
+
+https://jira.touchcommerce.com/browse/CMRATT-18811

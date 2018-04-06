@@ -1,0 +1,12 @@
+Requested release date – 4/24/18
+
+Project ID/PID:	302049
+BU: Home Solutions Sales (19000753)
+AG: HSS Provide (10004235)
+
+*Task #1 *– Assign page marker
+
+URL	Page marker to assign
+https://www.att.com/buy/	ATT-Shop-UV-I-iDSE_buy
+Task #2 – Assign page marker to content group
+Once the page marker in Task #2 is assigned, please add PM ATT-Shop-UV-I-iDSE_buy to content group HSS-Provide-Buyflow

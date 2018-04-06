@@ -1,0 +1,6 @@
+TC_Bulk_Add_Template,,,,,
+Content_Name,Content_URL,Content_Pattern,Active(YES/NO),Cobrowse_Suppressed(YES/NO),Non-matching_page(YES/NO)
+ATT-eBiz-ASEoD-O-PreProvision,https://zltv8086.vci.att.com:8002/ebiz/aseod/#/manage/addPort,(.*)/ebiz/aseod/#/manage/addPort,yes,no,no
+ATT-eBiz-ASEoD-O-ActiveManage,https://zltv8086.vci.att.com:8002/ebiz/aseod/#/manage/active/editPort,(.*)/ebiz/aseod/#/manage/active/editPort,yes,no,no
+ATT-eBiz-ASEoD-O-ReviewOrder,https://zltv8086.vci.att.com:8002/ebiz/aseod/#/order/review,(.*)/ebiz/aseod/#/order/review,yes,no,no
+ATT-eBiz-ASEoD-O-OrderStatus,https://zltv8086.vci.att.com:8002/ebiz/aseod/#/order/details,(.*)/ebiz/aseod/#/order/details,yes,no,no

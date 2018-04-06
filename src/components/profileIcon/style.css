@@ -1,12 +1,30 @@
 .profile-icon-top{
-  height: 50%;
+  height: 25vh;
   background: white;
+
 }
 
 .profile-icon-img{
-  height: 25%;
+  box-sizing: border-box;
+  width: 30%;
+  position: relative;
+  left: 35%;
+  top: 25%;
+  border-radius: 50%;
+  border: 3px solid black;
+  padding: 10px 0 10px 0;
 }
 
 .profile-icon-bottom{
+  height: 25vh;
+  position: relative;
+  background: white;
+  top: 30%;
+  border-radius: 50%;
+  border: 1px solid black
+}
+.profile-icon-container{
+  position: relative;
+  background: white;
   height: 50%;
 }

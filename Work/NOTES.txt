@@ -1,0 +1,11 @@
+zulu
+D0_not_shar3_mee!
+
+
+qayslid_01191821833@yopmail.com
+test1ng
+
+
+nuance-rule=RULENAME&nuance-delay=0,
+but that bypasses all conditions.
+If you're trying to validate the conditions without the delay, it's not valid test.
