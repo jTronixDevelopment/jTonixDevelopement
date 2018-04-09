@@ -1,0 +1,15 @@
+.about-me-profile-pic{
+  border-radius: 100%;
+  width: inherit;
+}
+
+.container{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.about-me-bio-list{
+  text-align: left;
+  list-style: none;
+  font-weight: bold;
+}

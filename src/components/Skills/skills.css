@@ -1,0 +1,10 @@
+.skills-icon{
+  width: inherit;
+  transform: rotate(-20deg);
+  box-shadow: 5px;
+}
+
+.skills-container{
+  background: #343a40;
+  color: white;
+}
