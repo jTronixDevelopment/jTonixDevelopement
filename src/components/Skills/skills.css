@@ -1,10 +1,21 @@
-.skills-icon{
-  width: inherit;
-  transform: rotate(-30deg);
-  box-shadow: 5px;
-}
 
+/* 999967  */
 .skills-container{
   background: #343a40;
   color: white;
+}
+
+.skills-list{
+  list-style: none;
+  padding: 0;
+}
+
+.skills-icon{
+  max-height: 100px;
+  height: inherit;
+  margin: 10px;
+}
+
+.skills-icon-image{
+  height: 30px;
 }

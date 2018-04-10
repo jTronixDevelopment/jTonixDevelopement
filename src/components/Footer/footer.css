@@ -1,0 +1,17 @@
+.footer-container{
+  background: #CCCC9A;
+}
+
+li.footer-link-item>a{
+  color: black;
+}
+
+ul.footer-link-list{
+  width: 100%;
+  text-align: center;
+  padding: 0;
+}
+
+.footer-link-list{
+  list-style: none;
+}

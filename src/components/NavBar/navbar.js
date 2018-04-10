@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 
 import './navbar.css';
 
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem,
+import { Collapse, Navbar, NavbarToggler, Nav, NavItem,
   NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu,
   DropdownItem } from 'reactstrap';
-
+  
 export default class AboutMe extends Component {
 
   constructor(props) {

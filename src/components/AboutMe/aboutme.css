@@ -1,13 +1,41 @@
 .about-me-profile-pic{
   border-radius: 100%;
   width: inherit;
+  filter: sepia(60%);
+  filter: grayscale(40%);
 }
 
+/* .about-me-content::after{
+  overflow: hidden;
+  overflow-x: hidden;
+} */
+.about-me-content:before{
+  padding: 0;
+  margin: 0;
+  content: "";
+  position: fixed;
+  top:0;
+  left: 0;
+  z-index: -1;
+  display: block;
+  background-image: url('./../../imgs/banner.png');
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  -webkit-filter: blur(3px);
+  -moz-filter: blur(3px);
+  -o-filter: blur(3px);
+  -ms-filter: blur(3px);
+  filter: blur(2px);
+  overflow-x: hidden;
+}
+.about-me-content{
+  color: white;
+}
 .container{
   padding-top: 20px;
   padding-bottom: 20px;
 }
-
 .about-me-bio-list{
   text-align: left;
   list-style: none;
